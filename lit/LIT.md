@@ -164,3 +164,13 @@ when P_i > 5 and contributes three points"; the definition does not exclude co-a
 screen intended to identify cases that merit human examination, not an automated finding of misconduct". Benchmark: "One
 researcher crossed the coauthor-citation-isolation threshold" (of 260 scored). Used for: the description of the adapted
 rules (methods), R1's 12 flagged authors (results), and the third implication (discussion).
+
+OpenAlex snapshot re-opened on 2026-11-26 (third check, after the reviewer reported seeing a page "Last updated August 19,
+2026"): `web.archive.org/web/20261126210020/https://help.openalex.org/data/authors/disambiguation/` contains "Our latest
+estimate, from 22 November 2026, is precision 97.1% (±0.5) and recall 91.6% (±0.8), with 95% intervals. On average, about
+3 in 100 works on a researcher's main profile belong to someone else" and "They are judged by a language model, not by
+people."
+
+Reference metadata fixed on 2026-11-26: Fister et al. (2016) first author Iztok Fister Jr. (publisher's page; Crossref
+gives both first authors as "Iztok Fister"), Front. Phys. 4:49 (article number from Semantic Scholar); Fletcher &
+Stevenson (2025) article 9 (Crossref); Robins et al. (1986) pages 311–323 (Semantic Scholar; Crossref gives only 311).

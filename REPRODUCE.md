@@ -54,6 +54,16 @@ Run each from its experiment folder: `python <script> <run_id> [args]`.
   from 20261126; decile ties in A4 are broken by a seeded random key.
 - Floating-point sums in parallel DuckDB aggregations can differ in the last digits between runs.
 
+## Clocks and time stamps
+Run records written on the VM (f03, f05, f06, f07, f09, f10, f11_cov, f13 `posthoc3`, f14, f15) use its system clock,
+which is synchronised to UTC. Records written on the laptop (f08, f11_crossref, f12, f13_desc), `vm/sessions.log` and the
+git commits of 26 November 2026 use the laptop clock, which ran one hour behind UTC that day (checked against HTTP `Date`
+headers: the laptop read 22:40:45Z when two servers reported 23:40:41 and 23:40:34 GMT). The freeze time of the
+specification in `experiments/f04_spec/RESULTS_LOG.md` is given in true UTC (18:43:04Z; the laptop wrote 17:43:04Z), and
+the order of the score and evaluation runs rests on the VM clock alone (18:43:21Z and 18:54:42Z). The first commit of the
+public repository, stamped 20:24 UTC, was therefore made at about 21:24 UTC, after the VM runs of 21:08–21:11 UTC that it
+contains.
+
 ## 5. Runs not cited (kept for the record)
 | Run | Why |
 |---|---|
