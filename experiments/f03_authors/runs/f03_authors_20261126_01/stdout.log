@@ -1,0 +1,57 @@
+[   341.4s] meta_records: {'rows': 107067700, 'rows_with_author': 97269934}
+[   435.2s] records_with_authors: 97269934
+[   435.3s] author_slots: 352057220
+[   435.9s] slots_with_orcid: 52206594
+[   436.8s] slots_without_ra_omid: 8540427
+[   441.9s] slots_orcid_token_unparsed: 0
+[   443.9s] records_with_ge1_orcid: 26626530
+[   447.1s] records_same_orcid_twice: 740
+[   448.8s] distinct_orcid: 5723850
+[   451.9s] orcid_with_several_ra_omids: 1315288
+[   455.0s] ra_omid_with_several_orcids: 0
+[   458.4s] non_orcid_ra_sample_2pct: {'ra_omids': 5827133, 'in_1_record': 5827133, 'in_2plus_records': 0, 'max_records': 1}
+[   463.6s] orcid_records_quantiles: [2, 6, 20, 115]
+[   482.1s] biomedical_nodes: 31464435
+[   515.9s] graph_nodes: 107030533
+[   515.9s] graph_nodes_with_authors: 94049595
+[   516.0s] graph_nodes_with_ge1_orcid: 26626530
+[   516.0s] orcid_slots_on_graph_nodes: 52206594
+[   516.5s] orcid_on_graph_nodes: 5723850
+[   517.2s] iids_with_same_aid_twice: 740
+[   519.4s] bio_coverage_by_year: [{'year': 2000, 'papers': 536597, 'with_authors': 535944, 'slots': 2178384, 'orcid_slots': 177379, 'with_ge1_orcid': 129587, 'mean_n_auth': 4.06}, {'year': 2001, 'papers': 550880, 'with_authors': 550298, 'slots': 2287069, 'orcid_slots': 214194, 'with_ge1_orcid': 151488, 'mean_n_auth': 4.16}, {'year': 2002, 'papers': 575799, 'with_authors': 575170, 'slots': 2406049, 'orcid_slots': 248080, 'with_ge1_orcid': 171349, 'mean_n_auth': 4.18}, {'year': 2003, 'papers': 608095, 'with_authors': 607500, 'slots': 2580733, 'orcid_slots': 290346, 'with_ge1_orcid': 195466, 'mean_n_auth': 4.25}, {'year': 2004, 'papers': 570357, 'with_authors': 569827, 'slots': 2491717, 'orcid_slots': 300168, 'with_ge1_orcid': 195762, 'mean_n_auth': 4.37}, {'year': 2005, 'papers': 590844, 'with_authors': 590279, 'slots': 2672506, 'orcid_slots': 349405, 'with_ge1_orcid': 220332, 'mean_n_auth': 4.53}, {'year': 2006, 'papers': 634608, 'with_authors': 633970, 'slots': 2907175, 'orcid_slots': 406146, 'with_ge1_orcid': 249677, 'mean_n_auth': 4.59}, {'year': 2007, 'papers': 663954, 'with_authors': 663429, 'slots': 3143777, 'orcid_slots': 464394, 'with_ge1_orcid': 276497, 'mean_n_auth': 4.74}, {'year': 2008, 'papers': 719061, 'with_authors': 718545, 'slots': 3424468, 'orcid_slots': 528581, 'with_ge1_orcid': 307316, 'mean_n_auth': 4.77}, {'year': 2009, 'papers': 784817, 'with_authors': 784181, 'slots': 3756462, 'orcid_slots': 609915, 'with_ge1_orcid': 344949, 'mean_n_auth': 4.79}, {'year': 2010, 'papers': 787759, 'with_authors': 787022, 'slots': 3931445, 'orcid_slots': 682355, 'with_ge1_orcid': 374510, 'mean_n_auth': 5.0}, {'year': 2011, 'papers': 832252, 'with_authors': 831595, 'slots': 4309255, 'orcid_slots': 780184, 'with_ge1_orcid': 415325, 'mean_n_auth': 5.18}, {'year': 2012, 'papers': 883177, 'with_authors': 882554, 'slots': 4736500, 'orcid_slots': 885823, 'with_ge1_orcid': 456153, 'mean_n_auth': 5.37}, {'year': 2013, 'papers': 947206, 'with_authors': 946564, 'slots': 5151695, 'orcid_slots': 1011841, 'with_ge1_orcid': 508287, 'mean_n_auth': 5.44}, {'year': 2014, 'papers': 984335, 'with_authors': 983949, 'slots': 5496907, 'orcid_slots': 1103174, 'with_ge1_orcid': 540068, 'mean_n_auth': 5.59}, {'year': 2015, 'papers': 1022705, 'with_authors': 1022258, 'slots': 5937035, 'orcid_slots': 1202655, 'with_ge1_orcid': 573635, 'mean_n_auth': 5.81}, {'year': 2016, 'papers': 1054281, 'with_authors': 1053679, 'slots': 6285753, 'orcid_slots': 1311145, 'with_ge1_orcid': 615921, 'mean_n_auth': 5.97}, {'year': 2017, 'papers': 1076746, 'with_authors': 1076288, 'slots': 6590038, 'orcid_slots': 1522601, 'with_ge1_orcid': 686834, 'mean_n_auth': 6.12}, {'year': 2018, 'papers': 1113898, 'with_authors': 1113623, 'slots': 7043784, 'orcid_slots': 1745232, 'with_ge1_orcid': 762484, 'mean_n_auth': 6.33}, {'year': 2019, 'papers': 1176055, 'with_authors': 1175892, 'slots': 7488945, 'orcid_slots': 1968196, 'with_ge1_orcid': 835596, 'mean_n_auth': 6.37}, {'year': 2020, 'papers': 1369888, 'with_authors': 1369799, 'slots': 8875492, 'orcid_slots': 2381280, 'with_ge1_orcid': 969982, 'mean_n_auth': 6.48}, {'year': 2021, 'papers': 1479156, 'with_authors': 1479056, 'slots': 10045252, 'orcid_slots': 2482169, 'with_ge1_orcid': 978938, 'mean_n_auth': 6.79}, {'year': 2022, 'papers': 1461763, 'with_authors': 1461700, 'slots': 10063193, 'orcid_slots': 2324133, 'with_ge1_orcid': 886695, 'mean_n_auth': 6.88}, {'year': 2023, 'papers': 1046703, 'with_authors': 1046703, 'slots': 7315473, 'orcid_slots': 1809193, 'with_ge1_orcid': 660390, 'mean_n_auth': 6.99}, {'year': 2024, 'papers': 3026, 'with_authors': 3026, 'slots': 21028, 'orcid_slots': 4882, 'with_ge1_orcid': 1859, 'mean_n_auth': 6.95}]
+[   520.8s] all_nodes_coverage_2014_2023: (36833518, 36387500, 169216774, 36279419, 16465934)
+[   523.1s] orcid_with_bio_papers_in_window: 3239463
+[   523.1s] orcid_by_min_bio_papers: {1: 3239463, 3: 1342771, 5: 877590, 10: 446017, 20: 185006, 50: 38161, 100: 8290}
+[   523.1s] orcid_ge5_and_active_2019_2023: 851943
+[   523.2s] orcid_n_bio_quantiles: [2, 5, 13, 54, 142]
+[   523.2s] retracted_nodes: 53169
+[   523.4s] retracted_bio_nodes_by_period_with_orcid: [(False, 23741, 12259), (True, 5117, 2946)]
+[   523.6s] label_counts_orcid_n_bio_ge1: {'authors': 3239463, 'any_by_T0': 21853, 'after_T0': 5308, 'after_T0_not_by_T0': 4732, 'mill_after_T0': 734, 'refpeer_after_T0': 2027}
+[   523.6s] label_counts_orcid_n_bio_ge5: {'authors': 877590, 'any_by_T0': 8105, 'after_T0': 2983, 'after_T0_not_by_T0': 2519, 'mill_after_T0': 207, 'refpeer_after_T0': 806}
+[   523.7s] label_counts_orcid_n_bio_ge10: {'authors': 446017, 'any_by_T0': 5996, 'after_T0': 2153, 'after_T0_not_by_T0': 1794, 'mill_after_T0': 111, 'refpeer_after_T0': 508}
+[   715.0s] edges_window_volume: {'edges_both_ends_in_window': 394512740, 'cited_bio': 229511893, 'cited_bio_with_orcid': 166498809, 'cited_bio_both_orcid': 107927361, 'pair_rows_cited_bio_both_orcid': 1843450863, 'both_bio_both_orcid': 81762403, 'pair_rows_both_bio_both_orcid': 1027834231}
+[   721.5s] saved: {'orcid_slots': '/home/azureuser/f/data/work/orcid_slots.parquet', 'paper_auth': '/home/azureuser/f/data/work/paper_auth.parquet', 'aid_map': '/home/azureuser/f/data/work/aid_map.parquet', 'bio': '/home/azureuser/f/data/work/bio.parquet'}
+done in 722.9 s -> /home/azureuser/f/experiments/f03_authors/runs/f03_authors_20261126_01
+	Command being timed: "/home/azureuser/mamba/envs/d/bin/python f03_authors.py f03_authors_20261126_01"
+	User time (seconds): 1591.43
+	System time (seconds): 104.66
+	Percent of CPU this job got: 234%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 12:02.90
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 22575500
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 20
+	Minor (reclaiming a frame) page faults: 20834094
+	Voluntary context switches: 2598877
+	Involuntary context switches: 37202
+	Swaps: 0
+	File system inputs: 117197680
+	File system outputs: 16609240
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

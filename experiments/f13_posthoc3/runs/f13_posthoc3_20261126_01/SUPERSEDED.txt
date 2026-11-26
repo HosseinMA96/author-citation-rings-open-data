@@ -1,0 +1,1 @@
+superseded by f13_posthoc3_20261126_02: identical except that _02 adds the R3 ratio (data-driven addendum, POSTHOC.md round 3)

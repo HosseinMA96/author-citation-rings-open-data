@@ -1,0 +1,1 @@
+superseded by f11_crossref_20261126_02: the script contained a personal contact address for the Crossref polite pool (now read from CROSSREF_MAILTO); results and CSV byte-identical

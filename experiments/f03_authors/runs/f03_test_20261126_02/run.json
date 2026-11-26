@@ -1,0 +1,359 @@
+{
+  "run_id": "f03_test_20261126_02",
+  "script": "f03_authors.py",
+  "script_sha256": "693a451ac83917262576a1418c2080a76daeb28dd41adec16e873814eba23315",
+  "common_sha256": "1dcccbafdf743ba6d8f45efffbd565900957bd0a25f6748c2622c6a15fdb9eaf",
+  "config": {
+    "meta_glob": "/home/azureuser/c/data/raw/meta_csv/10[0-9][0-9].csv",
+    "pubs_slim": "/home/azureuser/c/data/work/c6_full_20261031_02/pubs_slim.parquet",
+    "pubs_j": "/home/azureuser/c/data/work/c6_full_20261031_02/pubs_j.parquet",
+    "edges": "/home/azureuser/c/data/work/c6_full_20261031_02/edges.parquet",
+    "idmap": "/home/azureuser/d/data/work/idmap.parquet",
+    "pubmed": "/home/azureuser/d/data/work/pubmed26.parquet",
+    "rw_run": "d02_rw_20261101_01",
+    "match_run": "d05_match_20261101_02",
+    "T0": "2024-01-31",
+    "end": "2026-10-30",
+    "window": [
+      2014,
+      2023
+    ],
+    "test": true,
+    "out": "/home/azureuser/f/data/work/test"
+  },
+  "host": "vm-project-c",
+  "python": "3.11.18",
+  "platform": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+  "started_utc": "2026-11-26T18:24:58Z",
+  "results": {
+    "meta_records": {
+      "rows": 383060,
+      "rows_with_author": 344533
+    },
+    "records_with_authors": 344533,
+    "author_slots": 1239833,
+    "slots_with_orcid": 152971,
+    "slots_without_ra_omid": 21964,
+    "slots_orcid_token_unparsed": 0,
+    "records_with_ge1_orcid": 85361,
+    "records_same_orcid_twice": 4,
+    "distinct_orcid": 111444,
+    "orcid_with_several_ra_omids": 859,
+    "ra_omid_with_several_orcids": 0,
+    "non_orcid_ra_sample_2pct": {
+      "ra_omids": 21175,
+      "in_1_record": 21175,
+      "in_2plus_records": 0,
+      "max_records": 1
+    },
+    "orcid_records_quantiles": [
+      1,
+      1,
+      2,
+      6
+    ],
+    "biomedical_nodes": 31464435,
+    "graph_nodes": 107030533,
+    "graph_nodes_with_authors": 343699,
+    "graph_nodes_with_ge1_orcid": 85361,
+    "orcid_slots_on_graph_nodes": 152971,
+    "orcid_on_graph_nodes": 111444,
+    "iids_with_same_aid_twice": 4,
+    "bio_coverage_by_year": [
+      {
+        "year": 2000,
+        "papers": 536597,
+        "with_authors": 2580,
+        "slots": 11293,
+        "orcid_slots": 971,
+        "with_ge1_orcid": 684,
+        "mean_n_auth": 4.38
+      },
+      {
+        "year": 2001,
+        "papers": 550880,
+        "with_authors": 2875,
+        "slots": 11689,
+        "orcid_slots": 1265,
+        "with_ge1_orcid": 889,
+        "mean_n_auth": 4.07
+      },
+      {
+        "year": 2002,
+        "papers": 575799,
+        "with_authors": 1811,
+        "slots": 7535,
+        "orcid_slots": 774,
+        "with_ge1_orcid": 553,
+        "mean_n_auth": 4.16
+      },
+      {
+        "year": 2003,
+        "papers": 608095,
+        "with_authors": 1693,
+        "slots": 7190,
+        "orcid_slots": 607,
+        "with_ge1_orcid": 446,
+        "mean_n_auth": 4.25
+      },
+      {
+        "year": 2004,
+        "papers": 570357,
+        "with_authors": 2097,
+        "slots": 8728,
+        "orcid_slots": 1115,
+        "with_ge1_orcid": 736,
+        "mean_n_auth": 4.16
+      },
+      {
+        "year": 2005,
+        "papers": 590844,
+        "with_authors": 3031,
+        "slots": 14257,
+        "orcid_slots": 1505,
+        "with_ge1_orcid": 961,
+        "mean_n_auth": 4.7
+      },
+      {
+        "year": 2006,
+        "papers": 634608,
+        "with_authors": 1954,
+        "slots": 9039,
+        "orcid_slots": 707,
+        "with_ge1_orcid": 429,
+        "mean_n_auth": 4.63
+      },
+      {
+        "year": 2007,
+        "papers": 663954,
+        "with_authors": 2523,
+        "slots": 11243,
+        "orcid_slots": 1376,
+        "with_ge1_orcid": 885,
+        "mean_n_auth": 4.46
+      },
+      {
+        "year": 2008,
+        "papers": 719061,
+        "with_authors": 2255,
+        "slots": 10124,
+        "orcid_slots": 1465,
+        "with_ge1_orcid": 885,
+        "mean_n_auth": 4.49
+      },
+      {
+        "year": 2009,
+        "papers": 784817,
+        "with_authors": 2984,
+        "slots": 11386,
+        "orcid_slots": 1324,
+        "with_ge1_orcid": 818,
+        "mean_n_auth": 3.82
+      },
+      {
+        "year": 2010,
+        "papers": 787759,
+        "with_authors": 1590,
+        "slots": 7234,
+        "orcid_slots": 909,
+        "with_ge1_orcid": 579,
+        "mean_n_auth": 4.55
+      },
+      {
+        "year": 2011,
+        "papers": 832252,
+        "with_authors": 2765,
+        "slots": 13266,
+        "orcid_slots": 2299,
+        "with_ge1_orcid": 1267,
+        "mean_n_auth": 4.8
+      },
+      {
+        "year": 2012,
+        "papers": 883177,
+        "with_authors": 5248,
+        "slots": 29096,
+        "orcid_slots": 5252,
+        "with_ge1_orcid": 2742,
+        "mean_n_auth": 5.54
+      },
+      {
+        "year": 2013,
+        "papers": 947206,
+        "with_authors": 3750,
+        "slots": 17997,
+        "orcid_slots": 2930,
+        "with_ge1_orcid": 1724,
+        "mean_n_auth": 4.8
+      },
+      {
+        "year": 2014,
+        "papers": 984335,
+        "with_authors": 4673,
+        "slots": 24333,
+        "orcid_slots": 4031,
+        "with_ge1_orcid": 2275,
+        "mean_n_auth": 5.21
+      },
+      {
+        "year": 2015,
+        "papers": 1022705,
+        "with_authors": 2398,
+        "slots": 12671,
+        "orcid_slots": 1913,
+        "with_ge1_orcid": 1095,
+        "mean_n_auth": 5.28
+      },
+      {
+        "year": 2016,
+        "papers": 1054281,
+        "with_authors": 3123,
+        "slots": 17460,
+        "orcid_slots": 2959,
+        "with_ge1_orcid": 1425,
+        "mean_n_auth": 5.59
+      },
+      {
+        "year": 2017,
+        "papers": 1076746,
+        "with_authors": 2516,
+        "slots": 15366,
+        "orcid_slots": 4157,
+        "with_ge1_orcid": 1470,
+        "mean_n_auth": 6.11
+      },
+      {
+        "year": 2018,
+        "papers": 1113898,
+        "with_authors": 3279,
+        "slots": 20170,
+        "orcid_slots": 6571,
+        "with_ge1_orcid": 2281,
+        "mean_n_auth": 6.15
+      },
+      {
+        "year": 2019,
+        "papers": 1176055,
+        "with_authors": 3442,
+        "slots": 19444,
+        "orcid_slots": 6742,
+        "with_ge1_orcid": 2514,
+        "mean_n_auth": 5.65
+      },
+      {
+        "year": 2020,
+        "papers": 1369888,
+        "with_authors": 3600,
+        "slots": 18272,
+        "orcid_slots": 5898,
+        "with_ge1_orcid": 2365,
+        "mean_n_auth": 5.08
+      },
+      {
+        "year": 2021,
+        "papers": 1479156,
+        "with_authors": 3443,
+        "slots": 18960,
+        "orcid_slots": 4850,
+        "with_ge1_orcid": 1989,
+        "mean_n_auth": 5.51
+      },
+      {
+        "year": 2022,
+        "papers": 1461763,
+        "with_authors": 1595,
+        "slots": 8618,
+        "orcid_slots": 1304,
+        "with_ge1_orcid": 645,
+        "mean_n_auth": 5.4
+      },
+      {
+        "year": 2023,
+        "papers": 1046703,
+        "with_authors": 9,
+        "slots": 29,
+        "orcid_slots": 16,
+        "with_ge1_orcid": 9,
+        "mean_n_auth": 3.22
+      },
+      {
+        "year": 2024,
+        "papers": 3026,
+        "with_authors": 0,
+        "slots": null,
+        "orcid_slots": null,
+        "with_ge1_orcid": 0,
+        "mean_n_auth": null
+      }
+    ],
+    "all_nodes_coverage_2014_2023": [
+      36833518,
+      111745,
+      493993,
+      91450,
+      44107
+    ],
+    "orcid_with_bio_papers_in_window": 30505,
+    "orcid_by_min_bio_papers": {
+      "1": 30505,
+      "3": 1583,
+      "5": 366,
+      "10": 50,
+      "20": 2,
+      "50": 0,
+      "100": 0
+    },
+    "orcid_ge5_and_active_2019_2023": 257,
+    "orcid_n_bio_quantiles": [
+      1,
+      1,
+      2,
+      5,
+      11
+    ],
+    "retracted_nodes": 53169,
+    "retracted_bio_nodes_by_period_with_orcid": [
+      [
+        false,
+        23741,
+        40
+      ],
+      [
+        true,
+        5117,
+        6
+      ]
+    ],
+    "label_counts_orcid_n_bio_ge1": {
+      "authors": 30505,
+      "any_by_T0": 44,
+      "after_T0": 10,
+      "after_T0_not_by_T0": 10,
+      "mill_after_T0": 1,
+      "refpeer_after_T0": 5
+    },
+    "label_counts_orcid_n_bio_ge5": {
+      "authors": 366,
+      "any_by_T0": 1,
+      "after_T0": 0,
+      "after_T0_not_by_T0": 0,
+      "mill_after_T0": 0,
+      "refpeer_after_T0": 0
+    },
+    "label_counts_orcid_n_bio_ge10": {
+      "authors": 50,
+      "any_by_T0": 0,
+      "after_T0": 0,
+      "after_T0_not_by_T0": 0,
+      "mill_after_T0": 0,
+      "refpeer_after_T0": 0
+    },
+    "saved": {
+      "orcid_slots": "/home/azureuser/f/data/work/test/orcid_slots.parquet",
+      "paper_auth": "/home/azureuser/f/data/work/test/paper_auth.parquet",
+      "aid_map": "/home/azureuser/f/data/work/test/aid_map.parquet",
+      "bio": "/home/azureuser/f/data/work/test/bio.parquet"
+    }
+  },
+  "seconds": 50.1
+}

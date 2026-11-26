@@ -1,0 +1,48 @@
+# F12 supplementary tables: lab notebook
+
+Laptop; reads run records only (`f06_eval_20261126_02`, `f07_posthoc_20261126_01`, `f09_posthoc2_20261126_02`) and the
+reason counts of Paper D run `d02_rw_20261101_01`; writes `../../paper/content/supp_tables.tex` (generated; do not edit).
+Added after the external review of draft v0.1, which noted that pre-specified outputs (decile rates with Wilson
+intervals, recall at 10,000, average precision) and the reason-to-class mapping were not shown.
+
+## f12_tables_20261126_01: superseded
+Tables S2 (screening) and S4 (all odds ratios) were too wide for the page (overfull by 93 pt and 305 pt).
+
+## f12_tables_20261126_02: superseded
+S2 and the odds-ratio tables set in landscape; the odds ratios split into two tables. Captions repeated the number
+("Table 3: Supplementary Table S2") and every table was forced to its own page.
+
+## f12_tables_20261126_03: superseded, not released
+Captions without the prefix (the appendix numbers tables S1–S6), portrait tables placed `[htbp]`. The config recorded a
+local absolute path for the Paper D input.
+
+## f12_tables_20261126_04: superseded
+Same tables as `_03` (file identical); the Paper D input is recorded relative to the series root. Six tables: S1 later
+retraction by S1 decile with Wilson intervals (A4); S2 screening metrics for every ranking, with precision and lift at
+100/1,000/10,000, recall at 10,000, average precision (A5) and the journal-clustered lift interval (P4); S3 screening for
+the referencing/peer-review class (P7, post hoc); S4 odds ratios, pre-specified I (primary and robustness (a)–(c)); S5
+odds ratios, pre-specified II ((d)–(f)) with post hoc columns (journal-clustered interval, P1, P6); S6 Retraction Watch
+reason strings by outcome class with paper counts. Reason strings per class: referencing or peer-review 4, paper mill 1,
+other misconduct 20, honest error 14, no class 71. Values are identical in all four runs (layout only).
+
+## f12_tables_20261126_05: superseded
+Completeness check against SPEC §6 found two pre-specified outputs shown only in part: the A5 intervals (only precision at
+1,000 and lift at 10,000 had intervals) and A3 (odds ratios by outcome class, shown only graphically in Fig. 1). Table S2
+now gives lift with its interval at 100, 1,000 and 10,000 and intervals for recall and AP; new Table S7 lists every A3
+estimate with the number of exposed positives and the journal-clustered interval (P4). Existing cells unchanged. S7 was
+too wide (95 pt).
+
+## f12_tables_20261126_06: superseded
+As `_05`, with two-line column heads and a smaller font in S7 (layout only; same values). Tables S1–S7.
+
+## f12_tables_20261126_07: superseded
+After the second external review: new input `f13_posthoc3_20261126_02`; Table S8 (outcome classes in the primary, P1
+and P6 strata, journal-clustered intervals, class ratio) and Table S9 (tie-breaking audit); tie notes in the captions of
+S1 and S2; "A3" removed from the S7 caption. Panel (c) of S9 showed "--" for the row-order P1/P6 estimates of four
+exposures.
+
+## f12_tables_20261126_08: superseded
+Panel (c) takes the row-order P1/P6 estimates from f07/f09 (which f13 reproduces exactly). Panel (c) was 4 pt too wide.
+
+## f12_tables_20261126_09: cited
+As `_08` with narrower column spacing in S9 (layout only; same values). Tables S1–S9.

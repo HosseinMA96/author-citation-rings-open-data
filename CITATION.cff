@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use this code or these records, please cite the paper and this repository."
+title: "Do author-level citation-ring signals predict later retractions? Code, specification and run records"
+type: software
+authors:
+  - family-names: "Mohasel Arjomandi"
+    given-names: "Hossein"
+license: MIT
+repository-code: "https://github.com/HosseinMA96/author-citation-rings-open-data"
+date-released: "2026-11-26"
+keywords:
+  - citation manipulation
+  - citation cartels
+  - research integrity
+  - retraction
+  - ORCID
+  - OpenCitations
+preferred-citation:
+  type: article
+  authors:
+    - family-names: "Mohasel Arjomandi"
+      given-names: "Hossein"
+  title: "Do author-level citation-ring signals predict later retractions? A prospective test on the open biomedical citation graph"
+  status: preprint
+  year: 2026

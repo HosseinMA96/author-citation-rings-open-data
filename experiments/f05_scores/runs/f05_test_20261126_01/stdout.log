@@ -1,0 +1,42 @@
+[     0.0s] f03_outputs_present: True
+[    21.7s] stat_rows_cut_at_T0: 44400
+[    21.7s] stat_max_notice: 2024-01-31 00:00:00
+[    77.7s] rows_lin: 5437957
+[    77.7s] rows_cwf: 4403948
+[    77.7s] rows_rw: 2845745
+[    77.7s] rows_lk: 5437957
+[    77.7s] rows_win: 6380863
+[    77.7s] authors_pre_eligible: 8592
+[    77.7s] authors_eligible: 7995
+[    77.7s] authors_eligible_prior_T0: 78
+[    77.7s] authors_primary: 7917
+[    77.7s] primary_by_band: {'05-09': 3639, '10-19': 2482, '20-49': 1432, '50+': 364}
+[    77.7s] primary_without_main_journal: 0
+[    77.7s] primary_distinct_main_journals: 2433
+[    77.8s] primary_score_quantiles: {'q': [0.01, 0.1, 0.25, 0.5, 0.75, 0.9, 0.99], 's1_recip_nc': {'n_nonnull': 7917, 'quantiles': [0.0, 0.0, 0.0, 0.008097, 0.022388, 0.043187, 0.106331], 'mean': 0.016099}, 's2_recip': {'n_nonnull': 7917, 'quantiles': [0.0, 0.0, 0.0, 0.014706, 0.033898, 0.061486, 0.141376], 'mean': 0.024158}, 's3_pact': {'n_nonnull': 7917, 'quantiles': [0.0, 0.0, 0.0, 0.0, 1.0, 4.0, 48.0], 'mean': 4.551472}, 's4_conc5': {'n_nonnull': 7917, 'quantiles': [0.017392, 0.041413, 0.062016, 0.096774, 0.147541, 0.205128, 0.347559], 'mean': 0.113144}, 's5_self': {'n_nonnull': 7917, 'quantiles': [0.0, 0.002657, 0.014286, 0.034109, 0.068997, 0.121986, 0.272727], 'mean': 0.051965}, 's6_co': {'n_nonnull': 7917, 'quantiles': [0.0, 0.010582, 0.033333, 0.070423, 0.122449, 0.183068, 0.321997], 'mean': 0.086752}, 's7_ch2': {'n_nonnull': 7917, 'quantiles': [1.875247, 2.469388, 2.942222, 3.8125, 5.48, 8.71763, 31.21], 'mean': 5.577325}, 's8_burst': {'n_nonnull': 7917, 'quantiles': [1.0, 2.0, 2.0, 3.0, 4.0, 6.0, 10.0], 'mean': 3.49219}, 'nci_adj': {'n_nonnull': 7917, 'quantiles': [0.0, 0.521221, 1.544083, 3.165851, 5.400326, 8.005368, 14.27001], 'mean': 3.861079}, 'J_0': {'n_nonnull': 7917, 'quantiles': [8.5e-05, 0.000229, 0.000367, 0.000571, 0.000907, 0.001544, 0.008981], 'mean': 0.001088}, 'n_cw_nc': {'n_nonnull': 7917, 'quantiles': [21.0, 41.0, 79.0, 187.0, 461.0, 1038.4, 4248.52], 'mean': 480.463054}, 'n_in': {'n_nonnull': 7917, 'quantiles': [25.0, 51.0, 100.0, 241.0, 592.0, 1406.4, 6697.68], 'mean': 659.908678}, 'h': {'n_nonnull': 7917, 'quantiles': [2.0, 4.0, 5.0, 7.0, 12.0, 18.0, 36.0], 'mean': 9.522294}, 'team': {'n_nonnull': 7917, 'quantiles': [2.924718, 4.529412, 5.846154, 7.611111, 10.411765, 15.5, 116.698667], 'mean': 19.034894}}
+[    77.8s] primary_rule_hits: {'r1': 0, 'r2': 579, 'r3': 2965, 'r_ge3': 579, 'r_ge6': 0}
+[    77.8s] scores_frozen: {'path': '/home/azureuser/f/data/work/f05/f05_test_20261126_01/scores.parquet', 'sha256': '8261191dc0c2458893c2ecfeaa1140e719b23ea0ffc731e738ca281195e7c053', 'rows': 8592, 'columns': ['aid', 'n_all', 'n_bio', 'first_y', 'last_y', 'band', 'jid_main', 'n_cw', 'n_cw_nc', 'n_recip', 'n_recip_nc', 's1_recip_nc', 's2_recip', 's3_pact', 's4_conc5', 'n_in', 'n_self', 'n_co', 's5_self', 's6_co', 'h', 's7_ch2', 's8_burst', 'team', 'nci_adj', 'J_0', 'J_1', 'prior_0', 'prior_1', 'eligible', 'r1', 'r2', 'r3', 'r_score']}
+done in 78.2 s -> /home/azureuser/f/experiments/f05_scores/runs/f05_test_20261126_01
+	Command being timed: "/home/azureuser/mamba/envs/d/bin/python f05_scores.py f05_test_20261126_01 f03_authors_20261126_01 TEST"
+	User time (seconds): 448.62
+	System time (seconds): 15.91
+	Percent of CPU this job got: 593%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:18.22
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 5935964
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 1
+	Minor (reclaiming a frame) page faults: 4369960
+	Voluntary context switches: 9674
+	Involuntary context switches: 3060
+	Swaps: 0
+	File system inputs: 1923112
+	File system outputs: 3814400
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

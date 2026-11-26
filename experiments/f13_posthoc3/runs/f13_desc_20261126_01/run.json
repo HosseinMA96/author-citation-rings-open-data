@@ -1,0 +1,52 @@
+{
+  "run_id": "f13_desc_20261126_01",
+  "script": "f13_desc.py",
+  "script_sha256": "6e4696799b84347273f8072979b5b6a59ad5756343c33e3aa0395b9c34ed598e",
+  "common_sha256": "1dcccbafdf743ba6d8f45efffbd565900957bd0a25f6748c2622c6a15fdb9eaf",
+  "config": {
+    "f03_run": "f03_authors_20261126_01",
+    "years": [
+      2014,
+      2023
+    ]
+  },
+  "host": "Hossein",
+  "python": "3.14.10",
+  "platform": "Linux-6.8.0-149-generic-x86_64-with-glibc2.35",
+  "started_utc": "2026-11-26T20:08:51Z",
+  "results": {
+    "biomedical_2014_2023": {
+      "years": [
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023
+      ],
+      "author_positions": 75141872,
+      "with_orcid": 17849778,
+      "share_positions_with_orcid": 0.237547688457908,
+      "publications_with_authors": 11782947,
+      "publications_with_ge1_orcid": 7510543,
+      "share_publications_with_ge1_orcid": 0.637407857304289
+    },
+    "by_year_share_positions": {
+      "2014": 0.2007,
+      "2015": 0.2026,
+      "2016": 0.2086,
+      "2017": 0.231,
+      "2018": 0.2478,
+      "2019": 0.2628,
+      "2020": 0.2683,
+      "2021": 0.2471,
+      "2022": 0.231,
+      "2023": 0.2473
+    }
+  },
+  "seconds": 0.0
+}

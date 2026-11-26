@@ -1,0 +1,27 @@
+{
+  "run_id": "f08_fig_20261126_03",
+  "script": "f08_figures.py",
+  "script_sha256": "d3d645e8913d23ab7ddc0f76010fbfbe1876f70bc6289b00bb265bacedaca351",
+  "common_sha256": "1dcccbafdf743ba6d8f45efffbd565900957bd0a25f6748c2622c6a15fdb9eaf",
+  "config": {
+    "f03_run": "f03_authors_20261126_01",
+    "f06_run": "f06_eval_20261126_02",
+    "f07_run": "f07_posthoc_20261126_01",
+    "matplotlib": "3.11.1"
+  },
+  "host": "Hossein",
+  "python": "3.13.18",
+  "platform": "Linux-6.8.0-149-generic-x86_64-with-glibc2.35",
+  "started_utc": "2026-11-26T18:04:49Z",
+  "results": {
+    "figures": [
+      "fig1_forest.pdf",
+      "fig1_forest.png",
+      "fig2_screening.pdf",
+      "fig2_screening.png",
+      "fig3_orcid_coverage.pdf",
+      "fig3_orcid_coverage.png"
+    ]
+  },
+  "seconds": 2.6
+}

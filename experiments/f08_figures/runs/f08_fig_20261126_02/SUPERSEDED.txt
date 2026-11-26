@@ -1,0 +1,1 @@
+superseded by f08_fig_20261126_03: Fig 1 right-panel legend over data, clipped x label, colour meaning differed between panels; Fig 3 y label clipped (layout only; same values)

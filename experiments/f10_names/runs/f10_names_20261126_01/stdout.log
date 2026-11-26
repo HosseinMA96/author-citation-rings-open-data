@@ -1,0 +1,30 @@
+[   193.8s] sample_authors: 2033
+[   193.8s] rebuilt_s1_matches_frozen: {'authors': 2033, 'mismatches': 0}
+[   195.3s] records_needed: 915276
+[   215.4s] records_with_names: 915257
+[   271.5s] P9_shares: {'cw_nc_works': 976721, 'share_hidden_self': 0.008645252840882913, 'share_hidden_co': 0.1963457323022644, 'share_flagged': 0.19754873704978188, 'reciprocal_cw_nc_works': 16116, 'reciprocal_share_hidden_self': 0.09195830230826507, 'reciprocal_share_hidden_co': 0.3879995035989079, 'reciprocal_share_flagged': 0.39451476793248946, 'authors_without_own_name_key': 0}
+[   271.6s] P9_s1_vs_s1_name: {'authors': 2033, 'spearman': 0.8467250237771632, 'median_s1': 0.007042253521126761, 'median_s1_name': 0.0028089887640449437, 'mean_s1': 0.015939956700116484, 'mean_s1_name': 0.01118459565731804, 'above_threshold_before': 21, 'above_threshold_after': 11, 'above_before_and_after': 11, 'share_of_author_flagged_works_quantiles': [0.05405405405405406, 0.10309278350515463, 0.18181818181818182, 0.2980603923297333]}
+done in 271.9 s -> /home/azureuser/f/experiments/f10_names/runs/f10_names_20261126_01
+	Command being timed: "/home/azureuser/mamba/envs/d/bin/python f10_names.py f10_names_20261126_01 f05_scores_20261126_01"
+	User time (seconds): 498.38
+	System time (seconds): 20.18
+	Percent of CPU this job got: 189%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 4:34.14
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 3690132
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 9
+	Minor (reclaiming a frame) page faults: 2851142
+	Voluntary context switches: 75326
+	Involuntary context switches: 5708
+	Swaps: 0
+	File system inputs: 23562376
+	File system outputs: 1993368
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

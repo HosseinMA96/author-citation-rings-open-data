@@ -1,0 +1,38 @@
+{
+  "run_id": "f12_tables_20261126_07",
+  "script": "f12_tables.py",
+  "script_sha256": "cb1b646b6bf1cd06e0096461d3ca262c7c7642e653ba51fd839201153a2a1ba5",
+  "common_sha256": "1dcccbafdf743ba6d8f45efffbd565900957bd0a25f6748c2622c6a15fdb9eaf",
+  "config": {
+    "f06": "f06_eval_20261126_02",
+    "f07": "f07_posthoc_20261126_01",
+    "f09": "f09_posthoc2_20261126_02",
+    "f13": "f13_posthoc3_20261126_02",
+    "d02_reason_counts": "D_retraction_contamination/experiments/d02_retraction_watch/runs/d02_rw_20261101_01/reason_counts.csv"
+  },
+  "host": "Hossein",
+  "python": "3.14.10",
+  "platform": "Linux-6.8.0-149-generic-x86_64-with-glibc2.35",
+  "started_utc": "2026-11-26T20:19:53Z",
+  "results": {
+    "tables": [
+      "S1 deciles",
+      "S2 screening",
+      "S3 refpeer screening",
+      "S4 ORs pre-specified I",
+      "S5 ORs pre-specified II + post hoc",
+      "S6 reasons by class",
+      "S7 ORs by class",
+      "S8 classes under adjusted strata",
+      "S9 tie audit"
+    ],
+    "reasons_by_class": {
+      "No class (process, notice and other reasons)": 71,
+      "Referencing or peer-review manipulation": 4,
+      "Paper mill": 1,
+      "Other misconduct": 20,
+      "Honest error": 14
+    }
+  },
+  "seconds": 0.0
+}

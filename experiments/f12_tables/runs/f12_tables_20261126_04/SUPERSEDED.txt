@@ -1,0 +1,1 @@
+superseded by f12_tables_20261126_05: Table S2 gains every pre-specified A5 interval and Table S7 (A3 by class) is added; existing cells unchanged

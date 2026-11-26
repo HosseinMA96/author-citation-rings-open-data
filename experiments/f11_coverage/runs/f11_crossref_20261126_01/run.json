@@ -1,0 +1,97 @@
+{
+  "run_id": "f11_crossref_20261126_01",
+  "script": "f11_crossref.py",
+  "script_sha256": "508195dbac3f8c666074c283d0eedda714770979259ca6f08d1cf9df80e1086a",
+  "common_sha256": "1dcccbafdf743ba6d8f45efffbd565900957bd0a25f6748c2622c6a15fdb9eaf",
+  "config": {
+    "f11_run": "f11_cov_20261126_01",
+    "dois": 600,
+    "api": "https://api.crossref.org/works/{doi} (polite pool)",
+    "retrieved": "2026-11-26"
+  },
+  "host": "Hossein",
+  "python": "3.14.10",
+  "platform": "Linux-6.8.0-149-generic-x86_64-with-glibc2.35",
+  "started_utc": "2026-11-26T19:07:36Z",
+  "results": {
+    "by_year": {
+      "2018": {
+        "dois": 100,
+        "found_in_crossref": 100,
+        "meta_share_with_orcid": 0.75,
+        "crossref_share_with_orcid": 0.43,
+        "meta_orcid_slots": 153,
+        "crossref_orcid_slots": 64,
+        "meta_slots": 577,
+        "crossref_slots": 577,
+        "crossref_more_orcid_than_meta": 0,
+        "crossref_fewer_orcid_than_meta": 50
+      },
+      "2019": {
+        "dois": 100,
+        "found_in_crossref": 100,
+        "meta_share_with_orcid": 0.72,
+        "crossref_share_with_orcid": 0.5,
+        "meta_orcid_slots": 169,
+        "crossref_orcid_slots": 92,
+        "meta_slots": 608,
+        "crossref_slots": 608,
+        "crossref_more_orcid_than_meta": 3,
+        "crossref_fewer_orcid_than_meta": 47
+      },
+      "2020": {
+        "dois": 100,
+        "found_in_crossref": 100,
+        "meta_share_with_orcid": 0.76,
+        "crossref_share_with_orcid": 0.6,
+        "meta_orcid_slots": 197,
+        "crossref_orcid_slots": 133,
+        "meta_slots": 651,
+        "crossref_slots": 650,
+        "crossref_more_orcid_than_meta": 1,
+        "crossref_fewer_orcid_than_meta": 36
+      },
+      "2021": {
+        "dois": 100,
+        "found_in_crossref": 99,
+        "meta_share_with_orcid": 0.737,
+        "crossref_share_with_orcid": 0.677,
+        "meta_orcid_slots": 178,
+        "crossref_orcid_slots": 166,
+        "meta_slots": 638,
+        "crossref_slots": 609,
+        "crossref_more_orcid_than_meta": 2,
+        "crossref_fewer_orcid_than_meta": 16
+      },
+      "2022": {
+        "dois": 100,
+        "found_in_crossref": 100,
+        "meta_share_with_orcid": 0.67,
+        "crossref_share_with_orcid": 0.71,
+        "meta_orcid_slots": 177,
+        "crossref_orcid_slots": 192,
+        "meta_slots": 678,
+        "crossref_slots": 677,
+        "crossref_more_orcid_than_meta": 5,
+        "crossref_fewer_orcid_than_meta": 1
+      },
+      "2023": {
+        "dois": 100,
+        "found_in_crossref": 100,
+        "meta_share_with_orcid": 0.68,
+        "crossref_share_with_orcid": 0.68,
+        "meta_orcid_slots": 194,
+        "crossref_orcid_slots": 194,
+        "meta_slots": 623,
+        "crossref_slots": 622,
+        "crossref_more_orcid_than_meta": 0,
+        "crossref_fewer_orcid_than_meta": 0
+      }
+    },
+    "status_counts": {
+      "ok": 599,
+      "not_found": 1
+    }
+  },
+  "seconds": 158.8
+}

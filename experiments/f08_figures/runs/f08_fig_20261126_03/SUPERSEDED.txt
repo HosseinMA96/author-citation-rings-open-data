@@ -1,0 +1,1 @@
+superseded by f08_fig_20261126_04: Fig 1 right-panel x label and legend clipped (layout only; same values)

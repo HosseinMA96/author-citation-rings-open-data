@@ -1,0 +1,45 @@
+key	doi	status	source	date	year	first_author	venue	title
+evdaimon2024orchestration	10.48550/arXiv.2406.19219	OK	datacite	2026-11-26	2024	Evdaimon	arXiv	Metrics to Detect Small-Scale and Large-Scale Citation Orchestration
+ali2026peertrust	10.66977/xsci.2610.000r	OK	crossref	2026-11-26	2026	Ali	XSci Ltd.	PeerTrust Finds Elevated Citation-Forensic Profiles in Recent Highly Cited Research
+mohammad2026top2	10.5281/zenodo.24526566	OK	datacite	2026-11-26	2026	Mohammad	Zenodo	Self-citation, inclusion and retractions in the "top 2%" lists of top-cited scientists, 2019 to 2026: data and code
+ioannidis2025retractions	10.1371/journal.pbio.3002999	OK	crossref	2026-11-26	2025	Ioannidis	PLOS Biology	Linking citation and retraction data reveals the demographics of scientific retractions among highly cited authors
+ioannidis2025precocious	10.1371/journal.pone.0328531	OK	crossref	2026-11-26	2025	Ioannidis	PLOS One	Features and signals in precocious citation impact: A meta-research study
+wren2022anomalous	10.1007/s11192-022-04503-6	OK	crossref	2026-11-26	2022	Wren	Scientometrics	Detecting anomalous referencing patterns in PubMed papers suggestive of author-centric reference list manipulation
+li2019reciprocity	10.1140/epjds/s13688-019-0199-3	OK	crossref	2026-11-26	2019	Li	EPJ Data Science	Reciprocity and impact in academic careers
+spanakis2026cliques	10.48550/arXiv.2605.11930	OK	datacite	2026-11-26	2026	Spanakis	arXiv	Citation Cliques in Low Impact Journals
+fister2016cartels	10.3389/fphy.2016.00049	OK	crossref	2026-11-26	2016	Fister	Frontiers in Physics	Toward the Discovery of Citation Cartels in Citation Networks
+kojaku2021cidre	10.1038/s41598-021-93572-3	OK	crossref	2026-11-26	2021	Kojaku	Scientific Reports	Detecting anomalous citation groups in journal networks
+zhang2026bornflawed	10.21203/rs.3.rs-10177352/v1	OK	crossref	2026-11-26	2026	Zhang	Springer Science and Business Media LLC	Born Flawed? Publication-Time Citation Topology Improves Retraction Early-Warning
+park2026cartels	10.21203/rs.3.rs-9270520/v1	OK	crossref	2026-11-26	2026	Park	Springer Science and Business Media LLC	Modeling citations and cartels
+ibrahim2025mills	10.1038/s41598-025-88709-7	OK	crossref	2026-11-26	2025	Ibrahim	Scientific Reports	Citation manipulation through citation mills and pre-print servers
+szomszor2020selfcitation	10.1007/s11192-020-03417-5	OK	crossref	2026-11-26	2020	Szomszor	Scientometrics	How much is too much? The difference between research influence and self-citation excess
+bartneck2011hindex	10.1007/s11192-010-0306-5	OK	crossref	2026-11-26	2010	Bartneck	Scientometrics	Detecting h-index manipulation through self-citation analysis
+seeber2019selfcitations	10.1016/j.respol.2017.12.004	OK	crossref	2026-11-26	2019	Seeber	Research Policy	Self-citations as strategic response to the use of metrics for career decisions
+vannoorden2019selfciting	10.1038/d41586-019-02479-7	OK	crossref	2026-11-26	2019	Van Noorden	Nature	Hundreds of extreme self-citing scientists revealed in new database
+ioannidis2019database	10.1371/journal.pbio.3000384	OK	crossref	2026-11-26	2019	Ioannidis	PLOS Biology	A standardized citation metrics author database annotated for scientific field
+wilhite2012coercive	10.1126/science.1212540	OK	crossref	2026-11-26	2012	Wilhite	Science	Coercive Citation in Academic Publishing
+fong2017authorship	10.1371/journal.pone.0187394	OK	crossref	2026-11-26	2017	Fong	PLOS ONE	Authorship and citation manipulation in academic research
+zhang2025papermill	10.2478/jdis-2025-0003	OK	crossref	2026-11-26	2025	Zhang	Journal of Data and Information Science	A paper mill detection model based on citation manipulation paradigm
+richardson2025entities	10.1073/pnas.2420092122	OK	crossref	2026-11-26	2025	Richardson	Proceedings of the National Academy of Sciences	The entities enabling scientific fraud at scale are large, resilient, and growing rapidly
+candal2022papermills	10.1136/bmj-2022-071517	OK	crossref	2026-11-26	2022	Candal-Pedreira	BMJ	Retracted papers originating from paper mills: cross sectional study
+candal2024references	10.1016/j.jclinepi.2024.111397	OK	crossref	2026-11-26	2024	Candal-Pedreira	Journal of Clinical Epidemiology	Retracted papers originating from paper mills: a cross-sectional analysis of references and citations
+abalkina2023papermill	10.1002/leap.1574	OK	crossref	2026-11-26	2023	Abalkina	Learned Publishing	Publication and collaboration anomalies in academic papers originating from a paper mill: Evidence from a Russia‐based paper mill
+abalkina2026conference	10.1080/08989621.2026.2733727	OK	crossref	2026-11-26	2026	Abalkina	Accountability in Research	Opening Pandora’s box: Paper mills in conference proceedings
+gupta2026trust	10.48550/arXiv.2607.06528	OK	datacite	2026-11-26	2026	Gupta	arXiv	Trust-Aware Citation Cartel Ranking in Scholarly Knowledge Graphs
+baccini2019gaming	10.1371/journal.pone.0221212	OK	crossref	2026-11-26	2019	Baccini	PLOS ONE	Citation gaming induced by bibliometric evaluation: A country-level comparative analysis
+fletcher2025predicting	10.1186/s41073-025-00168-w	OK	crossref	2026-11-26	2025	Fletcher	Research Integrity and Peer Review	Predicting retracted research: a dataset and machine learning approaches
+lou2026beyond	10.1515/jdis-2026-0064	OK	crossref	2026-11-26	2026	Lou	Journal of Data and Information Science	Beyond Retractions: A Topic-Based Analysis of the Impact and Lifespan of Retracted Papers
+arjomandi2026stacking	10.48550/arXiv.2611.10471	OK	datacite	2026-11-26	2026	Arjomandi	arXiv	Can open citation data detect citation stacking? An audit against Clarivate's journal suppressions
+arjomandi2026prospective	10.48550/arXiv.2611.10474	OK	datacite	2026-11-26	2026	Arjomandi	arXiv	Do links to retracted papers predict future retractions? An out-of-sample test on the open biomedical citation graph
+arjomandi2026retracteddata	10.5281/zenodo.23874477	OK	datacite	2026-11-26	2026	Mohasel Arjomandi	Zenodo	Retracted papers and their open citation neighbourhoods: Retraction Watch labels linked to the OpenCitations graph (January 2024)
+arjomandi2024dataset	10.13012/B2IDB-5216575_V1	OK	datacite	2026-11-26	2024	Mohasel Arjomandi	University of Illinois Urbana-Champaign	Parsed Open Citations and PubMed Data
+massari2024meta	10.1162/qss_a_00292	OK	crossref	2026-11-26	2024	Massari	Quantitative Science Studies	OpenCitations Meta
+ocmeta2024dump	10.6084/m9.figshare.21747461.v7	OK	datacite	2026-11-26	2024	​	figshare	OpenCitations Meta CSV dataset of all bibliographic metadata
+peroni2020opencitations	10.1162/qss_a_00023	OK	crossref	2026-11-26	2020	Peroni	Quantitative Science Studies	OpenCitations, an infrastructure organization for open scholarship
+haak2012orcid	10.1087/20120404	OK	crossref	2026-11-26	2012	HAAK	Learned Publishing	ORCID: a system to uniquely identify researchers
+rittman2025rw	10.13003/692016	OK	crossref	2026-11-26	2025	Rittman	Crossref	Retraction Watch retractions now in the Crossref API
+mantel1959	10.1093/jnci/22.4.719	OK	crossref	2026-11-26	1959		JNCI: Journal of the National Cancer Institute	Statistical Aspects of the Analysis of Data From Retrospective Studies of Disease
+robins1986estimator	10.2307/2531052	OK	crossref	2026-11-26	1986	Robins	Biometrics	Estimators of the Mantel-Haenszel Variance Consistent in Both Sparse Data and Large-Strata Limiting Models
+wilson1927	10.1080/01621459.1927.10502953	OK	crossref	2026-11-26	1927	Wilson	Journal of the American Statistical Association	Probable Inference, the Law of Succession, and Statistical Inference
+raasveldt2019duckdb	10.1145/3299869.3320212	OK	crossref	2026-11-26	2019	Raasveldt	Proceedings of the 2019 International Conference on Management of Data	DuckDB
+hirsch2005index	10.1073/pnas.0507655102	OK	crossref	2026-11-26	2005	Hirsch	Proceedings of the National Academy of Sciences	An index to quantify an individual's scientific research output
