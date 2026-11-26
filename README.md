@@ -32,20 +32,21 @@ specified before any score was computed; analyses added later are labelled post 
 |---|---|
 | Authors in the primary population / with a later retraction | **793,299** / **2,419** (0.305%) |
 | Top 1% of non-co-author reciprocity (primary): odds ratio | **0.85** (95% CI 0.51–1.43): not associated |
-| Other top-1% signals (reciprocity, concentration, self-citation, co-author citation, low C/h²) | all intervals include 1; concentration 1.70 (1.04–2.77) with citation-volume deciles added (post hoc), but lift 0.62 at 10,000 |
+| Other top-1% signals (reciprocity, concentration, self-citation, co-author citation, low C/h²) | all intervals include 1; concentration 1.70 (1.04–2.77) with citation-volume deciles added (post hoc), but lift 0.62 at 10,000 (no better than chance) |
 | Pact rule (> 5 reciprocal citing authors, adapted from a screening tool) | 1.52 (1.32–1.75) |
 | Pact rule with citation-volume deciles in the strata (post hoc) | 1.16 (0.99–1.35) |
 | Pact rule in the finest strata (post hoc): referencing/peer-review vs honest-error retractions | 1.84 (1.33–2.55) vs 1.67 (1.07–2.61); ratio 1.10 (0.60–1.83): not specific |
+| Primary estimate with intervals clustered by journal / by shared retracted publications (post hoc) | 0.85 (0.41–1.35) / (0.42–1.42) |
 | Lift among the top 1,000 authors: reciprocity / journal risk / productivity | 0.66 / 5.25 / 10.17 |
 | Biomedical author positions with an ORCID iD (2014–2023) | 23.8% (20–27% by year) |
 
 Every number above is traced in [`FINDINGS.md`](FINDINGS.md).
 
 <p align="center">
-  <img src="experiments/f08_figures/runs/f08_fig_20261126_04/fig1_forest.png" alt="Odds ratios of later retraction by signal" width="90%">
+  <img src="experiments/f08_figures/runs/f08_fig_20261126_05/fig1_forest.png" alt="Odds ratios of later retraction by signal" width="90%">
 </p>
 <p align="center">
-  <img src="experiments/f08_figures/runs/f08_fig_20261126_04/fig2_screening.png" alt="Screening value of each signal" width="90%">
+  <img src="experiments/f08_figures/runs/f08_fig_20261126_05/fig2_screening.png" alt="Screening value of each signal" width="90%">
 </p>
 
 ## What is in here

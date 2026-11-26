@@ -55,7 +55,7 @@ results are marked. Laptop clock is 1 h behind UTC; run timestamps come from the
 | A5 primary comparison S1 − J at k = 1,000 | −1.4 points [−2.3, −0.6] |
 | Robustness S1 (a)–(f) | 0.78, 0.88, 1.13, 0.92, 0.74, 0.93 (CIs all include 1) |
 | Robustness R2 (a)–(f) | 1.52, 1.42, 1.51, 1.52, **3.20 [2.84, 3.61]** (journal-only strata), 1.52 |
-| Single-analysis crossings | S4 (c) 1.65 [1.08, 2.51]; S5 (d) 1.42 [1.01, 1.98]; S6 (d) 1.60 [1.01, 2.52] |
+| Single-analysis crossings | S4 (c) 1.65 [1.08, 2.51]; S5 (d) 1.42 [1.01, 1.98]; S5 (e) 1.44 [1.04, 2.00]; S6 (d) 1.60 [1.01, 2.52] |
 | T0' population, positives | 794,337; 3,457 |
 
 ## Post hoc (f07_posthoc_20261126_01; POSTHOC.md round 1)
@@ -64,7 +64,7 @@ results are marked. Laptop clock is 1 h behind UTC; run timestamps come from the
 | P1 (+ citation-volume deciles): R2 | **1.16 [0.99, 1.35]** |
 | P1 R2 by class: refpeer / mill / other / honest error | 1.63 [1.23, 2.16] / 0.95 [0.39, 2.28] / 1.01 [0.82, 1.26] / 1.42 [0.94, 2.16] |
 | P1 S1 / S5 / S4 / R3 | 1.02 [0.59, 1.74] / **1.61 [1.13, 2.29]** / 1.70 [1.04, 2.77] / 1.40 [1.28, 1.54] |
-| P3 size-free pact rate top 1% (≥ 4.08 per 100 citing works) | 0.77 [0.37, 1.57]; 8 exposed positives |
+| P3 work-normalised pact rate top 1% (≥ 4.08 per 100 citing works; median team 21.2 vs 7.6) | 0.77 [0.37, 1.57]; 8 exposed positives |
 | P2 R2-flagged vs not: biomedical papers, citations, h | 29 vs 10; 1,925 vs 211; 21 vs 7 |
 | P2 S1 top 1% vs not: citations, team, journal risk | 137 vs 240; 5.7 vs 7.6; 0.00044 vs 0.00057 |
 
@@ -105,8 +105,19 @@ results are marked. Laptop clock is 1 h behind UTC; run timestamps come from the
 | Random instead of row-order decile ties, P1/P6, all later retractions | max change 0.09 (S7 low C/h² in P6 1.51 → 1.42); 4,414 / 134,618 authors change citation / productivity decile |
 | Biomedical publications 2014–2023: author positions with ORCID iD; publications with ≥ 1 ORCID author | **23.8%** (17,849,778 of 75,141,872); 63.7% (7,510,543 of 11,782,947) |
 
-## Supplementary tables (f12_tables_20261126_09)
-`paper/content/supp_tables.tex`: Tables S1–S9 generated from f06, f07, f09, f13 and Paper D `d02_rw_20261101_01` (reason counts).
+## Post hoc round 4 (f14_class3_20261126_01, f15_pubclusters_20261126_01; POSTHOC.md round 4 and addendum)
+| Claim | Number |
+|---|---|
+| Outcome class 3: as specified (E's full misconduct list) vs as first coded (minus the four referencing/peer-review strings) | 1,545 vs 1,304 positives (241 added; 485 also in class 1); classes 1, 2, 4 unchanged |
+| Pre-specified A3 with class 3 as specified: S1; S5; R2 | 0.89 (0.46–1.74); 1.43 (0.96–2.13); **1.48 (1.24–1.77)** {1.11, 1.97} (first coded: 0.82; 1.34; 1.27) |
+| Shared retraction events behind the 2,419 positives | 1,910 distinct later-retracted publications; 1,683 positives (69.6%) share one with another positive; max 23 on one publication |
+| Publication-clustered intervals (P16), primary strata: S1; R2; R3 | 0.42–1.42; 1.25–1.79; 1.28–1.54 |
+| P16 R2 classes: referencing/peer review; honest error; ratio | 2.79 (1.95–3.90); 1.86 (1.18–2.82); 1.50 (0.87–2.68) |
+| P16 lift at 10,000: S1; S4; journal risk; productivity | 0.69 (0.36–1.07); 0.62 (0.30–1.05); 5.28 (4.30–6.18); 4.30 (3.42–5.18) |
+| Precision at k = 100: S4; S6; journal risk; productivity | 3%; 3%; 2%; 8% (f06 A5) |
 
-## Figures (f08_fig_20261126_04)
+## Supplementary tables (f12_tables_20261126_10)
+`paper/content/supp_tables.tex`: Tables S1–S10 generated from f06, f07, f09, f13, f14, f15 and Paper D `d02_rw_20261101_01` (reason counts).
+
+## Figures (f08_fig_20261126_05)
 `fig1_forest.pdf` (f06 A2/A3 + f07 P1), `fig2_screening.pdf` (f06 A5), `fig3_orcid_coverage.pdf` (f03).

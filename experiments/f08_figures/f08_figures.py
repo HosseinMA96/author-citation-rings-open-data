@@ -2,7 +2,8 @@
 Fig 1: within-stratum Mantel-Haenszel odds ratios (primary strata, pre-specified; volume strata, post hoc) and by outcome class.
 Fig 2: screening, lift at k = 1,000 and k = 10,000 with paired-bootstrap 95% intervals.
 Fig 3: ORCID coverage of biomedical publications by year.
-usage: python f08_figures.py RUN_ID F03_RUN F06_RUN F07_RUN
+usage: python f08_figures.py RUN_ID F03_RUN F06_RUN F07_RUN [F14_RUN]
+With F14_RUN, the 'Other misconduct' class in Fig 1 (right) is outcome class 3 as specified in SPEC §5 (f14, P14).
 """
 import json, sys
 from pathlib import Path
@@ -12,11 +13,11 @@ import matplotlib.pyplot as plt
 from matplotlib.ticker import NullFormatter, FixedLocator
 from common import Run, F_ROOT
 
-F03, F06, F07 = sys.argv[2:5]
+F03, F06, F07 = sys.argv[2:5]; F14 = sys.argv[5] if len(sys.argv) > 5 else None
 E = F_ROOT / "experiments"
 rec = lambda exp, r: json.loads((E / exp / "runs" / r / "run.json").read_text())["results"]
 r3, r6, r7 = rec("f03_authors", F03), rec("f06_eval", F06), rec("f07_posthoc", F07)
-run = Run(sys.argv[1], __file__, {"f03_run": F03, "f06_run": F06, "f07_run": F07, "matplotlib": matplotlib.__version__})
+run = Run(sys.argv[1], __file__, {"f03_run": F03, "f06_run": F06, "f07_run": F07, "f14_run": F14, "matplotlib": matplotlib.__version__})
 plt.rcParams.update({"pdf.fonttype": 42, "font.size": 8.5, "axes.spines.top": False, "axes.spines.right": False})
 BLUE, ORANGE, GREY = "#2a78d6", "#eb6834", "#666666"
 
@@ -42,7 +43,11 @@ a1.plot([], [], "s", color=ORANGE, label="strata: + citation-volume deciles (pos
 a1.set_title("All later retractions, primary population", fontsize=8.5)
 CL = [("y_refpeer", "Referencing / peer review"), ("y_mill", "Paper mill"), ("y_misc", "Other misconduct"),
       ("y_err_only", "Honest error only (control)")]
-byc = r6["A1_A2_A3_primary"]["mh_by_class"]
+byc = dict(r6["A1_A2_A3_primary"]["mh_by_class"])
+if F14:   # class 3 as specified (E's full misconduct list), replacing the implemented class
+    r14 = rec("f14_class3", F14)["P14_class3"]
+    for k in ["top_s1_recip_nc", "top_s5_self", "r2"]:
+        byc[f"{k}|y_misc"] = r14[f"primary|{k}|y_misc_spec"]
 SIG = [("top_s1_recip_nc", "S1", "#1b7837", "o"), ("top_s5_self", "S5", "#762a83", "D"), ("r2", "R2", "#333333", "s")]
 for j, (c, lab) in enumerate(CL):
     for s, (k, nm, col, mk) in enumerate(SIG):

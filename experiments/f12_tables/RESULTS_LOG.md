@@ -44,5 +44,10 @@ exposures.
 ## f12_tables_20261126_08: superseded
 Panel (c) takes the row-order P1/P6 estimates from f07/f09 (which f13 reproduces exactly). Panel (c) was 4 pt too wide.
 
-## f12_tables_20261126_09: cited
+## f12_tables_20261126_09: superseded
 As `_08` with narrower column spacing in S9 (layout only; same values). Tables S1–S9.
+
+## f12_tables_20261126_10: cited
+After the internal critique: outcome class 3 as specified (f14) in Tables S6 (the two shared reasons listed in class 3
+as well, marked), S7 (with the first-coded values in a note) and S8; new Table S10, intervals clustered by shared
+retraction events (f15). Inputs: f06, f07, f09, f13, f14, f15 and Paper D's reason counts.

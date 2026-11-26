@@ -3,18 +3,21 @@
 intervals); S3 referencing/peer-review screening (P7, post hoc); S4 all MH odds ratios (A2 primary and (a)-(f), P1, P6,
 clustered intervals P4); S6 retraction reasons by outcome class (SPEC.md §5 strings; paper counts from Paper D run
 d02_rw_20261101_01); S7 odds ratios by outcome class (A3, with clustered intervals P4); S8 classes under the adjusted
-strata with the class ratio (P11, post hoc); S9 tie-breaking audit (P12, post hoc).
-usage: python f12_tables.py RUN_ID F06_RUN F07_RUN F09_RUN F13_RUN
+strata with the class ratio (P11, post hoc); S9 tie-breaking audit (P12, post hoc); S10 intervals clustered by shared
+retraction events (P16). Outcome class 3 is shown as specified (f14, P14), with the first-coded values noted.
+usage: python f12_tables.py RUN_ID F06_RUN F07_RUN F09_RUN F13_RUN F14_RUN F15_RUN
 """
 import csv, json, sys
 from common import Run, F_ROOT
 
-F06, F07, F09, F13 = sys.argv[2:6]
+F06, F07, F09, F13, F14, F15 = sys.argv[2:8]
 E = F_ROOT / "experiments"
 rec = lambda exp, r: json.loads((E / exp / "runs" / r / "run.json").read_text())["results"]
 r6, r7, r9, r13 = rec("f06_eval", F06), rec("f07_posthoc", F07), rec("f09_posthoc2", F09), rec("f13_posthoc3", F13)
+r14, r15 = rec("f14_class3", F14), rec("f15_pubclusters", F15)
+C3 = r14["P14_class3"]   # outcome class 3 as specified, keys "<strata>|<exposure>|y_misc_spec"
 D02 = F_ROOT.parent / "D_retraction_contamination/experiments/d02_retraction_watch/runs/d02_rw_20261101_01/reason_counts.csv"
-run = Run(sys.argv[1], __file__, {"f06": F06, "f07": F07, "f09": F09, "f13": F13, "d02_reason_counts": str(D02.relative_to(F_ROOT.parent))})
+run = Run(sys.argv[1], __file__, {"f06": F06, "f07": F07, "f09": F09, "f13": F13, "f14": F14, "f15": F15, "d02_reason_counts": str(D02.relative_to(F_ROOT.parent))})
 ci = lambda m, d=2: "--" if m.get("or_mh") is None else f"{m['or_mh']:.{d}f} ({m['lo']:.{d}f}--{m['hi']:.{d}f})"
 n = lambda v: f"{v:,}"
 EXP = [("top_s1_recip_nc", "S1 non-co-author reciprocity, top 1\\%"), ("top_s2_recip", "S2 reciprocity, top 1\\%"),
@@ -123,17 +126,20 @@ def cls(rsn):
 groups = {}
 for rsn in sorted(counts, key=lambda r: -counts[r]):
     groups.setdefault(cls(rsn), []).append(rsn.replace("&", "\\&") + f" ({n(counts[rsn])})")
+    if rsn in ("Compromised Peer Review", "Rogue Editor"):   # also in the specified class 3 (SPEC §5)
+        groups.setdefault("Other misconduct", []).append(rsn + f"$^*$ ({n(counts[rsn])})")
 T += ["\\begin{table}[htbp]", "\\centering", "\\caption{Retraction Watch reason strings by outcome class "
       "(numbers: retracted papers with the reason in the frozen Retraction Watch copy, all years and fields). An author is in "
       "the honest-error-only class if every outcome publication has at least one honest-error reason and none from the first "
-      "three classes; reasons without a class do not define a class by themselves.}", "\\label{tab:classes}",
+      "three classes; reasons without a class do not define a class by themselves. $^*$Also in the first class: as specified, "
+      "class 3 includes these two reasons; the evaluation code had left them out (Methods).}", "\\label{tab:classes}",
       "\\scriptsize", "\\begin{tabular}{p{3.2cm}p{12.2cm}}", "\\toprule", "Class & Reasons (papers) \\\\", "\\midrule"]
 for c in ["Referencing or peer-review manipulation", "Paper mill", "Other misconduct", "Honest error",
           "No class (process, notice and other reasons)"]:
     T.append(f"{c} & {'; '.join(groups.get(c, []))} \\\\ \\addlinespace")
 T += ["\\bottomrule", "\\end{tabular}", "\\end{table}", ""]
 # S7 odds ratios by outcome class (A3, pre-specified) with journal-clustered intervals (P4, post hoc)
-A = r6["A1_A2_A3_primary"]; PB = r9["P4_by_class"]; pbc = A["positives_by_class"]
+A = r6["A1_A2_A3_primary"]; PB = r9["P4_by_class"]; pbc = dict(A["positives_by_class"]); pbc["y_misc"] = r14["P14_counts"]["y_misc_spec"]
 CL = [("y_refpeer", "Referencing or\\\\peer review"), ("y_mill", "Paper mill"), ("y_misc", "Other\\\\misconduct"),
       ("y_err_only", "Honest error\\\\only")]
 T += ["\\begin{table}[htbp]", "\\centering", "\\caption{Mantel--Haenszel odds ratios (95\\% CI) of later retraction by "
@@ -146,11 +152,15 @@ for k, lab in [("top_s1_recip_nc", "S1, top 1\\%"), ("top_s5_self", "S5, top 1\\
     cells, cl = [], []
     for c, _ in CL:
         m = A["mh_by_class"][f"{k}|{c}"]; q = PB[f"{k}|{c}"]
+        if c == "y_misc": m = q = C3[f"primary|{k}|y_misc_spec"]
         cells.append(f"{ci(m)} [{n(m['exposed_pos'])}]")
         cl.append("--" if q.get("cl_lo") is None else f"{q['cl_lo']:.2f}--{q['cl_hi']:.2f}")
     T.append(f"{lab} & " + " & ".join(cells) + " \\\\")
     T.append("\\quad journal-clustered & " + " & ".join(cl) + " \\\\ \\addlinespace")
-T += ["\\bottomrule", "\\end{tabular}", "\\end{table}", ""]
+fc = "; ".join(f"{lab} {ci(A['mh_by_class'][f'{k}|y_misc'])} [{A['mh_by_class'][f'{k}|y_misc']['exposed_pos']}]"
+               for k, lab in [("top_s1_recip_nc", "S1"), ("top_s5_self", "S5"), ("r2", "R2")])
+T += ["\\bottomrule", f"\\multicolumn{{5}}{{p{{14cm}}}}{{Other misconduct is class 3 as specified. As first coded (without the two "
+      f"shared peer-review reasons; {n(A['positives_by_class']['y_misc'])} positives): {fc}.}} \\\\", "\\end{tabular}", "\\end{table}", ""]
 # S8 outcome classes under the adjusted strata, with the class ratio (P11, post hoc)
 CLS = [("y", "All later\\\\retractions"), ("y_refpeer", "Referencing or\\\\peer review"), ("y_mill", "Paper mill"),
        ("y_misc", "Other\\\\misconduct"), ("y_err_only", "Honest error\\\\only")]
@@ -163,13 +173,14 @@ T += ["\\begin{landscape}", "\\begin{table}[p]", "\\centering", "\\caption{Mante
       "main journals. Last column: ratio of the referencing or peer-review odds ratio to the honest-error odds ratio, with its "
       "journal-clustered interval (-- where an odds ratio is undefined). Post hoc, except the primary-strata estimates of "
       "S1, S5 and R2 (Table~\\ref{tab:byclass}); the ratio for R3 ($\\dagger$) was added after its class estimates had been "
-      "seen.}", "\\label{tab:byclassadj}", "\\scriptsize", "\\setlength{\\tabcolsep}{2.5pt}", "\\begin{tabular}{llcccccc}",
+      "seen. Other misconduct is class 3 as specified (f14); estimates with the class as first coded are in the record of f13.}", "\\label{tab:byclassadj}", "\\scriptsize", "\\setlength{\\tabcolsep}{2.5pt}", "\\begin{tabular}{llcccccc}",
       "\\toprule", "Exposure & Strata & " + " & ".join(hd(l) for _, l in CLS) + " & " + hd("Ratio, referencing\\\\or peer review\\\\to honest error") + " \\\\",
       "\\midrule"]
 for k, lab in [("top_s1_recip_nc", "S1, top 1\\%"), ("top_s4_conc5", "S4, top 1\\%"), ("top_s5_self", "S5, top 1\\%"),
                ("top_s6_co", "S6, top 1\\%"), ("r2", "R2 pact rule"), ("r3", "R3 burst rule")]:
     for j, (st, slab) in enumerate(STR):
         res = r13[f"P11_{st}"]; rat = r13[f"P11_ratio_refpeer_over_err_{st}"].get(k)
+        res = dict(res); res[f"{k}|y_misc"] = C3[f"{st}|{k}|y_misc_spec"]
         cells = [f"{ci(res[f'{k}|{c}'])} [{res[f'{k}|{c}']['exposed_pos']}]" for c, _ in CLS]
         cl = ["--" if res[f"{k}|{c}"].get("cl_lo") is None else f"{res[f'{k}|{c}']['cl_lo']:.2f}--{res[f'{k}|{c}']['cl_hi']:.2f}" for c, _ in CLS]
         if rat is None: rc, rl = "", ""
@@ -209,9 +220,45 @@ for k, lab in EXP:   # row order: f07 P1 and f09 P6 (reproduced exactly by f13);
     cols = [r7["P1_volume_strata"][k], r13["P11_P1_randties"][f"{k}|y"], r9["P6_fine_strata"][k], r13["P11_P6_randties"][f"{k}|y"]]
     T.append(f"{lab} & " + " & ".join(ci(m) for m in cols) + " \\\\")
 T += ["\\bottomrule", "\\end{tabular}", "\\end{table}", ""]
+# S10 intervals clustered by shared retraction events (P16, post hoc)
+P16, cl16 = r15["P16_or"], r15["P16_clusters"]
+iv = lambda m: f"{m['lo']:.2f}--{m['hi']:.2f}"
+T += ["\\begin{table}[htbp]", "\\centering", "\\caption{Intervals that allow for shared retraction events (post hoc): 95\\% "
+      "intervals from 1,000 resamples of clusters of primary authors linked by shared later-retracted publications (Poisson "
+      f"weights; {n(cl16['clusters_with_positives'])} clusters hold the {n(r6['A1_A2_A3_primary']['positives'])} positives, the "
+      f"largest {cl16['largest_cluster_positives']}; authors without a later retraction are singletons), beside the author-level "
+      "and journal-clustered intervals. (a) Odds ratios in the primary strata. (b) Class estimates (class 3 as specified) and, "
+      "for R2, the ratio of the referencing or peer-review to the honest-error odds ratio. (c) Lift among the top 10,000.}",
+      "\\label{tab:pubclusters}", "\\footnotesize", "\\setlength{\\tabcolsep}{3pt}",
+      "\\begin{tabular}{lcccc}", "\\multicolumn{5}{l}{(a) All later retractions} \\\\", "\\toprule",
+      "Exposure & Odds ratio & Author-level CI & Journal-clustered & Publication-clustered \\\\", "\\midrule"]
+for k, lab in EXP:
+    m6 = r6["A1_A2_A3_primary"]["mh"][k]; q9 = r9["P4_primary_strata"][k]; p16 = P16[f"{k}|y"]
+    if m6.get("or_mh") is None or k == "r1": continue
+    T.append(f"{lab} & {m6['or_mh']:.2f} & {m6['lo']:.2f}--{m6['hi']:.2f} & "
+             + ("--" if q9.get("cl_lo") is None else f"{q9['cl_lo']:.2f}--{q9['cl_hi']:.2f}") + f" & {iv(p16)} \\\\")
+T += ["\\bottomrule", "\\end{tabular}", "", "\\medskip", "", "\\begin{tabular}{llccc}",
+      "\\multicolumn{5}{l}{(b) Outcome classes} \\\\", "\\toprule",
+      "Exposure & Class & Odds ratio & Author-level CI & Publication-clustered \\\\", "\\midrule"]
+CN = [("y_refpeer", "Referencing or peer review"), ("y_mill", "Paper mill"), ("y_misc_spec", "Other misconduct"),
+      ("y_err_only", "Honest error only")]
+for k, lab in [("top_s1_recip_nc", "S1, top 1\\%"), ("top_s5_self", "S5, top 1\\%"), ("r2", "R2 pact rule")]:
+    for j, (c, cl_) in enumerate(CN):
+        p16 = P16[f"{k}|{c}"]
+        m = C3[f"primary|{k}|y_misc_spec"] if c == "y_misc_spec" else r6["A1_A2_A3_primary"]["mh_by_class"][f"{k}|{c}"]
+        T.append(f"{lab if j == 0 else ''} & {cl_} & {m['or_mh']:.2f} & {m['lo']:.2f}--{m['hi']:.2f} & {iv(p16)} \\\\")
+rr, r13p = r15["P16_ratio_r2_refpeer_over_err"], r13["P11_ratio_refpeer_over_err_primary"]["r2"]
+T.append(f"R2 pact rule & Ratio, referencing to error & {rr['point']:.2f} & journal-cl. {r13p['cl_lo']:.2f}--{r13p['cl_hi']:.2f} & {iv(rr)} \\\\")
+T += ["\\bottomrule", "\\end{tabular}", "", "\\medskip", "", "\\begin{tabular}{lcccc}",
+      "\\multicolumn{5}{l}{(c) Lift among the top 10,000} \\\\", "\\toprule",
+      "Ranking & Lift & Author bootstrap & Journal-clustered & Publication-clustered \\\\", "\\midrule"]
+for k, lab in RK:
+    a5 = A5[k]["lift@10000"]; c9 = P4s[k]["lift@10000"]; p16 = r15["P16_lift10000"][k]
+    T.append(f"{lab} & {a5['point']:.2f} & {a5['lo']:.2f}--{a5['hi']:.2f} & {c9['cl_lo']:.2f}--{c9['cl_hi']:.2f} & {iv(p16)} \\\\")
+T += ["\\bottomrule", "\\end{tabular}", "\\end{table}", ""]
 out = F_ROOT / "paper/content/supp_tables.tex"
 out.write_text("% GENERATED by experiments/f12_tables/f12_tables.py from run records; do not edit by hand.\n" + "\n".join(T))
 (run.dir / "supp_tables.tex").write_text(out.read_text())
-run.log("tables", ["S1 deciles", "S2 screening", "S3 refpeer screening", "S4 ORs pre-specified I", "S5 ORs pre-specified II + post hoc", "S6 reasons by class", "S7 ORs by class", "S8 classes under adjusted strata", "S9 tie audit"])
+run.log("tables", ["S1 deciles", "S2 screening", "S3 refpeer screening", "S4 ORs pre-specified I", "S5 ORs pre-specified II + post hoc", "S6 reasons by class", "S7 ORs by class", "S8 classes under adjusted strata", "S9 tie audit", "S10 publication-clustered intervals"])
 run.log("reasons_by_class", {c: len(v) for c, v in groups.items()})
 run.finish()

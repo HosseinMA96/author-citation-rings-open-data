@@ -95,3 +95,26 @@ above 1 (P6: 1.45). The ratio test of P11 was pre-stated only for R2, S4 and S5.
 wherever used: the same ratio, with the same journal-clustered interval, for R3 (primary, P1, P6 strata and their
 random-tie versions). The run is repeated in full as `f13_posthoc3_20261126_02` (same code otherwise; same seeds), so that
 every round-3 number comes from one run.
+
+## Round 4 (written 2026-11-26, after an internal critique; before these runs)
+The internal critique found that the evaluation code (f06, and f07/f09/f13 after it) defines outcome class 3 as E's
+misconduct list **minus** the four referencing/peer-review strings, whereas SPEC §5 defines it as "any paper with a reason
+in E's misconduct list", which includes `Compromised Peer Review` and `Rogue Editor`. This is a deviation from the frozen
+specification. Classes 1, 2 and 4 are unaffected (class 4 already excludes papers in class 1).
+- **P14, class 3 as specified.** Positives in the primary population; overlap with class 1; Mantel-Haenszel ORs (RBG CI)
+  and journal-clustered intervals (as f13) for S1, S5 and R2 in the primary strata (the pre-specified A3 estimates), and
+  for the P11 exposures in the primary, P1 and P6 strata. Check that classes 1, 2 and 4 and the implemented class 3
+  reproduce f06/f13. The paper will report the specified definition as the pre-specified one and the implemented one as a
+  disclosed deviation.
+- **P15, shared retraction events (descriptive).** For the 2,419 primary positives: the number of distinct
+  later-retracted publications linked to them; positive authors per publication (distribution, maximum); the share of
+  positives who share a later-retracted publication with another positive primary author.
+
+### Round 4 addendum (written 2026-11-26 after reading `f14_class3_20261126_01`; before this run)
+P15 showed that the 2,419 primary positives are linked to 1,910 distinct later-retracted publications and that 1,683 of
+them (69.6%) share such a publication with another positive author; journal-clustered intervals may not capture this.
+- **P16, intervals clustered by shared retraction events.** Clusters: connected components of primary authors linked
+  through shared later-retracted publications (outcome window); authors without a later retraction are singletons.
+  Poisson(1) weight per cluster, 1,000 resamples (seed `SeedSequence([20261126, crc32("pubclusters")])`); percentile
+  95% intervals for the primary-strata ORs of all exposures, for the class estimates of S1, S5 and R2 (class 3 as
+  specified) and for the class ratio of R2, and for lift at 10,000 of every ranking.
