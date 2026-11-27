@@ -38,6 +38,7 @@ results are marked. Laptop clock is 1 h behind UTC; run timestamps come from the
 | Claim | Number |
 |---|---|
 | **A1** S1 top 1% (S1 ≥ 0.1111): exposed, positives | 8,044; 15 (0.19%) |
+| A1 informative strata (positives in them) | 424 of 24,026 (1,198 of 2,419); every exposure and analysis in Table S12 (f06 `strata_informative`, `positives_in_informative`) |
 | **A1** MH OR | **0.85 [0.51, 1.43]**; 424 informative strata |
 | A2 S2 / S4 / S5 / S6 / low S7 | 0.99 [0.61, 1.59] / 1.45 [0.91, 2.30] / 1.32 [0.95, 1.84] / 1.50 [0.95, 2.36] / 1.27 [0.83, 1.96] |
 | A2 R1 | 12 authors, 1 positive; 118.5 [9.7, 1,448.6] (5 informative strata) |
@@ -143,12 +144,22 @@ are the check (largest difference 0.09).
 | S1 lift at 10,000 | 0.69 → 0.72 |
 | Added positives flagged by R3 (R3 share 36.8%) | 14 of 19 (exposed positives 1,196 → 1,210) |
 
-## Design figures (f18_design_20261126_01)
+## Sixth external review: claims added or reworded (v0.8; no new analysis)
+| Claim | Value |
+|---|---|
+| Hybrid ranking (rank average of S1 and J), lift: all later retractions at 1,000 / 10,000; referencing or peer-review class at 10,000 | 5.58 / 2.62 (f06 A5); 3.95 (f09 P7) |
+| Journal risk J alone at 1,000 | 5.25 (f06 A5) |
+| All-cause OR if a signal doubled only referencing or peer-review retractions (622 of 2,419 positives) | about 1.25 (1 + 622/2,419 = 1.26 at most; arithmetic) |
+| S1 referencing or peer-review class (pre-specified strata) | 1.83 [0.90, 3.74]; 8 exposed positives (f06 A3) |
+| Profiles (Table S13): R2 flagged vs others, publications; citations; h | 29 vs 10; 1,925 vs 211; 21 vs 7 (f07 P2) |
+| f03 author-level label counts before the specification (≥ 5 biomedical publications): after T0; referencing or peer review | 2,983; 806 (f03 `label_counts_orcid_n_bio_ge5`) |
+
+## Design figures (f18_design_20261126_02)
 `fig_flow.pdf` (population flow from f03 and f06 counts), `fig_timeline.pdf` (data windows; analysis steps in order with
 UTC times from the run records, the f04 freeze log and GitHub's push record).
 
-## Supplementary tables (f12_tables_20261126_14)
-`paper/content/supp_tables.tex`: Tables S1–S11 generated from f06, f07, f09, f13, f14, f15, f16, f17 (redacted) and Paper D `d02_rw_20261101_01` (reason counts).
+## Supplementary tables (f12_tables_20261126_17)
+`paper/content/supp_tables.tex`: Tables S1–S13 generated from f06, f07, f09, f13, f14, f15, f16, f17 (redacted) and Paper D `d02_rw_20261101_01` (reason counts).
 
-## Figures (f08_fig_20261126_06)
-`fig1_forest.pdf` (f06 A2/A3 + f07 P1), `fig2_screening.pdf` (f06 A5), `fig3_orcid_coverage.pdf` (f03).
+## Figures (f08_fig_20261126_07)
+`fig1_forest.pdf` (f06 A2/A3 + f07 P1), `fig2_screening.pdf` (f06 A5; hybrid in its own colour), `fig3_orcid_coverage.pdf` (f03).

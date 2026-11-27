@@ -36,9 +36,9 @@ Run each from its experiment folder: `python <script> <run_id> [args]`.
 | Score unit test | `f05_scores/test_scores.py 20` (20 toy graphs vs brute force) | 1 min |
 | Design specification | `SPEC.md` v1, SHA-256 `07200ecb9affa9f2bee88b68becba9ad81900d2cfcc1fc759ba814ced61ca3ec`, frozen before the score run (`experiments/f04_spec/`) | – |
 | Frozen scores | `f05_scores/f05_scores.py f05_scores_20261126_01 f03_authors_20261126_01` | 8 min |
-| Evaluation (joins the labels; checks both hashes first) | `f06_eval/f06_eval.py f06_eval_20261126_02 f05_scores_20261126_01 1000` | 1 min |
+| Evaluation (first run to link scores to the labels; checks both hashes first) | `f06_eval/f06_eval.py f06_eval_20261126_02 f05_scores_20261126_01 1000` | 1 min |
 | Post hoc round 1 (`POSTHOC.md`) | `f07_posthoc/f07_posthoc.py f07_posthoc_20261126_01 f05_scores_20261126_01` | 8 s |
-| Figures (laptop) | `f08_figures/f08_figures.py f08_fig_20261126_06 f03_authors_20261126_01 f06_eval_20261126_02 f07_posthoc_20261126_01 f14_class3_20261126_01 f13_posthoc3_20261126_02` | 3 s |
+| Figures (laptop) | `f08_figures/f08_figures.py f08_fig_20261126_07 f03_authors_20261126_01 f06_eval_20261126_02 f07_posthoc_20261126_01 f14_class3_20261126_01 f13_posthoc3_20261126_02` | 3 s |
 | Post hoc round 2 (`POSTHOC.md`): clustered intervals, finer strata, positive control, refpeer screening, top pact counts | `f09_posthoc2/f09_posthoc2.py f09_posthoc2_20261126_02 f05_scores_20261126_01 1000` | 4 min |
 | Post hoc P9, names (VM only; aggregates written) | `f10_names/f10_names.py f10_names_20261126_01 f05_scores_20261126_01` | 5 min |
 | Post hoc P10, coverage by publisher and DOI sample (VM) | `f11_coverage/f11_coverage.py f11_cov_20261126_01` | 7 min |
@@ -50,8 +50,8 @@ Run each from its experiment folder: `python <script> <run_id> [args]`.
 | Post hoc round 5: main adjusted values with random decile ties, all class ratios (VM) | `bash vm/run_round5.sh f16_randties_20261126_01` (runs `f16_randties/f16_randties.py f16_randties_20261126_01 f05_scores_20261126_01 1000`) | 1 min |
 | Post hoc round 6 (`POSTHOC.md`): the Frontiers network retractions (P18), attribution through Crossref ORCID iDs (P19) (VM; Crossref REST API, queried 27 Nov 2026) | `CROSSREF_MAILTO=<your address> bash vm/run_round6.sh f17_attribution_20261126_01` (runs `f17_attribution/f17_attribution.py f17_attribution_20261126_01 f05_scores_20261126_01 1000`; the address is optional and selects Crossref's polite pool) | 48 min |
 | Disclosure control of the f17 record (laptop; POSTHOC.md round 6 addendum) | `f17_attribution/f17_redact.py f17_redact_20261126_01 f17_attribution_20261126_01`, then the two original files are deleted from the laptop copy (`runs/f17_attribution_20261126_01/REDACTED.md`) | 1 s |
-| Design figures: population flow and timeline (laptop) | `f18_design/f18_design.py f18_design_20261126_01 f03_authors_20261126_01 f05_scores_20261126_01 f06_eval_20261126_02` | 1 s |
-| Supplementary tables (laptop) | `f12_tables/f12_tables.py f12_tables_20261126_14 f06_eval_20261126_02 f07_posthoc_20261126_01 f09_posthoc2_20261126_02 f13_posthoc3_20261126_02 f14_class3_20261126_01 f15_pubclusters_20261126_01 f16_randties_20261126_01 f17_redact_20261126_01` | 1 s |
+| Design figures: population flow and timeline (laptop) | `f18_design/f18_design.py f18_design_20261126_02 f03_authors_20261126_01 f05_scores_20261126_01 f06_eval_20261126_02` | 1 s |
+| Supplementary tables (laptop) | `f12_tables/f12_tables.py f12_tables_20261126_17 f06_eval_20261126_02 f07_posthoc_20261126_01 f09_posthoc2_20261126_02 f13_posthoc3_20261126_02 f14_class3_20261126_01 f15_pubclusters_20261126_01 f16_randties_20261126_01 f17_redact_20261126_01` | 1 s |
 | Paper | `cd paper && python build_refs.py && tectonic -X compile main.tex`; number trace: `python trace_numbers.py` | – |
 
 ## 4. Determinism
@@ -79,12 +79,15 @@ created at 19:52:50Z (`created_at`). The paper's timeline figure (run `f18_desig
 | `f03_test_20261126_02` | Test mode (100 Meta files), SQL check |
 | `f05_test_20261126_01` | 1% of authors, under a pre-freeze SPEC draft; no labels |
 | `f06_eval_20261126_01` | Failed at the stratum keys (pandas nullable column); only population counts had been logged |
-| `f08_fig_20261126_01`–`_05` | Layout iterations (same values), `_04` with outcome class 3 as first coded, `_05` with row-order ties in the post hoc squares; the paper uses `_06` |
+| `f08_fig_20261126_01`–`_05` | Layout iterations (same values), `_04` with outcome class 3 as first coded, `_05` with row-order ties in the post hoc squares; the paper uses `_07` |
 | `f11_crossref_20261126_01` | Same results as `_02` (byte-identical); the script then held a contact address, now read from the environment |
 | `f09_posthoc2_20261126_01` | Failed before any estimate: pandas 3 kept missing journal ids as NaN, so sorting journal keys failed |
 | `f12_tables_20261126_01`–`_05` | Layout iterations, a local absolute path in the config of `_01`–`_03` (those three are not in the public repository), and the completeness fix of `_05` (Table S7 and the full A5 intervals added; existing values unchanged), `_06`–`_08` (Tables S8–S9 and tie notes added after the second review; layout) `_09` (class 3 as first coded), `_10` (row-order adjusted strata) and `_11`–`_12` (captions and layout); the paper uses `_14` |
 | `f13_posthoc3_20261126_01` | Identical to `_02` except that `_02` adds the burst-rule class ratio (data-driven addendum in `POSTHOC.md`) |
 | `f12_tables_20261126_13` | As `_14` without the positive-control row of Table S7 and without Table S11 |
+| `f12_tables_20261126_14`–`_16` | `_14` without Tables S12–S13; `_15`–`_16` layout iterations of S12 (column widths, short labels); the paper uses `_17` |
+| `f08_fig_20261126_06` | As `_07` except that the hybrid ranking (S1 + journal risk) had the colour of the citation signals in Fig. 5 |
+| `f18_design_20261126_01` | As `_02` except the timeline label "first to read the outcome labels" (f03 had already counted labels per author) |
 
 ## 6. Large intermediate data
 Per-author tables (`orcid_slots.parquet`, `paper_auth.parquet`, `aid_map.parquet`, `bio.parquet`, frozen

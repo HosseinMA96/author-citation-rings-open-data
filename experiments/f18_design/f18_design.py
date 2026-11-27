@@ -73,7 +73,7 @@ a1.set_title("Data", fontsize=8.5, loc="left")
 ph = sorted(p(rec(e, r)["started_utc"]) for e, r in POSTHOC)
 ev = [(p(SPEC_FROZEN), "specification\nfrozen, hash\nrecorded", DARK),
       (p(rec("f05_scores", F05)["started_utc"]), "score run", DARK),
-      (p(rec("f06_eval", F06)["started_utc"]), "evaluation run:\nfirst to read the\noutcome labels", ORANGE),
+      (p(rec("f06_eval", F06)["started_utc"]), "evaluation run:\nfirst to link scores\nto outcome labels", ORANGE),
       (ph[0], "first post hoc\nrun", BLUE), (p(REPO_CREATED), "first push to\nthe public\nrepository", GREY), (ph[-1], "last post hoc\nrun", BLUE)]
 assert [e[0] for e in ev] == sorted(e[0] for e in ev), "events out of order"
 a2.set_xlim(-0.6, len(ev) - 0.4); a2.set_ylim(-1.25, 1.55); a2.axis("off")

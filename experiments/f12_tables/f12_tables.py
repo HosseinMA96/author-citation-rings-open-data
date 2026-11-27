@@ -294,9 +294,63 @@ for st, slab in [("P1_randties", "P1"), ("P6_randties", "P6")]:
 li = e19["s1_lift10000"]
 T += [f"S1, lift among the top 10,000 & -- & {li['meta']:.2f} & {li['augmented']:.2f} \\\\", "\\bottomrule", "\\end{tabular}",
       "\\end{table}", ""]
+# S12 informative strata of every pre-specified Mantel-Haenszel estimate (SPEC section 6), from f06
+ROB = [("A1_A2_A3_primary", "Primary"), ("rob_a_all_eligible_prior_stratum", "(a)"), ("rob_b_T0p", "(b)"),
+       ("rob_c_cwnc_ge100", "(c)"), ("rob_d_outcome_papers_in_W", "(d)"), ("rob_e_strata_journal_only", "(e)"),
+       ("rob_f_top5pct", "(f)")]
+cell = lambda m: f"{n(m['strata_informative'])} ({n(m['positives_in_informative'])})"
+c3i = {k: C3[f"primary|{k}|y_misc_spec"]["strata_informative"] for k in ("top_s1_recip_nc", "top_s5_self", "r2")}
+T += ["\\begin{table}[htbp]", "\\centering", "\\caption{Informative strata of every pre-specified Mantel--Haenszel "
+      "estimate: strata with both exposed and unexposed authors and at least one positive, the only strata that contribute, "
+      "with the positives they hold in parentheses. The first row gives all strata and all positives of each analysis. "
+      "(a) All later retractions in the primary strata and in robustness analyses (a)--(f) (Section~\\ref{sec:res-robust}); "
+      "in (e) the 8,487 strata are the 8,486 main journals and one group of authors without a main journal. (b) Outcome "
+      "classes in the primary strata, with the positives of each class in the head.}", "\\label{tab:informative}",
+      "\\scriptsize", "\\setlength{\\tabcolsep}{1.8pt}", "\\begin{tabular}{lccccccc}",
+      "\\multicolumn{8}{l}{(a) All later retractions} \\\\", "\\toprule",
+      "Exposure & " + " & ".join(l for _, l in ROB) + " \\\\", "\\midrule",
+      "All strata (positives) & " + " & ".join(f"{n(r6[k]['mh']['top_s1_recip_nc']['strata_total'])} ({n(r6[k]['positives'])})" for k, _ in ROB) + " \\\\",
+      "\\midrule"]
+SHORT = {"top_s1_recip_nc": "S1, top 1\\%", "top_s2_recip": "S2, top 1\\%", "top_s4_conc5": "S4, top 1\\%",
+         "top_s5_self": "S5, top 1\\%", "top_s6_co": "S6, top 1\\%", "bottom_s7_ch2": "S7, bottom 1\\%", "r1": "R1",
+         "r2": "R2", "r3": "R3", "r_ge3": "$R \\geq 3$"}
+for k, lab in EXP:
+    T.append(f"{SHORT[k]} & " + " & ".join(cell(r6[a]["mh"][k]) for a, _ in ROB) + " \\\\")
+CLI = [("y_refpeer", "Referencing or peer review"), ("y_mill", "Paper mill"), ("y_misc", "Other misconduct$^{a}$"),
+       ("y_err_only", "Honest error only")]
+T += ["\\bottomrule", "\\end{tabular}", "", "\\medskip", "", "\\begin{tabular}{lcccc}",
+      "\\multicolumn{5}{l}{(b) Outcome classes, primary strata} \\\\", "\\toprule",
+      "Exposure & " + " & ".join(f"{lab} ({n(A['positives_by_class'][c])})" for c, lab in CLI) + " \\\\", "\\midrule"]
+for k, lab in [("top_s1_recip_nc", "S1, top 1\\%"), ("top_s5_self", "S5, top 1\\%"), ("r2", "R2 pact rule")]:
+    T.append(f"{lab} & " + " & ".join(cell(A["mh_by_class"][f"{k}|{c}"]) for c, _ in CLI) + " \\\\")
+T += ["\\bottomrule", f"\\multicolumn{{5}}{{p{{13cm}}}}{{$^{{a}}$As first coded by the evaluation code. As specified "
+      f"(Table~\\ref{{tab:byclass}}; post hoc run), the informative strata number {n(c3i['top_s1_recip_nc'])} for S1, "
+      f"{n(c3i['top_s5_self'])} for S5 and {n(c3i['r2'])} for R2.}} \\\\", "\\end{tabular}", "\\end{table}", ""]
+# S13 profiles of the flagged groups and the work-normalised pact rate (P2, P3; post hoc), from f07
+P2, P3 = r7["P2_profiles"], r7["P3_pact_rate_primary_strata"]
+GR = [("top_s1_recip_nc", "S1, top 1\\%"), ("top_s5_self", "S5, top 1\\%"), ("r2", "R2 pact rule"), ("r3", "R3 burst rule"),
+      ("top_pact_rate", "Pact rate, top 1\\%$^{a}$")]
+pair = lambda e, u, key, fmt: f"{fmt(e[key])} / {fmt(u[key])}"
+T += ["\\begin{table}[htbp]", "\\centering", "\\caption{Profiles of the flagged groups (post hoc): medians among flagged "
+      "authors and among all other authors of the primary population (flagged / others). Team size: mean number of listed "
+      "authors of the author's publications. $J$: journal risk (Section~\\ref{sec:signals}), here $\\times 10^{3}$. Outside "
+      "citing works: distinct citing works without the author or an ORCID-identified co-author.}", "\\label{tab:profiles}",
+      "\\footnotesize", "\\setlength{\\tabcolsep}{3pt}", "\\begin{tabular}{lrcccccc}", "\\toprule",
+      "Group & Flagged & \\begin{tabular}[b]{@{}c@{}}Biomedical\\\\publications\\end{tabular} & "
+      "\\begin{tabular}[b]{@{}c@{}}Citations\\\\received\\end{tabular} & $h$-index & \\begin{tabular}[b]{@{}c@{}}Team\\\\size\\end{tabular} & "
+      "$J \\times 10^{3}$ & \\begin{tabular}[b]{@{}c@{}}Outside\\\\citing works\\end{tabular} \\\\", "\\midrule"]
+for k, lab in GR:
+    e, u = P2[f"{k}|exposed"], P2[f"{k}|unexposed"]
+    T.append(f"{lab} & {n(e['n'])} & {pair(e, u, 'median_n_bio', lambda v: f'{v:.0f}')} & "
+             f"{pair(e, u, 'median_n_in', lambda v: f'{v:,.0f}')} & {pair(e, u, 'median_h', lambda v: f'{v:.0f}')} & "
+             f"{pair(e, u, 'median_team', lambda v: f'{v:.1f}')} & {pair(e, u, 'median_J_0', lambda v: f'{1000 * v:.2f}')} & "
+             f"{pair(e, u, 'median_n_cw_nc', lambda v: f'{v:,.0f}')} \\\\")
+T += ["\\bottomrule", f"\\multicolumn{{8}}{{p{{14cm}}}}{{$^{{a}}$Work-normalised pact rule: pact authors per 100 citing works, "
+      f"top 1\\% (at least {r7['pact_rate_q99']:.2f}). Mantel--Haenszel odds ratio of later retraction in the primary strata "
+      f"{ci(P3)}, {P3['exposed_pos']} flagged authors with a later retraction.}} \\\\", "\\end{tabular}", "\\end{table}", ""]
 out = F_ROOT / "paper/content/supp_tables.tex"
 out.write_text("% GENERATED by experiments/f12_tables/f12_tables.py from run records; do not edit by hand.\n" + "\n".join(T))
 (run.dir / "supp_tables.tex").write_text(out.read_text())
-run.log("tables", ["S1 deciles", "S2 screening", "S3 refpeer screening", "S4 ORs pre-specified I", "S5 ORs pre-specified II + post hoc", "S6 reasons by class", "S7 ORs by class", "S8 classes under adjusted strata", "S9 tie audit", "S10 publication-clustered intervals", "S11 attribution through Crossref"])
+run.log("tables", ["S1 deciles", "S2 screening", "S3 refpeer screening", "S4 ORs pre-specified I", "S5 ORs pre-specified II + post hoc", "S6 reasons by class", "S7 ORs by class", "S8 classes under adjusted strata", "S9 tie audit", "S10 publication-clustered intervals", "S11 attribution through Crossref", "S12 informative strata", "S13 profiles"])
 run.log("reasons_by_class", {c: len(v) for c, v in groups.items()})
 run.finish()

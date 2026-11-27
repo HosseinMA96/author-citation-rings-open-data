@@ -15,6 +15,10 @@ and for signals vs baselines (Fig. 2); green / purple / dark grey with distinct 
 Fig 1 (right), "Other misconduct": outcome class 3 as specified (`f14_class3_20261126_01`) instead of the first-coded
 class; all other panels and figures unchanged. `_04` superseded.
 
-## f08_fig_20261126_06: cited
+## f08_fig_20261126_06: superseded by `_07`
 Post hoc squares of Fig 1 (left) from the citation-volume strata with random decile ties (`f13_posthoc3_20261126_02`,
 P12c), the main adjusted values since round 5; everything else as `_05`.
+
+## f08_fig_20261126_07: cited
+As `_06`, but in Fig. 5 (screening) the rank average of S1 and journal risk is drawn as a hybrid (purple diamond), not
+as a citation signal: at k = 1,000 its lift (5.58) exceeds that of journal risk alone (5.25). Values unchanged.

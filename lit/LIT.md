@@ -199,10 +199,25 @@ Stevenson (2025) article 9 (Crossref); Robins et al. (1986) pages 311–323 (Sem
   could not be verified from here (De Gruyter returns an empty page to scripts), so it is not printed.
 - Abalkina et al.: the article number 2733727 repeats the DOI suffix and is no longer printed.
 - PeerTrust "How it works" page: a JavaScript app; the Wayback snapshot holds only the empty app shell, so readers cannot
-  check it. The reference was removed. The methods now rest on the preprint: it describes its benchmark ruleset as
-  frozen (`rift_orcid_v3_compat@v1`) and distinct from the production ruleset, so the rules here are adaptations of the
-  published benchmark rules, not the deployed tool.
+  check it. The reference was removed. The methods now rest on the preprint. (Corrected 2026-11-27, see below: the
+  preprint calls the ruleset frozen, `rift_orcid_v3_compat@v1`, but "distinct from the production" refers to the
+  reference implementation, not to the ruleset.)
 - Frontiers (2025), news release of 29 July 2025 (read in full, 2026-11-27): a network of about 35 authors and editors
   who reviewed with undisclosed conflicts of interest and manipulated citations; 122 articles in 5 Frontiers journals
   retracted, most published in 2022; over 4,000 articles at seven other publishers "would justify further scrutiny".
   Cited for the post hoc check P18 (POSTHOC.md round 6).
+
+## Sixth external review (2026-11-27): PeerTrust ruleset re-read; Elsevier AI policy
+- PeerTrust preprint, PDF re-read (https://xsci.com/preprint/doi/10.66977/xsci.2610.000r.pdf, 2026-11-27). §2.2.4: "The
+  production ruleset clips the score at six for risk-band assignment … The ruleset used in this benchmark was frozen as
+  rift_orcid_v3_compat@v1." §2.4 and A.13: the independently written reference implementation "was distinct from the
+  production PeerTrust implementation and was evaluated under compatibility ruleset rift_orcid_v3_compat@v1"; the
+  production engine was run on the same cohort. So "distinct" refers to the implementation; the preprint does not say
+  whether the live service uses the same ruleset (a posted review on the preprint page says this relationship is
+  unstated). §2.4: "the published thresholds are calibrated to the frozen scoring depth". Methods and Limitations now
+  say only that the relation to the live service is not stated.
+- Elsevier, "Generative AI policies for journals" (read 2026-11-27): declaration heading "Declaration of generative AI
+  and AI-assisted technologies in the manuscript preparation process", placed before the references; AI used in the
+  research process is described in Methods (tool, version, developer); explanatory images made with AI tools are
+  disclosed in their captions. The paper now uses this heading, names the developers in Methods §3.8, and notes in the
+  two diagram captions that they were drawn by scripts written with the assistant.

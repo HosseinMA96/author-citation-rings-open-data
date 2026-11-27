@@ -45,10 +45,10 @@ specified before any score was computed; analyses added later are labelled post 
 Every number above is traced in [`FINDINGS.md`](FINDINGS.md).
 
 <p align="center">
-  <img src="experiments/f08_figures/runs/f08_fig_20261126_06/fig1_forest.png" alt="Odds ratios of later retraction by signal" width="90%">
+  <img src="experiments/f08_figures/runs/f08_fig_20261126_07/fig1_forest.png" alt="Odds ratios of later retraction by signal" width="90%">
 </p>
 <p align="center">
-  <img src="experiments/f08_figures/runs/f08_fig_20261126_06/fig2_screening.png" alt="Screening value of each signal" width="90%">
+  <img src="experiments/f08_figures/runs/f08_fig_20261126_07/fig2_screening.png" alt="Screening value of each signal" width="90%">
 </p>
 
 ## What is in here
@@ -69,11 +69,11 @@ This repository was created on 26 November 2026, after the analyses, so its hist
 order of steps is documented by the project's own records: the specification's SHA-256 hash
 (`07200ecb9affa9f2bee88b68becba9ad81900d2cfcc1fc759ba814ced61ca3ec`) is stored in the record of the frozen score run
 (`experiments/f05_scores/runs/f05_scores_20261126_01/run.json`, started 18:43:21 UTC) and of the evaluation run, the
-first to read the outcome labels (`experiments/f06_eval/runs/f06_eval_20261126_02/run.json`, 18:54:42 UTC), which refuses
+first to link scores to outcome labels (`experiments/f06_eval/runs/f06_eval_20261126_02/run.json`, 18:54:42 UTC), which refuses
 to run if the specification has changed; see `experiments/f04_spec/RESULTS_LOG.md`. No third party time-stamped the
 specification before the evaluation; GitHub's own record dates the first push to this repository at 21:24:18 UTC, after the
 evaluation. The study is pre-specified, not pre-registered. The order of all steps is drawn in
-`experiments/f18_design/runs/f18_design_20261126_01/fig_timeline.png`.
+`experiments/f18_design/runs/f18_design_20261126_02/fig_timeline.png`.
 
 ## Data
 All inputs are open: the parsed OpenCitations snapshot (Illinois Data Bank, doi:10.13012/B2IDB-5216575_V1), the

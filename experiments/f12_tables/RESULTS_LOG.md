@@ -61,8 +61,16 @@ captions (`_12` adds a pointer to the definition of P1/P6 in S9).
 As `_12` with shorter column heads in S9(c) (layout only). Inputs: f06, f07, f09, f13, f14, f15, f16, Paper D's reason
 counts.
 
-## f12_tables_20261126_14: cited
+## f12_tables_20261126_14: superseded by `_17`
 As `_13`, plus (a) Table S7: the post hoc positive control (prior retraction, f09 P5) by outcome class, with
 journal-clustered intervals (class 3 as first coded, marked); (b) new Table S11: estimates with later retractions
 attributed through Crossref ORCID iDs as well (P19), from the redacted f17 record `f17_redact_20261126_01`. Inputs: f06,
 f07, f09, f13, f14, f15, f16, f17 (redacted), Paper D's reason counts.
+
+## f12_tables_20261126_15, _16: superseded by `_17`
+`_15` adds Table S12 (informative strata and the positives they hold, for every pre-specified estimate; f06) and Table
+S13 (profiles of the flagged groups and the work-normalised pact rule; f07 P2–P3). `_16` shortens the exposure labels of
+S12 and `_17` narrows its column spacing (layout only; values identical).
+
+## f12_tables_20261126_17: cited
+Tables S1–S13. Inputs as `_14` (f06, f07, f09, f13, f14, f15, f16, f17 redacted, Paper D's reason counts).

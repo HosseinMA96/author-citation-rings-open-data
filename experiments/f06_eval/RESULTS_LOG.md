@@ -52,3 +52,9 @@ Reading: S1 is null throughout; R2 is positive throughout but its OR halves when
 (e vs primary), so part of it may be residual productivity or citation volume. A few top-1% signals cross 1 in single
 robustness analyses (S4 in c; S5, S6 in d), not in the primary analysis: no correction for multiple comparisons was
 pre-specified, so these are reported as such, without emphasis.
+
+## Correction (2026-11-27)
+"First contact with post-T0 labels" (top of this log) is inaccurate: run `f03_authors_20261126_01` had already counted
+labels per author before the specification was written (for example 806 authors with at least five biomedical
+publications and a later referencing or peer-review retraction), as the paper's Methods §3.1 discloses. This run is the
+first to link scores to outcome labels. The paper and the timeline figure (`f18_design_20261126_02`) say so.

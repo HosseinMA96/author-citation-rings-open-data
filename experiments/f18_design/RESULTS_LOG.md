@@ -10,3 +10,7 @@ redacted record). Outputs `fig_flow.pdf` and `fig_timeline.pdf` (copied to `pape
   clock); first post hoc run 19:00:51; first push to the public repository 21:24:18 (GitHub server time, repository
   activity API); last post hoc run 05:49:17 on 27 November (f17). The analysis panel is drawn in order, not to scale.
 - A test copy of the script (outside the project tree, without f17) was used to check the layout; it wrote no record.
+
+## f18_design_20261126_02: cited
+As `_01` (superseded) with the evaluation run labelled "first to link scores to outcome labels" instead of "first to
+read the outcome labels": f03 had counted labels per author before the specification (sixth external review).

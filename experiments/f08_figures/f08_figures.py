@@ -20,7 +20,7 @@ rec = lambda exp, r: json.loads((E / exp / "runs" / r / "run.json").read_text())
 r3, r6, r7 = rec("f03_authors", F03), rec("f06_eval", F06), rec("f07_posthoc", F07)
 run = Run(sys.argv[1], __file__, {"f03_run": F03, "f06_run": F06, "f07_run": F07, "f14_run": F14, "f13_run": F13, "matplotlib": matplotlib.__version__})
 plt.rcParams.update({"pdf.fonttype": 42, "font.size": 8.5, "axes.spines.top": False, "axes.spines.right": False})
-BLUE, ORANGE, GREY = "#2a78d6", "#eb6834", "#666666"
+BLUE, ORANGE, GREY, PURPLE = "#2a78d6", "#eb6834", "#666666", "#6250d6"
 
 # --- Figure 1 ---------------------------------------------------------------------------------------------------
 LAB = [("top_s1_recip_nc", "S1 non-co-author reciprocity (primary)"), ("top_s2_recip", "S2 reciprocity, all citing works"),
@@ -72,19 +72,20 @@ fig.tight_layout(); fig.subplots_adjust(bottom=0.27, wspace=0.9, right=0.97); fi
 A5 = r6["A5_screening"]
 RK = [("s1_recip_nc", "S1 (primary)"), ("s2_recip", "S2"), ("s3_pact", "S3 pact authors"), ("s4_conc5", "S4"),
       ("s5_self", "S5 self-citation"), ("s6_co", "S6"), ("s7_ch2_low", "S7 low $C/h^2$"), ("s8_burst", "S8 burst"),
-      ("r_score", "Rule score R"), ("rankavg_s1_J", "S1 + journal risk"), ("citations", "Citations received"),
+      ("r_score", "Rule score R"), ("rankavg_s1_J", "S1 + journal risk (hybrid)"), ("citations", "Citations received"),
       ("journal_J", "Journal risk J"), ("productivity", "Productivity")]
 fig, axs = plt.subplots(1, 2, figsize=(7.2, 3.3), sharey=True)
 for ax, k in zip(axs, [1000, 10000]):
     for i, (n, lab) in enumerate(RK):
         m = A5[n][f"lift@{k}"]; yv = len(RK) - 1 - i
-        col = ORANGE if n in ("journal_J", "productivity", "citations") else BLUE
-        ax.errorbar(m["point"], yv, xerr=[[m["point"] - m["lo"]], [m["hi"] - m["point"]]], fmt="o", color=col, ms=4,
+        col, mk = (ORANGE, "o") if n in ("journal_J", "productivity", "citations") else (PURPLE, "D") if n == "rankavg_s1_J" else (BLUE, "o")
+        ax.errorbar(m["point"], yv, xerr=[[m["point"] - m["lo"]], [m["hi"] - m["point"]]], fmt=mk, color=col, ms=4,
                     capsize=2, lw=1)
     ax.axvline(1, color=GREY, lw=0.8, ls="--")
     ax.set_xlabel(f"Lift among the top {k:,} authors")
 axs[0].set_yticks(range(len(RK))); axs[0].set_yticklabels([l for _, l in RK][::-1])
-axs[0].plot([], [], "o", color=BLUE, label="citation signals"); axs[0].plot([], [], "o", color=ORANGE, label="baselines")
+axs[0].plot([], [], "o", color=BLUE, label="citation signals"); axs[0].plot([], [], "D", color=PURPLE, label="hybrid (S1 + journal risk)")
+axs[0].plot([], [], "o", color=ORANGE, label="baselines")
 axs[0].legend(loc="upper right", fontsize=7, frameon=False)
 fig.tight_layout(); fig.savefig(run.dir / "fig2_screening.pdf"); fig.savefig(run.dir / "fig2_screening.png", dpi=200); plt.close(fig)
 

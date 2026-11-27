@@ -1,0 +1,56 @@
+{
+  "run_id": "f18_design_20261126_02",
+  "script": "f18_design.py",
+  "script_sha256": "9842963726b8452f98974652fd359245a5f5ccba23e3b8d6f3401f91a4ed68a1",
+  "common_sha256": "1dcccbafdf743ba6d8f45efffbd565900957bd0a25f6748c2622c6a15fdb9eaf",
+  "config": {
+    "f03": "f03_authors_20261126_01",
+    "f05": "f05_scores_20261126_01",
+    "f06": "f06_eval_20261126_02",
+    "posthoc_runs": [
+      "f07_posthoc_20261126_01",
+      "f09_posthoc2_20261126_02",
+      "f10_names_20261126_01",
+      "f11_cov_20261126_01",
+      "f13_posthoc3_20261126_02",
+      "f14_class3_20261126_01",
+      "f15_pubclusters_20261126_01",
+      "f16_randties_20261126_01",
+      "f17_attribution_20261126_01"
+    ],
+    "spec_frozen_utc": "2026-11-26T18:43:04Z",
+    "repo_created_utc": "2026-11-26T21:24:18Z",
+    "matplotlib": "3.11.1"
+  },
+  "host": "Hossein",
+  "python": "3.13.18",
+  "platform": "Linux-6.8.0-149-generic-x86_64-with-glibc2.35",
+  "started_utc": "2026-11-27T06:16:49Z",
+  "results": {
+    "flow": [
+      "877,590 ORCID iDs with at least five biomedical publications in 2014\u20132023",
+      "859,157 with a publication in 2019\u20132023",
+      "800,996 eligible: at least 20 citing works that are neither their own nor a co-author's",
+      "793,299 in the primary population",
+      "2,419 with a later retraction (February 2024 to October 2026; 0.305%)"
+    ],
+    "timeline": {
+      "spec": "2026-11-26T18:43:04Z",
+      "score": "2026-11-26T18:43:21Z",
+      "eval": "2026-11-26T18:54:42Z",
+      "posthoc": {
+        "f07_posthoc_20261126_01": "2026-11-26T19:00:51Z",
+        "f09_posthoc2_20261126_02": "2026-11-26T20:11:46Z",
+        "f10_names_20261126_01": "2026-11-26T20:06:14Z",
+        "f11_cov_20261126_01": "2026-11-26T19:59:26Z",
+        "f13_posthoc3_20261126_02": "2026-11-26T21:11:40Z",
+        "f14_class3_20261126_01": "2026-11-26T21:36:20Z",
+        "f15_pubclusters_20261126_01": "2026-11-26T21:40:23Z",
+        "f16_randties_20261126_01": "2026-11-27T04:25:53Z",
+        "f17_attribution_20261126_01": "2026-11-27T05:49:17Z"
+      },
+      "repo": "2026-11-26T21:24:18Z"
+    }
+  },
+  "seconds": 1.2
+}
