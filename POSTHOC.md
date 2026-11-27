@@ -155,3 +155,19 @@ profiles of groups of fewer than 10 authors are neither reported nor kept outsid
 reported. The original f17 record (`run.json`, `stdout.log`) stays on the VM disk. The copies fetched to the laptop
 are replaced by a redacted record, written by run `f17_redact_20261126_01` (`f17_attribution/f17_redact.py`), which
 drops these fields and logs the SHA-256 of the originals. No estimate is affected; P19 has no per-author output.
+
+## Round 7 (written 2026-11-27 UTC, after a seventh review; before this run)
+- **P20, informative strata for outcome class 3 as specified (reporting only).** Supplementary Table S12(b) gives, for
+  each pre-specified class estimate, the informative strata and the positives they hold; for class 3 only the
+  first-coded version has both numbers on record (f06), while f14 logged the informative strata, not the positives in
+  them, for the class as specified. For S1, S5 and R2 in the primary strata (and the other exposures of P14): informative
+  strata, positives in them and the MH odds ratio, for class 3 as specified and as first coded. Checks before use: the
+  first-coded values reproduce f06 (A3) and the as-specified values reproduce f14 (P14) exactly. No new estimate is
+  introduced; the table will show the class as specified, as Tables S7 and S8 do. Run `f19_informative` on the VM.
+
+## Note on terms (2026-11-27)
+The round headings above say "external review" for reviews of a draft that the author supplied in the working session.
+The term does not mean an independent human peer review, and the source of each review is not recorded here; the
+paper's AI declaration lists the AI tools used. "Internal critique" (round 4) was an AI review of the code and draft by
+the coding assistant (GitHub Copilot CLI, its rubber-duck review agent). The headings are left as written, because this
+file's hash is recorded in the runs.

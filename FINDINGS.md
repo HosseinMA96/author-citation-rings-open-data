@@ -144,7 +144,7 @@ are the check (largest difference 0.09).
 | S1 lift at 10,000 | 0.69 → 0.72 |
 | Added positives flagged by R3 (R3 share 36.8%) | 14 of 19 (exposed positives 1,196 → 1,210) |
 
-## Sixth external review: claims added or reworded (v0.8; no new analysis)
+## Sixth review: claims added or reworded (v0.8; no new analysis)
 | Claim | Value |
 |---|---|
 | Hybrid ranking (rank average of S1 and J), lift: all later retractions at 1,000 / 10,000; referencing or peer-review class at 10,000 | 5.58 / 2.62 (f06 A5); 3.95 (f09 P7) |
@@ -158,8 +158,14 @@ are the check (largest difference 0.09).
 `fig_flow.pdf` (population flow from f03 and f06 counts), `fig_timeline.pdf` (data windows; analysis steps in order with
 UTC times from the run records, the f04 freeze log and GitHub's push record).
 
-## Supplementary tables (f12_tables_20261126_17)
-`paper/content/supp_tables.tex`: Tables S1–S13 generated from f06, f07, f09, f13, f14, f15, f16, f17 (redacted) and Paper D `d02_rw_20261101_01` (reason counts).
+## Post hoc round 7 (f19_informative_20261126_01; POSTHOC.md round 7)
+| Claim | Value |
+|---|---|
+| Class 3 as specified, informative strata (positives in them): S1; S5; R2 | 296 (773); 319 (837); 544 (1,166) |
+| Same, class 3 as first coded (reproduces f06 A3) | 272 (645); 288 (706); 487 (979) |
+
+## Supplementary tables (f12_tables_20261126_18)
+`paper/content/supp_tables.tex`: Tables S1–S13 generated from f06, f07, f09, f13, f14, f15, f16, f17 (redacted), f19 and Paper D `d02_rw_20261101_01` (reason counts).
 
 ## Figures (f08_fig_20261126_07)
 `fig1_forest.pdf` (f06 A2/A3 + f07 P1), `fig2_screening.pdf` (f06 A5; hybrid in its own colour), `fig3_orcid_coverage.pdf` (f03).

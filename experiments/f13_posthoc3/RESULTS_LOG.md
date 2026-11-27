@@ -1,7 +1,7 @@
 # F13 post hoc round 3 (P11-P13): lab notebook
 
 Plans: `../../POSTHOC.md` round 3 (written before `_01`) and its data-driven addendum (written after reading `_01`, before
-`_02`). After an external review of draft v0.2. Everything here is post hoc.
+`_02`). After a review of draft v0.2. Everything here is post hoc.
 
 ## f13_posthoc3_20261126_01 (20 s on the VM): superseded by `_02`
 All results identical to `_02` except that `_02` adds the R3 ratio. Reproduction check against earlier runs: 23 of 23

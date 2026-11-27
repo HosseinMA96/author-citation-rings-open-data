@@ -1,6 +1,6 @@
 # F9 post hoc round 2 (P4-P8): lab notebook
 
-Plans: `../../POSTHOC.md` round 2, written before these runs (after the external review of draft v0.1). Post hoc.
+Plans: `../../POSTHOC.md` round 2, written before these runs (after the review of draft v0.1). Post hoc.
 
 ## f09_posthoc2_20261126_01: FAILED (kept on the VM; folder without run.json)
 Stopped before any estimate: pandas 3 keeps missing journal ids as NaN under `astype(str)`, so sorting the journal keys

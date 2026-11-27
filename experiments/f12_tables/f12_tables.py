@@ -11,14 +11,14 @@ usage: python f12_tables.py RUN_ID F06_RUN F07_RUN F09_RUN F13_RUN F14_RUN F15_R
 import csv, json, sys
 from common import Run, F_ROOT
 
-F06, F07, F09, F13, F14, F15, F16, F17R = sys.argv[2:10]
+F06, F07, F09, F13, F14, F15, F16, F17R, F19 = sys.argv[2:11]
 E = F_ROOT / "experiments"
 rec = lambda exp, r: json.loads((E / exp / "runs" / r / "run.json").read_text())["results"]
 r6, r7, r9, r13 = rec("f06_eval", F06), rec("f07_posthoc", F07), rec("f09_posthoc2", F09), rec("f13_posthoc3", F13)
 r14, r15, r16 = rec("f14_class3", F14), rec("f15_pubclusters", F15), rec("f16_randties", F16)
 C3 = r14["P14_class3"]   # outcome class 3 as specified, keys "<strata>|<exposure>|y_misc_spec"
 D02 = F_ROOT.parent / "D_retraction_contamination/experiments/d02_retraction_watch/runs/d02_rw_20261101_01/reason_counts.csv"
-run = Run(sys.argv[1], __file__, {"f06": F06, "f07": F07, "f09": F09, "f13": F13, "f14": F14, "f15": F15, "f16": F16, "f17_redacted": F17R, "d02_reason_counts": str(D02.relative_to(F_ROOT.parent))})
+run = Run(sys.argv[1], __file__, {"f06": F06, "f07": F07, "f09": F09, "f13": F13, "f14": F14, "f15": F15, "f16": F16, "f17_redacted": F17R, "f19": F19, "d02_reason_counts": str(D02.relative_to(F_ROOT.parent))})
 ci = lambda m, d=2: "--" if m.get("or_mh") is None else f"{m['or_mh']:.{d}f} ({m['lo']:.{d}f}--{m['hi']:.{d}f})"
 n = lambda v: f"{v:,}"
 EXP = [("top_s1_recip_nc", "S1 non-co-author reciprocity, top 1\\%"), ("top_s2_recip", "S2 reciprocity, top 1\\%"),
@@ -299,7 +299,7 @@ ROB = [("A1_A2_A3_primary", "Primary"), ("rob_a_all_eligible_prior_stratum", "(a
        ("rob_c_cwnc_ge100", "(c)"), ("rob_d_outcome_papers_in_W", "(d)"), ("rob_e_strata_journal_only", "(e)"),
        ("rob_f_top5pct", "(f)")]
 cell = lambda m: f"{n(m['strata_informative'])} ({n(m['positives_in_informative'])})"
-c3i = {k: C3[f"primary|{k}|y_misc_spec"]["strata_informative"] for k in ("top_s1_recip_nc", "top_s5_self", "r2")}
+I19 = rec("f19_informative", F19)["P20_class3_informative"]   # class 3 as specified and first coded (P20, post hoc)
 T += ["\\begin{table}[htbp]", "\\centering", "\\caption{Informative strata of every pre-specified Mantel--Haenszel "
       "estimate: strata with both exposed and unexposed authors and at least one positive, the only strata that contribute, "
       "with the positives they hold in parentheses. The first row gives all strata and all positives of each analysis. "
@@ -316,16 +316,19 @@ SHORT = {"top_s1_recip_nc": "S1, top 1\\%", "top_s2_recip": "S2, top 1\\%", "top
          "r2": "R2", "r3": "R3", "r_ge3": "$R \\geq 3$"}
 for k, lab in EXP:
     T.append(f"{SHORT[k]} & " + " & ".join(cell(r6[a]["mh"][k]) for a, _ in ROB) + " \\\\")
-CLI = [("y_refpeer", "Referencing or peer review"), ("y_mill", "Paper mill"), ("y_misc", "Other misconduct$^{a}$"),
+CLI = [("y_refpeer", "Referencing or peer review"), ("y_mill", "Paper mill"), ("y_misc_spec", "Other misconduct$^{a}$"),
        ("y_err_only", "Honest error only")]
+pos_cl = dict(A["positives_by_class"]); pos_cl["y_misc_spec"] = r14["P14_counts"]["y_misc_spec"]
+ccell = lambda k, c: cell(I19[f"primary|{k}|y_misc_spec"]) if c == "y_misc_spec" else cell(A["mh_by_class"][f"{k}|{c}"])
 T += ["\\bottomrule", "\\end{tabular}", "", "\\medskip", "", "\\begin{tabular}{lcccc}",
       "\\multicolumn{5}{l}{(b) Outcome classes, primary strata} \\\\", "\\toprule",
-      "Exposure & " + " & ".join(f"{lab} ({n(A['positives_by_class'][c])})" for c, lab in CLI) + " \\\\", "\\midrule"]
+      "Exposure & " + " & ".join(f"{lab} ({n(pos_cl[c])})" for c, lab in CLI) + " \\\\", "\\midrule"]
 for k, lab in [("top_s1_recip_nc", "S1, top 1\\%"), ("top_s5_self", "S5, top 1\\%"), ("r2", "R2 pact rule")]:
-    T.append(f"{lab} & " + " & ".join(cell(A["mh_by_class"][f"{k}|{c}"]) for c, _ in CLI) + " \\\\")
-T += ["\\bottomrule", f"\\multicolumn{{5}}{{p{{13cm}}}}{{$^{{a}}$As first coded by the evaluation code. As specified "
-      f"(Table~\\ref{{tab:byclass}}; post hoc run), the informative strata number {n(c3i['top_s1_recip_nc'])} for S1, "
-      f"{n(c3i['top_s5_self'])} for S5 and {n(c3i['r2'])} for R2.}} \\\\", "\\end{tabular}", "\\end{table}", ""]
+    T.append(f"{lab} & " + " & ".join(ccell(k, c) for c, _ in CLI) + " \\\\")
+fc19 = "; ".join(f"{lab} {cell(I19[f'primary|{k}|y_misc'])}" for k, lab in [("top_s1_recip_nc", "S1"), ("top_s5_self", "S5"), ("r2", "R2")])
+T += ["\\bottomrule", f"\\multicolumn{{5}}{{p{{13cm}}}}{{$^{{a}}$Class 3 as specified, as in Tables~\\ref{{tab:byclass}} and~\\ref{{tab:byclassadj}} "
+      f"(counts from a post hoc run). As first coded by the evaluation code ({n(A['positives_by_class']['y_misc'])} positives): {fc19}.}} \\\\",
+      "\\end{tabular}", "\\end{table}", ""]
 # S13 profiles of the flagged groups and the work-normalised pact rate (P2, P3; post hoc), from f07
 P2, P3 = r7["P2_profiles"], r7["P3_pact_rate_primary_strata"]
 GR = [("top_s1_recip_nc", "S1, top 1\\%"), ("top_s5_self", "S5, top 1\\%"), ("r2", "R2 pact rule"), ("r3", "R3 burst rule"),

@@ -1,0 +1,184 @@
+{
+  "run_id": "f19_informative_20261126_01",
+  "script": "f19_informative.py",
+  "script_sha256": "cf7538f7aaa2c19cc3251ad260c2f522fc24514270cc40cecccbd768f45695b3",
+  "common_sha256": "1dcccbafdf743ba6d8f45efffbd565900957bd0a25f6748c2622c6a15fdb9eaf",
+  "config": {
+    "f05_run": "f05_scores_20261126_01",
+    "f06_run": "f06_eval_20261126_02",
+    "f14_run": "f14_class3_20261126_01",
+    "n_boot": 1000,
+    "seed": 20261126,
+    "posthoc_sha256": "a612d2f74e78b2a6b11b280adf846725cd5567f48946a5d174e2eae198f30b7b",
+    "spec_sha256": "07200ecb9affa9f2bee88b68becba9ad81900d2cfcc1fc759ba814ced61ca3ec",
+    "T0": "2024-01-31",
+    "end": "2026-10-30"
+  },
+  "host": "vm-project-c",
+  "python": "3.11.18",
+  "platform": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+  "started_utc": "2026-11-27T08:08:47Z",
+  "results": {
+    "frozen_spec_and_scores_verified": true,
+    "strata_counts": {
+      "primary": 24026,
+      "P1": 99015,
+      "P6": 304910,
+      "P1_randties": 99004,
+      "P6_randties": 304817
+    },
+    "vdec_moved_by_random_ties": 4414,
+    "pdec_moved_by_random_ties": 134618,
+    "primary": {
+      "n": 793299,
+      "positives": 2419,
+      "journals": 8487,
+      "positives_by_class": {
+        "y_refpeer": 622,
+        "y_mill": 141,
+        "y_misc": 1304,
+        "y_err_only": 248
+      }
+    },
+    "P20_class3_informative": {
+      "primary|top_s1_recip_nc|y_misc": {
+        "exposed_pos": 7,
+        "strata_total": 24026,
+        "strata_informative": 272,
+        "positives_in_informative": 645,
+        "exposed_positives_in_informative": 7,
+        "or_mh": 0.8160268446929758,
+        "lo": 0.38494168867141826,
+        "hi": 1.7298719023077243
+      },
+      "primary|top_s1_recip_nc|y_misc_spec": {
+        "exposed_pos": 9,
+        "strata_total": 24026,
+        "strata_informative": 296,
+        "positives_in_informative": 773,
+        "exposed_positives_in_informative": 9,
+        "or_mh": 0.8948366727928189,
+        "lo": 0.46063978720245785,
+        "hi": 1.7383054899315258
+      },
+      "primary|top_s4_conc5|y_misc": {
+        "exposed_pos": 11,
+        "strata_total": 24026,
+        "strata_informative": 229,
+        "positives_in_informative": 556,
+        "exposed_positives_in_informative": 11,
+        "or_mh": 1.4449536628098623,
+        "lo": 0.7863251994091479,
+        "hi": 2.6552514013750264
+      },
+      "primary|top_s4_conc5|y_misc_spec": {
+        "exposed_pos": 13,
+        "strata_total": 24026,
+        "strata_informative": 250,
+        "positives_in_informative": 646,
+        "exposed_positives_in_informative": 13,
+        "or_mh": 1.536646062794163,
+        "lo": 0.8766502356055802,
+        "hi": 2.693527049210973
+      },
+      "primary|top_s5_self|y_misc": {
+        "exposed_pos": 21,
+        "strata_total": 24026,
+        "strata_informative": 288,
+        "positives_in_informative": 706,
+        "exposed_positives_in_informative": 21,
+        "or_mh": 1.3386733443479888,
+        "lo": 0.8577335096491393,
+        "hi": 2.089280997778524
+      },
+      "primary|top_s5_self|y_misc_spec": {
+        "exposed_pos": 26,
+        "strata_total": 24026,
+        "strata_informative": 319,
+        "positives_in_informative": 837,
+        "exposed_positives_in_informative": 26,
+        "or_mh": 1.4260695772294085,
+        "lo": 0.9551665367613947,
+        "hi": 2.129130744042477
+      },
+      "primary|top_s6_co|y_misc": {
+        "exposed_pos": 10,
+        "strata_total": 24026,
+        "strata_informative": 226,
+        "positives_in_informative": 596,
+        "exposed_positives_in_informative": 10,
+        "or_mh": 1.4094160859796065,
+        "lo": 0.738512424998852,
+        "hi": 2.6898040387352475
+      },
+      "primary|top_s6_co|y_misc_spec": {
+        "exposed_pos": 12,
+        "strata_total": 24026,
+        "strata_informative": 247,
+        "positives_in_informative": 698,
+        "exposed_positives_in_informative": 12,
+        "or_mh": 1.532338525218993,
+        "lo": 0.8495214498638359,
+        "hi": 2.7639812464378304
+      },
+      "primary|r2|y_misc": {
+        "exposed_pos": 164,
+        "strata_total": 24026,
+        "strata_informative": 487,
+        "positives_in_informative": 979,
+        "exposed_positives_in_informative": 162,
+        "or_mh": 1.2657542141428273,
+        "lo": 1.0361299471710088,
+        "hi": 1.5462671791262306
+      },
+      "primary|r2|y_misc_spec": {
+        "exposed_pos": 221,
+        "strata_total": 24026,
+        "strata_informative": 544,
+        "positives_in_informative": 1166,
+        "exposed_positives_in_informative": 215,
+        "or_mh": 1.4792124047232766,
+        "lo": 1.2389247874119989,
+        "hi": 1.7661034475368733
+      },
+      "primary|r3|y_misc": {
+        "exposed_pos": 620,
+        "strata_total": 24026,
+        "strata_informative": 733,
+        "positives_in_informative": 1280,
+        "exposed_positives_in_informative": 611,
+        "or_mh": 1.3258537148651708,
+        "lo": 1.1809935641581495,
+        "hi": 1.4884823478905687
+      },
+      "primary|r3|y_misc_spec": {
+        "exposed_pos": 755,
+        "strata_total": 24026,
+        "strata_informative": 823,
+        "positives_in_informative": 1515,
+        "exposed_positives_in_informative": 743,
+        "or_mh": 1.3851827811748851,
+        "lo": 1.2453552641976455,
+        "hi": 1.540710022613174
+      }
+    },
+    "P20_checks": {
+      "f14|top_s1_recip_nc|y_misc": true,
+      "f06|top_s1_recip_nc|y_misc": true,
+      "f14|top_s1_recip_nc|y_misc_spec": true,
+      "f14|top_s4_conc5|y_misc": true,
+      "f14|top_s4_conc5|y_misc_spec": true,
+      "f14|top_s5_self|y_misc": true,
+      "f06|top_s5_self|y_misc": true,
+      "f14|top_s5_self|y_misc_spec": true,
+      "f14|top_s6_co|y_misc": true,
+      "f14|top_s6_co|y_misc_spec": true,
+      "f14|r2|y_misc": true,
+      "f06|r2|y_misc": true,
+      "f14|r2|y_misc_spec": true,
+      "f14|r3|y_misc": true,
+      "f14|r3|y_misc_spec": true
+    }
+  },
+  "seconds": 11.1
+}

@@ -1,6 +1,6 @@
 # F16 post hoc round 5 (P17): lab notebook
 
-Plan: `../../POSTHOC.md` round 5 (written before this run), after a fourth external review that asked for the random-tie
+Plan: `../../POSTHOC.md` round 5 (written before this run), after a fourth review that asked for the random-tie
 adjusted strata to be the main ones and for Table S8 to have no unexplained blanks.
 
 ## f16_randties_20261126_01 (VM): cited

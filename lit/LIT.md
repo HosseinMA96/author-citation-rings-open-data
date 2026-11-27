@@ -107,7 +107,7 @@ author citation network anomaly; OpenCitations Meta; ORCID coverage. arXiv (`arx
 Metadata/abstracts: Semantic Scholar batch (`s2_abstracts.py`), Crossref/DataCite (`meta_fetch.py`). Zenodo's API
 returned 403 to scripts (DataCite used instead).
 
-## Added 2026-11-26 (after the external review of draft v0.1)
+## Added 2026-11-26 (after the review of draft v0.1)
 
 | Reference | DOI / URL | Read | Use |
 |---|---|---|---|
@@ -119,7 +119,7 @@ returned 403 to scripts (DataCite used instead).
 | OpenCitations ingestion code (no DOI): `oc_meta` `config/crossref_config.yaml` ("ORCID-DOI index directory"), `oc_ds_converter` `ra_processor.py` (`orcid_finder`) | github.com/opencitations/oc_meta, github.com/opencitations/oc_ds_converter (read 2026-11-26 via the GitHub API) | code | When a Crossref record lacks ORCIDs, Meta's ingestion looks the DOI up in an ORCID-DOI index and attaches iDs by name match: explains why Meta's older records carry more ORCIDs than Crossref (P10) |
 
 
-## Citation-claim pass (2026-11-26, after external review)
+## Citation-claim pass (2026-11-26, after review)
 
 Every sentence of the form "X found / did / says Y" in the manuscript (42 sentences; listing built from the .tex files and
 this file) was checked against the source text at the depth recorded above. Abstracts re-read on 2026-11-26 through
@@ -150,7 +150,7 @@ Crossref or Semantic Scholar unless stated.
 | Lipsitch et al. 2010; Priem et al. 2022; Haak et al. 2012 | negative-control logic; OpenAlex; ORCID registry | match abstracts / title |
 
 
-## Second external review (2026-11-26): three references re-checked
+## Second review (2026-11-26): three references re-checked
 
 | Source | Finding | Action |
 |---|---|---|
@@ -175,7 +175,7 @@ Reference metadata fixed on 2026-11-26: Fister et al. (2016) first author Iztok 
 gives both first authors as "Iztok Fister"), Front. Phys. 4:49 (article number from Semantic Scholar); Fletcher &
 Stevenson (2025) article 9 (Crossref); Robins et al. (1986) pages 311–323 (Semantic Scholar; Crossref gives only 311).
 
-## Fourth external review (2026-11-26): links and the PeerTrust sources
+## Fourth review (2026-11-26): links and the PeerTrust sources
 - PeerTrust benchmark preprint (Ali et al. 2026): DOI 10.66977/xsci.2610.000r resolves to
   https://xsci.com/preprint/doi/10.66977/xsci.2610.000r (now printed in the reference). It publishes the rules used here
   (§2.2: isolation NCI_adj > 35, pact P > 5, burst B > 3.0) and "a weighted raw score R = 3r1 + 3r2 + 2r3 … the published
@@ -192,7 +192,7 @@ Stevenson (2025) article 9 (Crossref); Robins et al. (1986) pages 311–323 (Sem
   10.21203/rs.3.rs-10177352/v1 resolves to Research Square (DOI and URL now printed). These @misc entries had lost
   their links in v0.5, when doi.org URLs were dropped for entries with a DOI field.
 
-## Fifth external review (2026-11-27): versions, pages and two new sources
+## Fifth review (2026-11-27): versions, pages and two new sources
 - Mohammad (2026): the reference now gives the DOI of version 1.3.0 (10.5281/zenodo.24526567; DataCite: IsVersionOf
   the concept DOI 10.5281/zenodo.24526566, which always points to the latest version).
 - Lou et al. (2026): volume 11, pages 656–669 (Semantic Scholar; Crossref lists none). The issue (3, per the reviewer)
@@ -207,7 +207,7 @@ Stevenson (2025) article 9 (Crossref); Robins et al. (1986) pages 311–323 (Sem
   retracted, most published in 2022; over 4,000 articles at seven other publishers "would justify further scrutiny".
   Cited for the post hoc check P18 (POSTHOC.md round 6).
 
-## Sixth external review (2026-11-27): PeerTrust ruleset re-read; Elsevier AI policy
+## Sixth review (2026-11-27): PeerTrust ruleset re-read; Elsevier AI policy
 - PeerTrust preprint, PDF re-read (https://xsci.com/preprint/doi/10.66977/xsci.2610.000r.pdf, 2026-11-27). §2.2.4: "The
   production ruleset clips the score at six for risk-band assignment … The ruleset used in this benchmark was frozen as
   rift_orcid_v3_compat@v1." §2.4 and A.13: the independently written reference implementation "was distinct from the

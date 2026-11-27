@@ -2,7 +2,7 @@
 
 Laptop; reads run records only (`f06_eval_20261126_02`, `f07_posthoc_20261126_01`, `f09_posthoc2_20261126_02`) and the
 reason counts of Paper D run `d02_rw_20261101_01`; writes `../../paper/content/supp_tables.tex` (generated; do not edit).
-Added after the external review of draft v0.1, which noted that pre-specified outputs (decile rates with Wilson
+Added after the review of draft v0.1, which noted that pre-specified outputs (decile rates with Wilson
 intervals, recall at 10,000, average precision) and the reason-to-class mapping were not shown.
 
 ## f12_tables_20261126_01: superseded
@@ -36,7 +36,7 @@ too wide (95 pt).
 As `_05`, with two-line column heads and a smaller font in S7 (layout only; same values). Tables S1–S7.
 
 ## f12_tables_20261126_07: superseded
-After the second external review: new input `f13_posthoc3_20261126_02`; Table S8 (outcome classes in the primary, P1
+After the second review: new input `f13_posthoc3_20261126_02`; Table S8 (outcome classes in the primary, P1
 and P6 strata, journal-clustered intervals, class ratio) and Table S9 (tie-breaking audit); tie notes in the captions of
 S1 and S2; "A3" removed from the S7 caption. Panel (c) of S9 showed "--" for the row-order P1/P6 estimates of four
 exposures.
@@ -48,12 +48,12 @@ Panel (c) takes the row-order P1/P6 estimates from f07/f09 (which f13 reproduces
 As `_08` with narrower column spacing in S9 (layout only; same values). Tables S1–S9.
 
 ## f12_tables_20261126_10: superseded
-After the internal critique: outcome class 3 as specified (f14) in Tables S6 (the two shared reasons listed in class 3
+After the AI review by the coding assistant (Copilot CLI's rubber-duck agent): outcome class 3 as specified (f14) in Tables S6 (the two shared reasons listed in class 3
 as well, marked), S7 (with the first-coded values in a note) and S8; new Table S10, intervals clustered by shared
 retraction events (f15). Inputs: f06, f07, f09, f13, f14, f15 and Paper D's reason counts.
 
 ## f12_tables_20261126_11 and _12: superseded
-After the fourth external review: P1/P6 columns of S5 and all of S8 from the random-tie strata (f13, f16); S8 has the
+After the fourth review: P1/P6 columns of S5 and all of S8 from the random-tie strata (f13, f16); S8 has the
 class ratio for every exposure and explains "--"; S9(c) puts the random-tie values first; run labels removed from the
 captions (`_12` adds a pointer to the definition of P1/P6 in S9).
 
@@ -72,5 +72,10 @@ f07, f09, f13, f14, f15, f16, f17 (redacted), Paper D's reason counts.
 S13 (profiles of the flagged groups and the work-normalised pact rule; f07 P2–P3). `_16` shortens the exposure labels of
 S12 and `_17` narrows its column spacing (layout only; values identical).
 
-## f12_tables_20261126_17: cited
+## f12_tables_20261126_17: superseded by `_18`
 Tables S1–S13. Inputs as `_14` (f06, f07, f09, f13, f14, f15, f16, f17 redacted, Paper D's reason counts).
+
+## f12_tables_20261126_18: cited
+As `_17`, but Table S12(b) shows outcome class 3 as specified (1,545 positives; informative strata and their positives
+from `f19_informative_20261126_01`), as Tables S7 and S8 do, with the first-coded counts in its note. Inputs: f06, f07,
+f09, f13, f14, f15, f16, f17 (redacted), f19, Paper D's reason counts.

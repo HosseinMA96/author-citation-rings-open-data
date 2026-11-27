@@ -65,7 +65,7 @@ Every number above is traced in [`FINDINGS.md`](FINDINGS.md).
 | `vm/` | VM control script and the environment lock file |
 
 ## Provenance of the design
-This repository was created on 26 November 2026, after the analyses, so its history does not time-stamp the design. The
+This repository was created on 26 November 2026, after the pre-specified analyses, so its history does not time-stamp the design. The
 order of steps is documented by the project's own records: the specification's SHA-256 hash
 (`07200ecb9affa9f2bee88b68becba9ad81900d2cfcc1fc759ba814ced61ca3ec`) is stored in the record of the frozen score run
 (`experiments/f05_scores/runs/f05_scores_20261126_01/run.json`, started 18:43:21 UTC) and of the evaluation run, the

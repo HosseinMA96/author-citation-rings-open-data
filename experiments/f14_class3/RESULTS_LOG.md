@@ -1,6 +1,6 @@
 # F14 post hoc round 4 (P14-P15): lab notebook
 
-Plan: `../../POSTHOC.md` round 4 (written before this run), after an internal critique found that outcome class 3 had
+Plan: `../../POSTHOC.md` round 4 (written before this run), after an AI review by the coding assistant (Copilot CLI's rubber-duck agent) found that outcome class 3 had
 been coded as E's misconduct list minus the four referencing/peer-review strings, whereas SPEC §5 specifies E's full list
 (which includes `Compromised Peer Review` and `Rogue Editor`). A deviation from the frozen specification.
 

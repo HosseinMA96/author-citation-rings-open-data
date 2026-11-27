@@ -13,4 +13,4 @@ redacted record). Outputs `fig_flow.pdf` and `fig_timeline.pdf` (copied to `pape
 
 ## f18_design_20261126_02: cited
 As `_01` (superseded) with the evaluation run labelled "first to link scores to outcome labels" instead of "first to
-read the outcome labels": f03 had counted labels per author before the specification (sixth external review).
+read the outcome labels": f03 had counted labels per author before the specification (sixth review).
