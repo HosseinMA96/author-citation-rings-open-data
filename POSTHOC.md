@@ -178,3 +178,4 @@ file's hash is recorded in the runs.
   while every other row of the table uses the class as specified. Recompute, with the code and bootstrap seeds of f09:
   the positive control for class 3 as specified (odds ratio, CI, journal-clustered interval, informative strata). Checks
   before use: all-cause and the four first-coded classes reproduce f09 P5 exactly. Run `f20_posctrl` on the VM.
+Update (2026-11-27): the author states that he wrote the reviews referred to above as "external review" himself.
