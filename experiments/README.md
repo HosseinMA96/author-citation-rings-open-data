@@ -15,7 +15,9 @@
 | `f14_class3/` | **Post hoc** round 4: outcome class 3 as specified (a deviation in the evaluation code), shared retraction events | `f14_class3_20261126_01` | `RESULTS_LOG.md` |
 | `f15_pubclusters/` | **Post hoc** round 4 addendum: intervals from resampling clusters of authors linked by shared later-retracted publications | `f15_pubclusters_20261126_01` | `RESULTS_LOG.md` |
 | `f16_randties/` | **Post hoc** round 5: adjusted strata with random decile ties as main values; class ratios for every exposure | `f16_randties_20261126_01` | `RESULTS_LOG.md` |
-| `f12_tables/` | Supplementary tables S1–S10 from run records (laptop) | `f12_tables_20261126_13` | `RESULTS_LOG.md` |
+| `f17_attribution/` | **Post hoc** round 6: P18 the Frontiers 2025 network retractions (attachment, ranks of attached authors); P19 later retractions re-attributed through Crossref ORCID iDs, estimates re-computed (VM; Crossref API) | `f17_attribution_20261126_01` | `RESULTS_LOG.md` |
+| `f18_design/` | Design figures from run records: population flow and timeline of data and analysis steps (laptop) | `f18_design_20261126_01` | `RESULTS_LOG.md` |
+| `f12_tables/` | Supplementary tables S1–S11 from run records (laptop) | `f12_tables_20261126_14` | `RESULTS_LOG.md` |
 
 Runs not cited (failed, test or superseded) are listed with the reason in `../REPRODUCE.md` §5; superseded figure and table runs
 carry a `SUPERSEDED.txt`.

@@ -1,0 +1,43 @@
+{
+  "run_id": "f17_redact_20261126_01",
+  "script": "f17_redact.py",
+  "script_sha256": "7d0c25a475890b828667cbb7f864a5e5cd686ac6c6a05af72a9f2b44e5f59dd1",
+  "common_sha256": "1dcccbafdf743ba6d8f45efffbd565900957bd0a25f6748c2622c6a15fdb9eaf",
+  "config": {
+    "f17_run": "f17_attribution_20261126_01",
+    "min_cell": 10,
+    "original_sha256": {
+      "run.json": "ab3a925560ed0158d9b2f694fdd7c0f3ec431b5b3881e840904662209a8aa6bd",
+      "stdout.log": "17da1c6dc4a13d99c72ada3a0f74fb449a7b91c90330317975912eeba77eadbf"
+    }
+  },
+  "host": "Hossein",
+  "python": "3.13.18",
+  "platform": "Linux-6.8.0-149-generic-x86_64-with-glibc2.35",
+  "started_utc": "2026-11-27T05:43:23Z",
+  "results": {
+    "removed": {
+      "primary_authors_via_meta": {
+        "authors": 1,
+        "fields_removed": [
+          "pct_s1_recip_nc_q25_50_75",
+          "pct_s4_conc5_q25_50_75",
+          "share_r2",
+          "share_r3",
+          "share_top_s1_recip_nc",
+          "share_top_s4_conc5",
+          "share_top_s5_self"
+        ]
+      },
+      "primary_authors_via_crossref_only": {
+        "authors": 0,
+        "fields_removed": []
+      }
+    },
+    "kept_counts": {
+      "primary_authors_via_meta": 1,
+      "primary_authors_via_crossref_only": 0
+    }
+  },
+  "seconds": 0.0
+}

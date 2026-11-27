@@ -128,8 +128,27 @@ are the check (largest difference 0.09).
 | P6 R3 ratio (data-driven) | 1.50 {1.06, 2.08}; honest error 1.00 (0.73–1.37) |
 | P6 S1 referencing/peer review | 2.19 (0.79–6.06) |
 
-## Supplementary tables (f12_tables_20261126_13)
-`paper/content/supp_tables.tex`: Tables S1–S10 generated from f06, f07, f09, f13, f14, f15, f16 and Paper D `d02_rw_20261101_01` (reason counts).
+## Post hoc round 6: outcome attribution (f17_attribution_20261126_01, redacted record f17_redact_20261126_01; POSTHOC.md round 6 and addendum)
+| Claim | Value |
+|---|---|
+| Frontiers network (announced 29 July 2025): Retraction Watch records, July–Sept 2025, peer-review/referencing/COI reasons | 124, all in the graph (124 publications) |
+| ... with an ORCID iD in Meta; in Crossref | 4; 0 |
+| Primary authors attached (Meta; Crossref only) | 1 (already positive; profile not reported, fewer than 10); 0 |
+| Later-retracted graph publications: with DOI; ORCID iD in Meta; in Crossref; in either | 8,769: 8,748; 3,989; 2,880; 4,112 |
+| Crossref query: DOIs; found; not found; errors | 8,705; 8,689; 16; 0 |
+| Positives, Meta → Meta and Crossref (added; lost) | 2,419 → 2,438 (19; 0) |
+| Largest change of any OR (S4 in P6); in primary strata (S6) | 1.44 → 1.55 (+0.12); 1.50 → 1.56 (+0.07) |
+| S6 with re-attributed outcome | 1.56 (1.00–2.44), lower bound 1.004 |
+| R2; S1; R2 class ratio | 1.51 (1.31–1.74); 0.84 (0.50–1.41); 1.45 {0.75, 2.65} |
+| S1 lift at 10,000 | 0.69 → 0.72 |
+| Added positives flagged by R3 (R3 share 36.8%) | 14 of 19 (exposed positives 1,196 → 1,210) |
+
+## Design figures (f18_design_20261126_01)
+`fig_flow.pdf` (population flow from f03 and f06 counts), `fig_timeline.pdf` (data windows; analysis steps in order with
+UTC times from the run records, the f04 freeze log and GitHub's push record).
+
+## Supplementary tables (f12_tables_20261126_14)
+`paper/content/supp_tables.tex`: Tables S1–S11 generated from f06, f07, f09, f13, f14, f15, f16, f17 (redacted) and Paper D `d02_rw_20261101_01` (reason counts).
 
 ## Figures (f08_fig_20261126_06)
 `fig1_forest.pdf` (f06 A2/A3 + f07 P1), `fig2_screening.pdf` (f06 A5), `fig3_orcid_coverage.pdf` (f03).

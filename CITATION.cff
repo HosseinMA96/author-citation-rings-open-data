@@ -20,6 +20,6 @@ preferred-citation:
   authors:
     - family-names: "Mohasel Arjomandi"
       given-names: "Hossein"
-  title: "Do author-level citation-ring signals predict later retractions? A prospective test on the open biomedical citation graph"
+  title: "Do author-level citation-ring signals predict later retractions? An out-of-sample test on the open biomedical citation graph"
   status: preprint
   year: 2026

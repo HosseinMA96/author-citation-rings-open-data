@@ -191,3 +191,18 @@ Stevenson (2025) article 9 (Crossref); Robins et al. (1986) pages 311–323 (Sem
 - Rittman (2025): DOI 10.13003/692016 resolves to the Crossref blog post (URL now printed); Zhang (2026): DOI
   10.21203/rs.3.rs-10177352/v1 resolves to Research Square (DOI and URL now printed). These @misc entries had lost
   their links in v0.5, when doi.org URLs were dropped for entries with a DOI field.
+
+## Fifth external review (2026-11-27): versions, pages and two new sources
+- Mohammad (2026): the reference now gives the DOI of version 1.3.0 (10.5281/zenodo.24526567; DataCite: IsVersionOf
+  the concept DOI 10.5281/zenodo.24526566, which always points to the latest version).
+- Lou et al. (2026): volume 11, pages 656–669 (Semantic Scholar; Crossref lists none). The issue (3, per the reviewer)
+  could not be verified from here (De Gruyter returns an empty page to scripts), so it is not printed.
+- Abalkina et al.: the article number 2733727 repeats the DOI suffix and is no longer printed.
+- PeerTrust "How it works" page: a JavaScript app; the Wayback snapshot holds only the empty app shell, so readers cannot
+  check it. The reference was removed. The methods now rest on the preprint: it describes its benchmark ruleset as
+  frozen (`rift_orcid_v3_compat@v1`) and distinct from the production ruleset, so the rules here are adaptations of the
+  published benchmark rules, not the deployed tool.
+- Frontiers (2025), news release of 29 July 2025 (read in full, 2026-11-27): a network of about 35 authors and editors
+  who reviewed with undisclosed conflicts of interest and manipulated citations; 122 articles in 5 Frontiers journals
+  retracted, most published in 2022; over 4,000 articles at seven other publishers "would justify further scrutiny".
+  Cited for the post hoc check P18 (POSTHOC.md round 6).

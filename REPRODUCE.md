@@ -3,11 +3,13 @@
 Every number in the paper comes from a run listed below; `FINDINGS.md` maps each claim to its run. Each run folder
 (`experiments/<exp>/runs/<run_id>/`) holds `run.json` (parameters, SHA-256 of the script and of `common.py`, input paths,
 counts, run time), `stdout.log`, small aggregate outputs and `SHA256SUMS`. Scripts refuse to write into an existing run
-folder, so a rerun always gets a new run ID. No per-author table leaves the analysis machine.
+folder, so a rerun always gets a new run ID. No per-author table leaves the analysis machine. One run record
+(`f17_attribution_20261126_01`) is kept in full only on the VM because it profiled a single author; its redacted copy
+is released (`f17_redact_20261126_01`).
 
 ## 1. Machine and environment
 - Steps that read the citation graph need about 64 GB of RAM and 100 GB of free disk. They were run on one Azure
-  `Standard_E8s_v6` VM (8 vCPU, 64 GB, Ubuntu 24.04); total compute for all runs: 1.54 logged VM-hours in six sessions (`vm/sessions.log`).
+  `Standard_E8s_v6` VM (8 vCPU, 64 GB, Ubuntu 24.04); total compute for all runs: 2.47 logged VM-hours in seven sessions (`vm/sessions.log`).
 - Python environment: `vm/environment_f.lock.yml` (micromamba/conda-forge; Python 3.11.18, DuckDB 1.5.6, pandas 3.1.0,
   NumPy 2.4.6, pyarrow 25.0.0, SciPy 1.17.1). Create it with `micromamba create -n d -f vm/environment_f.lock.yml`.
 - Figures run on a laptop from the run records (Matplotlib 3.11.1).
@@ -46,7 +48,10 @@ Run each from its experiment folder: `python <script> <run_id> [args]`.
 | Post hoc round 4: outcome class 3 as specified, shared retraction events (VM) | `bash vm/run_round4.sh f14_class3_20261126_01` (runs `f14_class3/f14_class3.py f14_class3_20261126_01 f05_scores_20261126_01 1000`) | 1 min |
 | Post hoc round 4 addendum: intervals clustered by shared retraction events (VM) | `bash vm/run_round4b.sh f15_pubclusters_20261126_01` (runs `f15_pubclusters/f15_pubclusters.py f15_pubclusters_20261126_01 f05_scores_20261126_01 1000`) | 7 min |
 | Post hoc round 5: main adjusted values with random decile ties, all class ratios (VM) | `bash vm/run_round5.sh f16_randties_20261126_01` (runs `f16_randties/f16_randties.py f16_randties_20261126_01 f05_scores_20261126_01 1000`) | 1 min |
-| Supplementary tables (laptop) | `f12_tables/f12_tables.py f12_tables_20261126_13 f06_eval_20261126_02 f07_posthoc_20261126_01 f09_posthoc2_20261126_02 f13_posthoc3_20261126_02 f14_class3_20261126_01 f15_pubclusters_20261126_01 f16_randties_20261126_01` | 1 s |
+| Post hoc round 6 (`POSTHOC.md`): the Frontiers network retractions (P18), attribution through Crossref ORCID iDs (P19) (VM; Crossref REST API, queried 27 Nov 2026) | `CROSSREF_MAILTO=<your address> bash vm/run_round6.sh f17_attribution_20261126_01` (runs `f17_attribution/f17_attribution.py f17_attribution_20261126_01 f05_scores_20261126_01 1000`; the address is optional and selects Crossref's polite pool) | 48 min |
+| Disclosure control of the f17 record (laptop; POSTHOC.md round 6 addendum) | `f17_attribution/f17_redact.py f17_redact_20261126_01 f17_attribution_20261126_01`, then the two original files are deleted from the laptop copy (`runs/f17_attribution_20261126_01/REDACTED.md`) | 1 s |
+| Design figures: population flow and timeline (laptop) | `f18_design/f18_design.py f18_design_20261126_01 f03_authors_20261126_01 f05_scores_20261126_01 f06_eval_20261126_02` | 1 s |
+| Supplementary tables (laptop) | `f12_tables/f12_tables.py f12_tables_20261126_14 f06_eval_20261126_02 f07_posthoc_20261126_01 f09_posthoc2_20261126_02 f13_posthoc3_20261126_02 f14_class3_20261126_01 f15_pubclusters_20261126_01 f16_randties_20261126_01 f17_redact_20261126_01` | 1 s |
 | Paper | `cd paper && python build_refs.py && tectonic -X compile main.tex`; number trace: `python trace_numbers.py` | – |
 
 ## 4. Determinism
@@ -56,14 +61,16 @@ Run each from its experiment folder: `python <script> <run_id> [args]`.
 - Floating-point sums in parallel DuckDB aggregations can differ in the last digits between runs.
 
 ## Clocks and time stamps
-Run records written on the VM (f03, f05, f06, f07, f09, f10, f11_cov, f13 `posthoc3`, f14, f15) use its system clock,
-which is synchronised to UTC. Records written on the laptop (f08, f11_crossref, f12, f13_desc), `vm/sessions.log` and the
+Run records written on the VM (f03, f05, f06, f07, f09, f10, f11_cov, f13 `posthoc3`, f14, f15, f16, f17) use its
+system clock, which is synchronised to UTC. Records written on the laptop (f08, f11_crossref, f12, f13_desc, f18), `vm/sessions.log` and the
 git commits of 26 November 2026 use the laptop clock, which ran one hour behind UTC that day (checked against HTTP `Date`
 headers: the laptop read 22:40:45Z when two servers reported 23:40:41 and 23:40:34 GMT). The freeze time of the
 specification in `experiments/f04_spec/RESULTS_LOG.md` is given in true UTC (18:43:04Z; the laptop wrote 17:43:04Z), and
 the order of the score and evaluation runs rests on the VM clock alone (18:43:21Z and 18:54:42Z). The first commit of the
 public repository, stamped 20:24 UTC, was therefore made at about 21:24 UTC, after the VM runs of 21:08–21:11 UTC that it
-contains.
+contains. GitHub's own record agrees: its repository activity API (`gh api repos/HosseinMA96/author-citation-rings-open-data/activity`)
+lists the first push (branch creation with commit `f010080`) at 21:24:18Z, server time. The empty repository had been
+created at 19:52:50Z (`created_at`). The paper's timeline figure (run `f18_design`) uses the push time.
 
 ## 5. Runs not cited (kept for the record)
 | Run | Why |
@@ -75,8 +82,9 @@ contains.
 | `f08_fig_20261126_01`–`_05` | Layout iterations (same values), `_04` with outcome class 3 as first coded, `_05` with row-order ties in the post hoc squares; the paper uses `_06` |
 | `f11_crossref_20261126_01` | Same results as `_02` (byte-identical); the script then held a contact address, now read from the environment |
 | `f09_posthoc2_20261126_01` | Failed before any estimate: pandas 3 kept missing journal ids as NaN, so sorting journal keys failed |
-| `f12_tables_20261126_01`–`_05` | Layout iterations, a local absolute path in the config of `_01`–`_03` (those three are not in the public repository), and the completeness fix of `_05` (Table S7 and the full A5 intervals added; existing values unchanged), `_06`–`_08` (Tables S8–S9 and tie notes added after the second review; layout) `_09` (class 3 as first coded), `_10` (row-order adjusted strata) and `_11`–`_12` (captions and layout); the paper uses `_13` |
+| `f12_tables_20261126_01`–`_05` | Layout iterations, a local absolute path in the config of `_01`–`_03` (those three are not in the public repository), and the completeness fix of `_05` (Table S7 and the full A5 intervals added; existing values unchanged), `_06`–`_08` (Tables S8–S9 and tie notes added after the second review; layout) `_09` (class 3 as first coded), `_10` (row-order adjusted strata) and `_11`–`_12` (captions and layout); the paper uses `_14` |
 | `f13_posthoc3_20261126_01` | Identical to `_02` except that `_02` adds the burst-rule class ratio (data-driven addendum in `POSTHOC.md`) |
+| `f12_tables_20261126_13` | As `_14` without the positive-control row of Table S7 and without Table S11 |
 
 ## 6. Large intermediate data
 Per-author tables (`orcid_slots.parquet`, `paper_auth.parquet`, `aid_map.parquet`, `bio.parquet`, frozen

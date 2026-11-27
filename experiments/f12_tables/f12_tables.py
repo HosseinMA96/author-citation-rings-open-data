@@ -11,14 +11,14 @@ usage: python f12_tables.py RUN_ID F06_RUN F07_RUN F09_RUN F13_RUN F14_RUN F15_R
 import csv, json, sys
 from common import Run, F_ROOT
 
-F06, F07, F09, F13, F14, F15, F16 = sys.argv[2:9]
+F06, F07, F09, F13, F14, F15, F16, F17R = sys.argv[2:10]
 E = F_ROOT / "experiments"
 rec = lambda exp, r: json.loads((E / exp / "runs" / r / "run.json").read_text())["results"]
 r6, r7, r9, r13 = rec("f06_eval", F06), rec("f07_posthoc", F07), rec("f09_posthoc2", F09), rec("f13_posthoc3", F13)
 r14, r15, r16 = rec("f14_class3", F14), rec("f15_pubclusters", F15), rec("f16_randties", F16)
 C3 = r14["P14_class3"]   # outcome class 3 as specified, keys "<strata>|<exposure>|y_misc_spec"
 D02 = F_ROOT.parent / "D_retraction_contamination/experiments/d02_retraction_watch/runs/d02_rw_20261101_01/reason_counts.csv"
-run = Run(sys.argv[1], __file__, {"f06": F06, "f07": F07, "f09": F09, "f13": F13, "f14": F14, "f15": F15, "f16": F16, "d02_reason_counts": str(D02.relative_to(F_ROOT.parent))})
+run = Run(sys.argv[1], __file__, {"f06": F06, "f07": F07, "f09": F09, "f13": F13, "f14": F14, "f15": F15, "f16": F16, "f17_redacted": F17R, "d02_reason_counts": str(D02.relative_to(F_ROOT.parent))})
 ci = lambda m, d=2: "--" if m.get("or_mh") is None else f"{m['or_mh']:.{d}f} ({m['lo']:.{d}f}--{m['hi']:.{d}f})"
 n = lambda v: f"{v:,}"
 EXP = [("top_s1_recip_nc", "S1 non-co-author reciprocity, top 1\\%"), ("top_s2_recip", "S2 reciprocity, top 1\\%"),
@@ -159,10 +159,16 @@ for k, lab in [("top_s1_recip_nc", "S1, top 1\\%"), ("top_s5_self", "S5, top 1\\
         cl.append("--" if q.get("cl_lo") is None else f"{q['cl_lo']:.2f}--{q['cl_hi']:.2f}")
     T.append(f"{lab} & " + " & ".join(cells) + " \\\\")
     T.append("\\quad journal-clustered & " + " & ".join(cl) + " \\\\ \\addlinespace")
+P5c = r9["P5_positive_control"]
+cells = [f"{ci(P5c['by_class'][c])} [{n(P5c['by_class'][c]['exposed_pos'])}]" + ("$^\\S$" if c == "y_misc" else "") for c, _ in CL]
+T.append("Prior retraction$^\\ddagger$ & " + " & ".join(cells) + " \\\\")
+T.append("\\quad journal-clustered & " + " & ".join(f"{P5c['by_class'][c]['cl_lo']:.2f}--{P5c['by_class'][c]['cl_hi']:.2f}" for c, _ in CL) + " \\\\")
 fc = "; ".join(f"{lab} {ci(A['mh_by_class'][f'{k}|y_misc'])} [{A['mh_by_class'][f'{k}|y_misc']['exposed_pos']}]"
                for k, lab in [("top_s1_recip_nc", "S1"), ("top_s5_self", "S5"), ("r2", "R2")])
 T += ["\\bottomrule", f"\\multicolumn{{5}}{{p{{14cm}}}}{{Other misconduct is class 3 as specified. As first coded (without the two "
-      f"shared peer-review reasons; {n(A['positives_by_class']['y_misc'])} positives): {fc}.}} \\\\", "\\end{tabular}", "\\end{table}", ""]
+      f"shared peer-review reasons; {n(A['positives_by_class']['y_misc'])} positives): {fc}. $^\\ddagger$Positive control (post hoc): prior "
+      f"retraction as the exposure among all {n(P5c['n'])} eligible authors, same strata; all later retractions "
+      f"{ci(P5c['primary_strata'])}. $^\\S$Class 3 as first coded.}} \\\\", "\\end{tabular}", "\\end{table}", ""]
 # S8 outcome classes under the adjusted strata, with the class ratio (P11, post hoc)
 CLS = [("y", "All later\\\\retractions"), ("y_refpeer", "Referencing or\\\\peer review"), ("y_mill", "Paper mill"),
        ("y_misc_spec", "Other\\\\misconduct"), ("y_err_only", "Honest error\\\\only")]
@@ -259,9 +265,38 @@ for k, lab in RK:
     a5 = A5[k]["lift@10000"]; c9 = P4s[k]["lift@10000"]; p16 = r15["P16_lift10000"][k]
     T.append(f"{lab} & {a5['point']:.2f} & {a5['lo']:.2f}--{a5['hi']:.2f} & {c9['cl_lo']:.2f}--{c9['cl_hi']:.2f} & {iv(p16)} \\\\")
 T += ["\\bottomrule", "\\end{tabular}", "\\end{table}", ""]
+# S11 later retractions attributed through Crossref ORCID iDs (P19, post hoc), from the redacted f17 record
+P19 = json.loads((E / "f17_attribution" / "runs" / F17R / "record.json").read_text())["results"]
+e19, o19, c19 = P19["P19_estimates"], P19["P19_outcome"], P19["P19_coverage"]
+rat = lambda m: f"{m['ratio']:.2f} ({m['cl_lo']:.2f}--{m['cl_hi']:.2f})"
+T += ["\\begin{table}[htbp]", "\\centering", "\\caption{Later retractions attributed through the ORCID iDs in today's "
+      f"Crossref records (post hoc). Of the {n(c19['later_publications'])} later-retracted publications in the graph, "
+      f"{n(c19['with_meta_orcid'])} list an ORCID iD in OpenCitations Meta, {n(c19['with_crossref_orcid'])} in Crossref "
+      f"(queried {P19['crossref']['retrieved']}) and {n(c19['with_either'])} in either. Crossref adds "
+      f"{n(c19['crossref_only_links_primary'])} author links to primary authors; {o19['added']} of these authors gain a later "
+      f"retraction ({n(o19['positives_meta'])} to {n(o19['positives_augmented'])} positives, none lost); the population "
+      "is unchanged. Mantel--Haenszel odds ratios (95\\% CI) with the outcome as defined (Meta) and with the re-attributed "
+      "outcome (Meta and Crossref). P1 and P6 as in Table~\\ref{tab:byclassadj}; the class ratio has journal-clustered "
+      "intervals.}", "\\label{tab:attrib}", "\\footnotesize", "\\setlength{\\tabcolsep}{3pt}", "\\begin{tabular}{llcc}",
+      "\\toprule", "Exposure & Strata & Meta & Meta and Crossref \\\\", "\\midrule"]
+for k, lab in EXP:
+    if k == "r1": continue
+    T.append(f"{lab} & Primary & {ci(r6['A1_A2_A3_primary']['mh'][k])} & {ci(e19[k])} \\\\")
+T.append("\\addlinespace")
+for c, lab in [("y_refpeer", "referencing or peer review"), ("y_err_only", "honest error only")]:
+    T.append(f"R2 pact rule, {lab} & Primary & {ci(r6['A1_A2_A3_primary']['mh_by_class'][f'r2|{c}'])} & {ci(e19[f'r2|{c}'])} \\\\")
+T.append(f"R2, ratio of the two & Primary & {rat(r16['P17_ratio_primary']['r2'])} & {rat(e19['r2|ratio'])} \\\\ \\addlinespace")
+for st, slab in [("P1_randties", "P1"), ("P6_randties", "P6")]:
+    for k, lab in [("top_s1_recip_nc", "S1, top 1\\%"), ("top_s4_conc5", "S4, top 1\\%"), ("top_s5_self", "S5, top 1\\%"),
+                   ("r2", "R2 pact rule"), ("r3", "R3 burst rule")]:
+        T.append(f"{lab} & {slab} & {ci(r16[f'P17_{st}'][f'{k}|y'])} & {ci(e19[f'{st}|{k}'])} \\\\")
+    T.append("\\addlinespace")
+li = e19["s1_lift10000"]
+T += [f"S1, lift among the top 10,000 & -- & {li['meta']:.2f} & {li['augmented']:.2f} \\\\", "\\bottomrule", "\\end{tabular}",
+      "\\end{table}", ""]
 out = F_ROOT / "paper/content/supp_tables.tex"
 out.write_text("% GENERATED by experiments/f12_tables/f12_tables.py from run records; do not edit by hand.\n" + "\n".join(T))
 (run.dir / "supp_tables.tex").write_text(out.read_text())
-run.log("tables", ["S1 deciles", "S2 screening", "S3 refpeer screening", "S4 ORs pre-specified I", "S5 ORs pre-specified II + post hoc", "S6 reasons by class", "S7 ORs by class", "S8 classes under adjusted strata", "S9 tie audit", "S10 publication-clustered intervals"])
+run.log("tables", ["S1 deciles", "S2 screening", "S3 refpeer screening", "S4 ORs pre-specified I", "S5 ORs pre-specified II + post hoc", "S6 reasons by class", "S7 ORs by class", "S8 classes under adjusted strata", "S9 tie audit", "S10 publication-clustered intervals", "S11 attribution through Crossref"])
 run.log("reasons_by_class", {c: len(v) for c, v in groups.items()})
 run.finish()

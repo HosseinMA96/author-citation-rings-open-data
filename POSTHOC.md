@@ -128,3 +128,30 @@ blanks. Nothing here is a new kind of analysis; the run completes the random-tie
   and P6 strata with random decile ties (and, as a check, with row-order ties); the ratio of the referencing/peer-review
   OR to the honest-error OR for **every** P11 exposure (S1 and S6 added for completeness; R3 was added in round 3 as
   data-driven). The paper reports the random-tie strata as the main adjusted estimates.
+
+## Round 6 (written 2026-11-26, after a fifth external review; before these runs)
+Prompted by the objection that later retractions which cannot be attached to an author (no ORCID iD of that author on the
+retracted paper in Meta) turn affected authors into apparent negatives, and that such errors fall on the authors the
+signals are meant to find. Example given: the Frontiers "peer review manipulation network" (announced 29 July 2025; 122
+articles in five journals, about 35 authors, mostly published in 2022, when Frontiers' ORCID coverage in Meta was 3%).
+- **P18, the Frontiers network retractions.** Retraction Watch records (frozen copy) with publisher containing
+  "Frontiers", first notice from 1 July to 30 September 2025, and at least one reason among `Compromised Peer Review`,
+  `Concerns/Issues about Peer Review`, `Concerns/Issues about Referencing/Attributions` and `Conflict of Interest` (the
+  count and the notice dates are reported against the announced 122). For these: matched to the graph; with at least one
+  ORCID iD in Meta; ORCID iDs in today's Crossref record. Primary-population authors attached through Meta, and those
+  attached only through Crossref ORCID iDs; for each group, the percentile ranks of S1 and S4 within the primary
+  population, and the shares flagged by the top 1% of S1, S4, S5 and by R2 and R3.
+- **P19, outcome attribution through Crossref ORCID iDs (all later retractions).** For every later-retracted publication
+  in the graph (first notice after T0 and by 30 October 2026), the ORCID iDs in today's Crossref record. Primary authors
+  who gain a later retraction only through these iDs are added as positives (the population is not changed). The primary
+  ORs of all exposures, the class estimates and class ratio of R2, and S1's lift at 10,000 are recomputed. A sensitivity
+  analysis of outcome attribution; the pre-specified definitions are unchanged.
+Crossref is queried from the VM; ORCID iDs and names stay on the VM; only aggregates are written.
+
+### Round 6 addendum (written 2026-11-27 UTC after reading `f17_attribution_20261126_01`): disclosure control
+P18 attached a single primary author to the Frontiers network retractions, so its profile of attached authors
+(percentile ranks of S1 and S4; shares flagged by S1, S4, S5, R2 and R3) describes one person. Rule from now on:
+profiles of groups of fewer than 10 authors are neither reported nor kept outside the analysis VM; counts may be
+reported. The original f17 record (`run.json`, `stdout.log`) stays on the VM disk. The copies fetched to the laptop
+are replaced by a redacted record, written by run `f17_redact_20261126_01` (`f17_attribution/f17_redact.py`), which
+drops these fields and logs the SHA-256 of the originals. No estimate is affected; P19 has no per-author output.
