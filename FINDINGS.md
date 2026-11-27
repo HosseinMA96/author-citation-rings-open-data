@@ -164,8 +164,14 @@ UTC times from the run records, the f04 freeze log and GitHub's push record).
 | Class 3 as specified, informative strata (positives in them): S1; S5; R2 | 296 (773); 319 (837); 544 (1,166) |
 | Same, class 3 as first coded (reproduces f06 A3) | 272 (645); 288 (706); 487 (979) |
 
-## Supplementary tables (f12_tables_20261126_18)
-`paper/content/supp_tables.tex`: Tables S1–S13 generated from f06, f07, f09, f13, f14, f15, f16, f17 (redacted), f19 and Paper D `d02_rw_20261101_01` (reason counts).
+## Post hoc round 8 (f20_posctrl_20261127_01; POSTHOC.md round 8)
+| Claim | Value |
+|---|---|
+| Positive control, class 3 as specified (1,861 positives among eligible authors) | 7.21 [6.18, 8.42] {5.82, 9.14}; 316 exposed positives |
+| Same, class 3 as first coded (reproduces f09 P5) | 7.03 [5.95, 8.31] {5.62, 8.85} |
+
+## Supplementary tables (f12_tables_20261127_01)
+`paper/content/supp_tables.tex`: Tables S1–S13 generated from f06, f07, f09, f13, f14, f15, f16, f17 (redacted), f19, f20 and Paper D `d02_rw_20261101_01` (reason counts).
 
 ## Figures (f08_fig_20261126_07)
 `fig1_forest.pdf` (f06 A2/A3 + f07 P1), `fig2_screening.pdf` (f06 A5; hybrid in its own colour), `fig3_orcid_coverage.pdf` (f03).

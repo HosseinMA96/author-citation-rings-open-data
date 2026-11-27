@@ -11,14 +11,14 @@ usage: python f12_tables.py RUN_ID F06_RUN F07_RUN F09_RUN F13_RUN F14_RUN F15_R
 import csv, json, sys
 from common import Run, F_ROOT
 
-F06, F07, F09, F13, F14, F15, F16, F17R, F19 = sys.argv[2:11]
+F06, F07, F09, F13, F14, F15, F16, F17R, F19, F20 = sys.argv[2:12]
 E = F_ROOT / "experiments"
 rec = lambda exp, r: json.loads((E / exp / "runs" / r / "run.json").read_text())["results"]
 r6, r7, r9, r13 = rec("f06_eval", F06), rec("f07_posthoc", F07), rec("f09_posthoc2", F09), rec("f13_posthoc3", F13)
 r14, r15, r16 = rec("f14_class3", F14), rec("f15_pubclusters", F15), rec("f16_randties", F16)
 C3 = r14["P14_class3"]   # outcome class 3 as specified, keys "<strata>|<exposure>|y_misc_spec"
 D02 = F_ROOT.parent / "D_retraction_contamination/experiments/d02_retraction_watch/runs/d02_rw_20261101_01/reason_counts.csv"
-run = Run(sys.argv[1], __file__, {"f06": F06, "f07": F07, "f09": F09, "f13": F13, "f14": F14, "f15": F15, "f16": F16, "f17_redacted": F17R, "f19": F19, "d02_reason_counts": str(D02.relative_to(F_ROOT.parent))})
+run = Run(sys.argv[1], __file__, {"f06": F06, "f07": F07, "f09": F09, "f13": F13, "f14": F14, "f15": F15, "f16": F16, "f17_redacted": F17R, "f19": F19, "f20": F20, "d02_reason_counts": str(D02.relative_to(F_ROOT.parent))})
 ci = lambda m, d=2: "--" if m.get("or_mh") is None else f"{m['or_mh']:.{d}f} ({m['lo']:.{d}f}--{m['hi']:.{d}f})"
 n = lambda v: f"{v:,}"
 EXP = [("top_s1_recip_nc", "S1 non-co-author reciprocity, top 1\\%"), ("top_s2_recip", "S2 reciprocity, top 1\\%"),
@@ -160,15 +160,17 @@ for k, lab in [("top_s1_recip_nc", "S1, top 1\\%"), ("top_s5_self", "S5, top 1\\
     T.append(f"{lab} & " + " & ".join(cells) + " \\\\")
     T.append("\\quad journal-clustered & " + " & ".join(cl) + " \\\\ \\addlinespace")
 P5c = r9["P5_positive_control"]
-cells = [f"{ci(P5c['by_class'][c])} [{n(P5c['by_class'][c]['exposed_pos'])}]" + ("$^\\S$" if c == "y_misc" else "") for c, _ in CL]
+P21 = rec("f20_posctrl", F20)["P21_positive_control"]     # class 3 as specified (P21, post hoc); reproduces f09 P5 otherwise
+pc = {c: (P21["by_class"]["y_misc_spec"] if c == "y_misc" else P5c["by_class"][c]) for c, _ in CL}
+cells = [f"{ci(pc[c])} [{n(pc[c]['exposed_pos'])}]" for c, _ in CL]
 T.append("Prior retraction$^\\ddagger$ & " + " & ".join(cells) + " \\\\")
-T.append("\\quad journal-clustered & " + " & ".join(f"{P5c['by_class'][c]['cl_lo']:.2f}--{P5c['by_class'][c]['cl_hi']:.2f}" for c, _ in CL) + " \\\\")
+T.append("\\quad journal-clustered & " + " & ".join(f"{pc[c]['cl_lo']:.2f}--{pc[c]['cl_hi']:.2f}" for c, _ in CL) + " \\\\")
 fc = "; ".join(f"{lab} {ci(A['mh_by_class'][f'{k}|y_misc'])} [{A['mh_by_class'][f'{k}|y_misc']['exposed_pos']}]"
                for k, lab in [("top_s1_recip_nc", "S1"), ("top_s5_self", "S5"), ("r2", "R2")])
 T += ["\\bottomrule", f"\\multicolumn{{5}}{{p{{14cm}}}}{{Other misconduct is class 3 as specified. As first coded (without the two "
       f"shared peer-review reasons; {n(A['positives_by_class']['y_misc'])} positives): {fc}. $^\\ddagger$Positive control (post hoc): prior "
       f"retraction as the exposure among all {n(P5c['n'])} eligible authors, same strata; all later retractions "
-      f"{ci(P5c['primary_strata'])}. $^\\S$Class 3 as first coded.}} \\\\", "\\end{tabular}", "\\end{table}", ""]
+      f"{ci(P5c['primary_strata'])}; as first coded, its class 3 estimate is {ci(P5c['by_class']['y_misc'])}.}} \\\\", "\\end{tabular}", "\\end{table}", ""]
 # S8 outcome classes under the adjusted strata, with the class ratio (P11, post hoc)
 CLS = [("y", "All later\\\\retractions"), ("y_refpeer", "Referencing or\\\\peer review"), ("y_mill", "Paper mill"),
        ("y_misc_spec", "Other\\\\misconduct"), ("y_err_only", "Honest error\\\\only")]

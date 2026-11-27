@@ -75,7 +75,12 @@ S12 and `_17` narrows its column spacing (layout only; values identical).
 ## f12_tables_20261126_17: superseded by `_18`
 Tables S1–S13. Inputs as `_14` (f06, f07, f09, f13, f14, f15, f16, f17 redacted, Paper D's reason counts).
 
-## f12_tables_20261126_18: cited
+## f12_tables_20261126_18: superseded by `f12_tables_20261127_01`
 As `_17`, but Table S12(b) shows outcome class 3 as specified (1,545 positives; informative strata and their positives
 from `f19_informative_20261126_01`), as Tables S7 and S8 do, with the first-coded counts in its note. Inputs: f06, f07,
 f09, f13, f14, f15, f16, f17 (redacted), f19, Paper D's reason counts.
+
+## f12_tables_20261127_01: cited
+As `_18`, but the prior-retraction row of Table S7 uses outcome class 3 as specified (`f20_posctrl_20261127_01`), like
+every other row; the first-coded value moves to the note. Inputs: f06, f07, f09, f13, f14, f15, f16, f17 (redacted),
+f19, f20, Paper D's reason counts.

@@ -171,3 +171,10 @@ The term does not mean an independent human peer review, and the source of each 
 paper's AI declaration lists the AI tools used. "Internal critique" (round 4) was an AI review of the code and draft by
 the coding assistant (GitHub Copilot CLI, its rubber-duck review agent). The headings are left as written, because this
 file's hash is recorded in the runs.
+
+## Round 8 (written 2026-11-27 UTC, after an eighth review; before this run)
+- **P21, positive control with outcome class 3 as specified (reporting only).** Table S7 gives the positive control
+  (prior retraction among all eligible authors, primary strata) by class, but its class 3 is as first coded (f09 P5),
+  while every other row of the table uses the class as specified. Recompute, with the code and bootstrap seeds of f09:
+  the positive control for class 3 as specified (odds ratio, CI, journal-clustered interval, informative strata). Checks
+  before use: all-cause and the four first-coded classes reproduce f09 P5 exactly. Run `f20_posctrl` on the VM.

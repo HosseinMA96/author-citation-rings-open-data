@@ -1,0 +1,27 @@
+[     0.3s] frozen_spec_and_scores_verified: True
+[     6.8s] P21_positive_control: {'n': 800996, 'prior': 7697, 'positives': 2853, 'positives_by_class': {'y_refpeer': 774, 'y_mill': 193, 'y_misc': 1571, 'y_err_only': 259, 'y_misc_spec': 1861}, 'primary_strata': {'exposed': 7697, 'exposed_pos': 434, 'strata_informative': 856, 'exposed_positives_in_informative': 427, 'or_mh': np.float64(6.759102249330179), 'lo': np.float64(5.928700620443236), 'hi': np.float64(7.705813826957043), 'cl_lo': 5.727407361386972, 'cl_hi': 8.142552073836706, 'cl_valid': 1000}, 'by_class': {'y_refpeer': {'exposed': 7697, 'exposed_pos': 152, 'strata_informative': 268, 'exposed_positives_in_informative': 150, 'or_mh': np.float64(8.39599643712162), 'lo': np.float64(6.6222615397464875), 'hi': np.float64(10.64481608723317), 'cl_lo': 6.308589129835029, 'cl_hi': 11.049812476956784, 'cl_valid': 1000}, 'y_mill': {'exposed': 7697, 'exposed_pos': 52, 'strata_informative': 96, 'exposed_positives_in_informative': 50, 'or_mh': np.float64(10.660191647950551), 'lo': np.float64(7.00856325998123), 'hi': np.float64(16.214405400307257), 'cl_lo': 6.316846166489049, 'cl_hi': 15.894330946546615, 'cl_valid': 1000}, 'y_misc': {'exposed': 7697, 'exposed_pos': 267, 'strata_informative': 574, 'exposed_positives_in_informative': 262, 'or_mh': np.float64(7.033204106303631), 'lo': np.float64(5.953524618930196), 'hi': np.float64(8.308684882840868), 'cl_lo': 5.617853353832885, 'cl_hi': 8.84994294527833, 'cl_valid': 1000}, 'y_err_only': {'exposed': 7697, 'exposed_pos': 11, 'strata_informative': 149, 'exposed_positives_in_informative': 11, 'or_mh': np.float64(2.6718234892693964), 'lo': np.float64(1.4195350792899044), 'hi': np.float64(5.028858294493619), 'cl_lo': 1.3127685953280537, 'cl_hi': 4.65122220143652, 'cl_valid': 1000}, 'y_misc_spec': {'exposed': 7697, 'exposed_pos': 316, 'strata_informative': 631, 'exposed_positives_in_informative': 311, 'or_mh': np.float64(7.213922710649394), 'lo': np.float64(6.182579545457124), 'hi': np.float64(8.417308745095221), 'cl_lo': 5.822773908297277, 'cl_hi': 9.143184935116215, 'cl_valid': 1000}}}
+[     6.8s] P21_checks: {'n_prior_positives': True, 'primary_strata': True, 'class|y_refpeer': True, 'class|y_mill': True, 'class|y_misc': True, 'class|y_err_only': True}
+done in 6.8 s -> /home/azureuser/f/experiments/f20_posctrl/runs/f20_posctrl_20261127_01
+	Command being timed: "/home/azureuser/mamba/envs/d/bin/python f20_posctrl.py f20_posctrl_20261127_01 f05_scores_20261126_01 f09_posthoc2_20261126_02 1000"
+	User time (seconds): 14.46
+	System time (seconds): 1.09
+	Percent of CPU this job got: 118%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:13.09
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 1012900
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 197
+	Minor (reclaiming a frame) page faults: 326061
+	Voluntary context switches: 30768
+	Involuntary context switches: 128
+	Swaps: 0
+	File system inputs: 1317928
+	File system outputs: 40
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
