@@ -2,7 +2,8 @@
 Fig 1: within-stratum Mantel-Haenszel odds ratios (primary strata, pre-specified; volume strata, post hoc) and by outcome class.
 Fig 2: screening, lift at k = 1,000 and k = 10,000 with paired-bootstrap 95% intervals.
 Fig 3: ORCID coverage of biomedical publications by year.
-usage: python f08_figures.py RUN_ID F03_RUN F06_RUN F07_RUN [F14_RUN]
+usage: python f08_figures.py RUN_ID F03_RUN F06_RUN F07_RUN [F14_RUN [F13_RUN]]
+With F13_RUN, the post hoc squares of Fig 1 (left) use the citation-volume strata with random decile ties (f13 P12c).
 With F14_RUN, the 'Other misconduct' class in Fig 1 (right) is outcome class 3 as specified in SPEC §5 (f14, P14).
 """
 import json, sys
@@ -13,11 +14,11 @@ import matplotlib.pyplot as plt
 from matplotlib.ticker import NullFormatter, FixedLocator
 from common import Run, F_ROOT
 
-F03, F06, F07 = sys.argv[2:5]; F14 = sys.argv[5] if len(sys.argv) > 5 else None
+F03, F06, F07 = sys.argv[2:5]; F14 = sys.argv[5] if len(sys.argv) > 5 else None; F13 = sys.argv[6] if len(sys.argv) > 6 else None
 E = F_ROOT / "experiments"
 rec = lambda exp, r: json.loads((E / exp / "runs" / r / "run.json").read_text())["results"]
 r3, r6, r7 = rec("f03_authors", F03), rec("f06_eval", F06), rec("f07_posthoc", F07)
-run = Run(sys.argv[1], __file__, {"f03_run": F03, "f06_run": F06, "f07_run": F07, "f14_run": F14, "matplotlib": matplotlib.__version__})
+run = Run(sys.argv[1], __file__, {"f03_run": F03, "f06_run": F06, "f07_run": F07, "f14_run": F14, "f13_run": F13, "matplotlib": matplotlib.__version__})
 plt.rcParams.update({"pdf.fonttype": 42, "font.size": 8.5, "axes.spines.top": False, "axes.spines.right": False})
 BLUE, ORANGE, GREY = "#2a78d6", "#eb6834", "#666666"
 
@@ -27,6 +28,8 @@ LAB = [("top_s1_recip_nc", "S1 non-co-author reciprocity (primary)"), ("top_s2_r
        ("top_s6_co", "S6 co-author citation share"), ("bottom_s7_ch2", "S7 low $C/h^2$ (bottom 1%)"),
        ("r2", "R2 pact rule (> 5 pact authors)"), ("r3", "R3 burst rule (> 3)"), ("r_ge3", "Rule score R ≥ 3")]
 prim, vol = r6["A1_A2_A3_primary"]["mh"], r7["P1_volume_strata"]
+if F13:   # citation-volume strata with random decile ties (main adjusted values since round 5)
+    vol = {k: rec("f13_posthoc3", F13)["P11_P1_randties"][f"{k}|y"] for k, _ in LAB}
 fig, (a1, a2) = plt.subplots(1, 2, figsize=(7.2, 4.0), gridspec_kw={"width_ratios": [1.15, 1]})
 for i, (k, lab) in enumerate(LAB):
     yv = len(LAB) - 1 - i

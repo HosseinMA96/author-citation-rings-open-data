@@ -47,7 +47,16 @@ Panel (c) takes the row-order P1/P6 estimates from f07/f09 (which f13 reproduces
 ## f12_tables_20261126_09: superseded
 As `_08` with narrower column spacing in S9 (layout only; same values). Tables S1–S9.
 
-## f12_tables_20261126_10: cited
+## f12_tables_20261126_10: superseded
 After the internal critique: outcome class 3 as specified (f14) in Tables S6 (the two shared reasons listed in class 3
 as well, marked), S7 (with the first-coded values in a note) and S8; new Table S10, intervals clustered by shared
 retraction events (f15). Inputs: f06, f07, f09, f13, f14, f15 and Paper D's reason counts.
+
+## f12_tables_20261126_11 and _12: superseded
+After the fourth external review: P1/P6 columns of S5 and all of S8 from the random-tie strata (f13, f16); S8 has the
+class ratio for every exposure and explains "--"; S9(c) puts the random-tie values first; run labels removed from the
+captions (`_12` adds a pointer to the definition of P1/P6 in S9).
+
+## f12_tables_20261126_13: cited
+As `_12` with shorter column heads in S9(c) (layout only). Inputs: f06, f07, f09, f13, f14, f15, f16, Paper D's reason
+counts.

@@ -1,0 +1,1 @@
+superseded by f12_tables_20261126_12: S9 caption defines P1/P6 by reference (caption only)

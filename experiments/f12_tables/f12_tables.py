@@ -5,19 +5,20 @@ clustered intervals P4); S6 retraction reasons by outcome class (SPEC.md §5 str
 d02_rw_20261101_01); S7 odds ratios by outcome class (A3, with clustered intervals P4); S8 classes under the adjusted
 strata with the class ratio (P11, post hoc); S9 tie-breaking audit (P12, post hoc); S10 intervals clustered by shared
 retraction events (P16). Outcome class 3 is shown as specified (f14, P14), with the first-coded values noted.
-usage: python f12_tables.py RUN_ID F06_RUN F07_RUN F09_RUN F13_RUN F14_RUN F15_RUN
+Since round 5 the adjusted strata P1/P6 use random decile ties (f13 P12c, f16 P17); row-order ties appear in S9(c).
+usage: python f12_tables.py RUN_ID F06_RUN F07_RUN F09_RUN F13_RUN F14_RUN F15_RUN F16_RUN
 """
 import csv, json, sys
 from common import Run, F_ROOT
 
-F06, F07, F09, F13, F14, F15 = sys.argv[2:8]
+F06, F07, F09, F13, F14, F15, F16 = sys.argv[2:9]
 E = F_ROOT / "experiments"
 rec = lambda exp, r: json.loads((E / exp / "runs" / r / "run.json").read_text())["results"]
 r6, r7, r9, r13 = rec("f06_eval", F06), rec("f07_posthoc", F07), rec("f09_posthoc2", F09), rec("f13_posthoc3", F13)
-r14, r15 = rec("f14_class3", F14), rec("f15_pubclusters", F15)
+r14, r15, r16 = rec("f14_class3", F14), rec("f15_pubclusters", F15), rec("f16_randties", F16)
 C3 = r14["P14_class3"]   # outcome class 3 as specified, keys "<strata>|<exposure>|y_misc_spec"
 D02 = F_ROOT.parent / "D_retraction_contamination/experiments/d02_retraction_watch/runs/d02_rw_20261101_01/reason_counts.csv"
-run = Run(sys.argv[1], __file__, {"f06": F06, "f07": F07, "f09": F09, "f13": F13, "f14": F14, "f15": F15, "d02_reason_counts": str(D02.relative_to(F_ROOT.parent))})
+run = Run(sys.argv[1], __file__, {"f06": F06, "f07": F07, "f09": F09, "f13": F13, "f14": F14, "f15": F15, "f16": F16, "d02_reason_counts": str(D02.relative_to(F_ROOT.parent))})
 ci = lambda m, d=2: "--" if m.get("or_mh") is None else f"{m['or_mh']:.{d}f} ({m['lo']:.{d}f}--{m['hi']:.{d}f})"
 n = lambda v: f"{v:,}"
 EXP = [("top_s1_recip_nc", "S1 non-co-author reciprocity, top 1\\%"), ("top_s2_recip", "S2 reciprocity, top 1\\%"),
@@ -100,11 +101,12 @@ def row5(k, lab):
     pc = r9["P4_primary_strata"][k]
     cl = "--" if pc.get("cl_lo") is None else f"{pc['cl_lo']:.2f}--{pc['cl_hi']:.2f}"
     return (f"{lab} & " + " & ".join(ci(r6[t]["mh"][k]) for t, _ in post) +
-            f" & {cl} & {ci(r7['P1_volume_strata'][k])} & {ci(r9['P6_fine_strata'][k])} \\\\")
+            f" & {cl} & {ci(r13['P11_P1_randties'][f'{k}|y'])} & {ci(r13['P11_P6_randties'][f'{k}|y'])} \\\\")
 T += ortable("S5", "Mantel--Haenszel odds ratios (95\\% CI), pre-specified (II): robustness analyses (d) outcome publications from "
              "2014--2023, (e) strata by journal only, (f) top 5\\% instead of top 1\\% (rules unchanged); post hoc: 95\\% interval "
              "for the primary estimate from 1,000 resamples of main journals; P1, strata adding deciles of citations received; P6, "
-             "strata of main journal $\\times$ productivity decile $\\times$ citation decile $\\times$ start band.",
+             "strata of main journal $\\times$ productivity decile $\\times$ citation decile $\\times$ start band (decile ties broken at "
+             "random; with ties in row order, Table~\\ref{tab:ties}).",
              "l" + "c" * (len(post) + 3), row5,
              "Exposure & " + " & ".join(c for _, c in post) + " & Journal-clustered & P1 & P6 \\\\")
 # S5 reasons by class
@@ -163,28 +165,28 @@ T += ["\\bottomrule", f"\\multicolumn{{5}}{{p{{14cm}}}}{{Other misconduct is cla
       f"shared peer-review reasons; {n(A['positives_by_class']['y_misc'])} positives): {fc}.}} \\\\", "\\end{tabular}", "\\end{table}", ""]
 # S8 outcome classes under the adjusted strata, with the class ratio (P11, post hoc)
 CLS = [("y", "All later\\\\retractions"), ("y_refpeer", "Referencing or\\\\peer review"), ("y_mill", "Paper mill"),
-       ("y_misc", "Other\\\\misconduct"), ("y_err_only", "Honest error\\\\only")]
-STR = [("primary", "Primary"), ("P1", "P1"), ("P6", "P6")]
+       ("y_misc_spec", "Other\\\\misconduct"), ("y_err_only", "Honest error\\\\only")]
+STR = [("primary", "Primary"), ("P1_randties", "P1"), ("P6_randties", "P6")]
 hd = lambda lab: f"\\begin{{tabular}}[b]{{@{{}}c@{{}}}}{lab}\\end{{tabular}}"
 T += ["\\begin{landscape}", "\\begin{table}[p]", "\\centering", "\\caption{Mantel--Haenszel odds ratios (95\\% CI) of later "
       "retraction by outcome class in the pre-specified strata (Primary) and in the adjusted strata P1 (adding deciles of "
-      "citations received) and P6 (main journal $\\times$ productivity decile $\\times$ citation decile $\\times$ start band); "
+      "citations received) and P6 (main journal $\\times$ productivity decile $\\times$ citation decile $\\times$ start band; "
+      "decile ties broken at random); "
       "exposed authors with a later retraction in the class in brackets; second line: 95\\% interval from 1,000 resamples of "
       "main journals. Last column: ratio of the referencing or peer-review odds ratio to the honest-error odds ratio, with its "
-      "journal-clustered interval (-- where an odds ratio is undefined). Post hoc, except the primary-strata estimates of "
-      "S1, S5 and R2 (Table~\\ref{tab:byclass}); the ratio for R3 ($\\dagger$) was added after its class estimates had been "
-      "seen. Other misconduct is class 3 as specified (f14); estimates with the class as first coded are in the record of f13.}", "\\label{tab:byclassadj}", "\\scriptsize", "\\setlength{\\tabcolsep}{2.5pt}", "\\begin{tabular}{llcccccc}",
+      "journal-clustered interval (-- where an odds ratio is undefined: no exposed author is in the honest-error class). Post "
+      "hoc, except the primary-strata estimates of S1, S5 and R2 (Table~\\ref{tab:byclass}); the ratio for R3 ($\\dagger$) "
+      "was added after its class estimates had been seen, those for S1 and S6 after review, for completeness. Other "
+      "misconduct is class 3 as specified; estimates with the class as first coded are in the run records.}", "\\label{tab:byclassadj}", "\\scriptsize", "\\setlength{\\tabcolsep}{2.5pt}", "\\begin{tabular}{llcccccc}",
       "\\toprule", "Exposure & Strata & " + " & ".join(hd(l) for _, l in CLS) + " & " + hd("Ratio, referencing\\\\or peer review\\\\to honest error") + " \\\\",
       "\\midrule"]
 for k, lab in [("top_s1_recip_nc", "S1, top 1\\%"), ("top_s4_conc5", "S4, top 1\\%"), ("top_s5_self", "S5, top 1\\%"),
                ("top_s6_co", "S6, top 1\\%"), ("r2", "R2 pact rule"), ("r3", "R3 burst rule")]:
     for j, (st, slab) in enumerate(STR):
-        res = r13[f"P11_{st}"]; rat = r13[f"P11_ratio_refpeer_over_err_{st}"].get(k)
-        res = dict(res); res[f"{k}|y_misc"] = C3[f"{st}|{k}|y_misc_spec"]
+        res = r16[f"P17_{st}"]; rat = r16[f"P17_ratio_{st}"].get(k)
         cells = [f"{ci(res[f'{k}|{c}'])} [{res[f'{k}|{c}']['exposed_pos']}]" for c, _ in CLS]
         cl = ["--" if res[f"{k}|{c}"].get("cl_lo") is None else f"{res[f'{k}|{c}']['cl_lo']:.2f}--{res[f'{k}|{c}']['cl_hi']:.2f}" for c, _ in CLS]
-        if rat is None: rc, rl = "", ""
-        elif rat.get("ratio") is None: rc, rl = "--", ""
+        if rat.get("ratio") is None: rc, rl = "--", ""
         else:
             rc = f"{rat['ratio']:.2f}" + ("$^\\dagger$" if k == "r3" else ""); rl = f"{rat['cl_lo']:.2f}--{rat['cl_hi']:.2f}"
         T.append(f"{lab if j == 0 else ''} & {slab} & " + " & ".join(cells) + f" & {rc} \\\\")
@@ -196,8 +198,9 @@ T += ["\\begin{table}[htbp]", "\\centering", "\\caption{Tie-breaking audit (post
       "ties followed identifier order. (b) Rankings with ties at the screening cut-offs (Table~\\ref{tab:screen}): authors "
       "sharing the value of the $k$-th ranked author, how many of them enter the top $k$, and lift as computed (seeded key) and "
       "over 1,000 random tie-breaks (median and central 95\\%). Rankings not listed have no ties that matter at these "
-      "cut-offs. (c) Odds ratios for all later retractions in the adjusted strata, with decile ties broken in row order "
-      "(the order of ORCID iDs; as in Table~\\ref{tab:allor5}) and at random.}", "\\label{tab:ties}", "\\footnotesize",
+      "cut-offs. (c) Odds ratios for all later retractions in the adjusted strata P1 and P6 (defined in Table~\\ref{tab:allor5}), "
+      "with decile ties broken at random (the "
+      "values reported in the text and in Table~\\ref{tab:allor5}) and in row order (the order of ORCID iDs; first version).}", "\\label{tab:ties}", "\\footnotesize",
       "\\setlength{\\tabcolsep}{3pt}", "\\begin{tabular}{lrrr}", "\\multicolumn{4}{l}{(a) S1 deciles 1--3} \\\\", "\\toprule",
       "Decile & Authors & With later retraction & Mean ORCID-iD rank \\\\", "\\midrule"]
 for i in range(3):
@@ -215,9 +218,9 @@ for name in ["r_score", "s8_burst", "productivity", "s7_ch2_low", "s3_pact"]:
                      f"{v['lift_median']:.2f} ({v['lift_q025']:.2f}--{v['lift_q975']:.2f}) \\\\")
 T += ["\\bottomrule", "\\end{tabular}", "", "\\medskip", "", "\\begin{tabular}{lcccc}",
       "\\multicolumn{5}{l}{(c) Adjusted strata with random decile ties, all later retractions} \\\\", "\\toprule",
-      "Exposure & P1, row order & P1, random & P6, row order & P6, random \\\\", "\\midrule"]
+      "Exposure & P1, random & P1, row order & P6, random & P6, row order \\\\", "\\midrule"]
 for k, lab in EXP:   # row order: f07 P1 and f09 P6 (reproduced exactly by f13); random ties: f13
-    cols = [r7["P1_volume_strata"][k], r13["P11_P1_randties"][f"{k}|y"], r9["P6_fine_strata"][k], r13["P11_P6_randties"][f"{k}|y"]]
+    cols = [r13["P11_P1_randties"][f"{k}|y"], r7["P1_volume_strata"][k], r13["P11_P6_randties"][f"{k}|y"], r9["P6_fine_strata"][k]]
     T.append(f"{lab} & " + " & ".join(ci(m) for m in cols) + " \\\\")
 T += ["\\bottomrule", "\\end{tabular}", "\\end{table}", ""]
 # S10 intervals clustered by shared retraction events (P16, post hoc)

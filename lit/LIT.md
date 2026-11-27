@@ -174,3 +174,20 @@ people."
 Reference metadata fixed on 2026-11-26: Fister et al. (2016) first author Iztok Fister Jr. (publisher's page; Crossref
 gives both first authors as "Iztok Fister"), Front. Phys. 4:49 (article number from Semantic Scholar); Fletcher &
 Stevenson (2025) article 9 (Crossref); Robins et al. (1986) pages 311–323 (Semantic Scholar; Crossref gives only 311).
+
+## Fourth external review (2026-11-26): links and the PeerTrust sources
+- PeerTrust benchmark preprint (Ali et al. 2026): DOI 10.66977/xsci.2610.000r resolves to
+  https://xsci.com/preprint/doi/10.66977/xsci.2610.000r (now printed in the reference). It publishes the rules used here
+  (§2.2: isolation NCI_adj > 35, pact P > 5, burst B > 3.0) and "a weighted raw score R = 3r1 + 3r2 + 2r3 … the published
+  weights of three, three, and two points". The 44% in the text is the pact rule: "The pact rule was triggered for 115
+  researchers, corresponding to 44.2% of the scored cohort" (116, 44.6%, is the share with ELEVATED or HIGH verdicts).
+- PeerTrust website, https://peertrust.report/how-it-works (JavaScript app; text read from its page chunk
+  `HowItWorksPage`, accessed 2026-11-26): "It deliberately does not publish exact production thresholds, weights,
+  anti-evasion controls, or internal calibration assets". A sample report in the app (ruleset `rift_orcid_v3_compat`,
+  dated 21 July 2026) shows weights 3, 2 and 1. So the rules here follow the preprint, and the deployed tool may differ;
+  stated in the methods and limitations. A similarly named site, `peerturst.com` (sic), was found by search and not used.
+- Abalkina et al.: DOI 10.1080/08989621.2026.2733727 resolves (tandfonline.com); Crossref: Accountability in Research
+  33(8), article 2733727, online 1 October 2026. The version read was arXiv:2604.22458 (noted in the reference).
+- Rittman (2025): DOI 10.13003/692016 resolves to the Crossref blog post (URL now printed); Zhang (2026): DOI
+  10.21203/rs.3.rs-10177352/v1 resolves to Research Square (DOI and URL now printed). These @misc entries had lost
+  their links in v0.5, when doi.org URLs were dropped for entries with a DOI field.

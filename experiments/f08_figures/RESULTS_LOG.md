@@ -11,6 +11,10 @@ and for signals vs baselines (Fig. 2); green / purple / dark grey with distinct 
 - **f08_fig_20261126_04**: the paper figures (`paper/figures/fig1_forest.pdf`, `fig2_screening.pdf`,
   `fig3_orcid_coverage.pdf`), PNGs inspected. Values identical in all four runs; only layout changed.
 
-## f08_fig_20261126_05: cited
+## f08_fig_20261126_05: superseded
 Fig 1 (right), "Other misconduct": outcome class 3 as specified (`f14_class3_20261126_01`) instead of the first-coded
 class; all other panels and figures unchanged. `_04` superseded.
+
+## f08_fig_20261126_06: cited
+Post hoc squares of Fig 1 (left) from the citation-volume strata with random decile ties (`f13_posthoc3_20261126_02`,
+P12c), the main adjusted values since round 5; everything else as `_05`.

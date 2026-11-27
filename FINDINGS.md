@@ -116,8 +116,20 @@ results are marked. Laptop clock is 1 h behind UTC; run timestamps come from the
 | P16 lift at 10,000: S1; S4; journal risk; productivity | 0.69 (0.36–1.07); 0.62 (0.30–1.05); 5.28 (4.30–6.18); 4.30 (3.42–5.18) |
 | Precision at k = 100: S4; S6; journal risk; productivity | 3%; 3%; 2%; 8% (f06 A5) |
 
-## Supplementary tables (f12_tables_20261126_10)
-`paper/content/supp_tables.tex`: Tables S1–S10 generated from f06, f07, f09, f13, f14, f15 and Paper D `d02_rw_20261101_01` (reason counts).
+## Main adjusted values with random decile ties (f16_randties_20261126_01; POSTHOC.md round 5)
+Since round 5 the paper reports the P1 and P6 strata with random decile ties; the row-order values above (f07, f09, f13)
+are the check (largest difference 0.09).
+| Claim | Number |
+|---|---|
+| P1: S4; S5 (journal-clustered) | 1.71 (1.05–2.78) {0.94, 2.69}; 1.59 (1.11–2.26) {1.07, 2.17} |
+| P1: R2; S1 | 1.16 (0.99–1.35); 1.01 (0.59–1.72) |
+| P6 (304,817 strata): R2; R3; S1; S4; S5 | 1.26 (1.07–1.49); 1.18 (1.06–1.31); 0.86 (0.42–1.78); 1.44 (0.77–2.67); 1.40 (0.89–2.19) |
+| P6 R2: referencing/peer review vs honest error; ratio | 1.85 (1.34–2.55) vs 1.62 (1.03–2.55); **1.14 {0.63, 1.94}** |
+| P6 R3 ratio (data-driven) | 1.50 {1.06, 2.08}; honest error 1.00 (0.73–1.37) |
+| P6 S1 referencing/peer review | 2.19 (0.79–6.06) |
 
-## Figures (f08_fig_20261126_05)
+## Supplementary tables (f12_tables_20261126_13)
+`paper/content/supp_tables.tex`: Tables S1–S10 generated from f06, f07, f09, f13, f14, f15, f16 and Paper D `d02_rw_20261101_01` (reason counts).
+
+## Figures (f08_fig_20261126_06)
 `fig1_forest.pdf` (f06 A2/A3 + f07 P1), `fig2_screening.pdf` (f06 A5), `fig3_orcid_coverage.pdf` (f03).

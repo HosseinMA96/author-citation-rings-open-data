@@ -1,0 +1,1 @@
+superseded by f08_fig_20261126_06: post hoc squares now from the citation-volume strata with random decile ties (f13); otherwise identical

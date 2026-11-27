@@ -118,3 +118,13 @@ them (69.6%) share such a publication with another positive author; journal-clus
   Poisson(1) weight per cluster, 1,000 resamples (seed `SeedSequence([20261126, crc32("pubclusters")])`); percentile
   95% intervals for the primary-strata ORs of all exposures, for the class estimates of S1, S5 and R2 (class 3 as
   specified) and for the class ratio of R2, and for lift at 10,000 of every ranking.
+
+## Round 5 (written 2026-11-26, after a fourth external review; before this run)
+The review asked that the adjusted (P1, P6) estimates use the random tie-break of P12c as the main values, with the row
+order as the check (no estimate for all later retractions moves by more than 0.09), and that Table S8 have no unexplained
+blanks. Nothing here is a new kind of analysis; the run completes the random-tie versions.
+- **P17.** For the P11 exposures, Mantel-Haenszel ORs (RBG CI, journal-clustered intervals as f13) for all later
+  retractions and every class, including class 3 as specified and as first coded, in the primary strata and in the P1
+  and P6 strata with random decile ties (and, as a check, with row-order ties); the ratio of the referencing/peer-review
+  OR to the honest-error OR for **every** P11 exposure (S1 and S6 added for completeness; R3 was added in round 3 as
+  data-driven). The paper reports the random-tie strata as the main adjusted estimates.
